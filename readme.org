@@ -7,3 +7,7 @@
 
 
 * 课程安排
+
+| Timeline         | Topic                    | Slide |
+|------------------+--------------------------+-------|
+| <2024-05-06 Mon> | 关系型数据库管理系统绪论 | [[file:slides/p01-introduction-to-RDMS.pdf][p01]]   |
