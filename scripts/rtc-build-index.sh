@@ -49,5 +49,6 @@ echo "generate cscope database"
 cscope -b -q -k
 
 echo "generate CTAGS"
-ctags --langmap=c:+.ic -e -L cscope.files
-ctags --langmap=c:+.ic -f tags -L cscope.files
+cat cscope.files | etags -
+# ctags --langmap=c:+.ic -e -L cscope.files
+# ctags --langmap=c:+.ic -f tags -L cscope.files
