@@ -10,9 +10,10 @@
 * 快速链接
 1. 课程资源 | [[https://github.com/Jeanhwea/mysql-source-course][github]] | [[https://gitee.com/jeanhwea/mysql-source-course][gitee]]
 2. 源码仓库 | [[https://github.com/Jeanhwea/mysql-server][github]] | [[https://gitee.com/jeanhwea/mysql-server][gitee]]
+3. 视频课程 | [[https://www.bilibili.com/cheese/play/ss19642][bilibili]]
 
 * 课程安排
 - 课程预计时间 <2024-05-06 Mon> 至 <2024-09-01 Sun>
-| Timeline         | Topic                    | Slide |
-|------------------+--------------------------+-------|
-| <2024-05-06 Mon> | 关系型数据库管理系统绪论 | [[file:slides/p01-introduction-to-RDMS.pdf][p01]]   |
+| Timeline         | Topic                    | Slide | Video |
+|------------------+--------------------------+-------+-------|
+| <2024-05-06 Mon> | 关系型数据库管理系统绪论 | [[file:slides/p01-introduction-to-RDMS.pdf][p01]]   | [[https://www.bilibili.com/cheese/play/ss19642][v01]]   |
