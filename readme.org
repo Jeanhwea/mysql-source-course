@@ -12,6 +12,7 @@
 2. 源码仓库 | [[https://github.com/Jeanhwea/mysql-server][github]] | [[https://gitee.com/jeanhwea/mysql-server][gitee]]
 
 * 课程安排
+- 课程预计时间 <2024-05-06 Mon> 至 <2024-09-01 Sun>
 | Timeline         | Topic                    | Slide |
 |------------------+--------------------------+-------|
 | <2024-05-06 Mon> | 关系型数据库管理系统绪论 | [[file:slides/p01-introduction-to-RDMS.pdf][p01]]   |
