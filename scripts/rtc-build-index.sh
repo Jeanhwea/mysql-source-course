@@ -43,7 +43,8 @@ rtc_index_dir "$MYSQL_SRC/vio"
 
 sort -u -o cscope.files cscope.files
 
-wc -l cscope.files
+FILECNT=$(wc -l cscope.files | awk '{print $1}')
+echo "total $FILECNT source file"
 
 echo "generate cscope database"
 cscope -b -q -k
