@@ -44,12 +44,12 @@ rtc_index_dir "$MYSQL_SRC/vio"
 sort -u -o cscope.files cscope.files
 
 FILECNT=$(wc -l cscope.files | awk '{print $1}')
-echo "total $FILECNT source file"
+echo "STAT: total $FILECNT source file"
 
-echo "generate cscope database"
+echo "GEN: create cscope database"
 cscope -b -q -k
 
-echo "generate CTAGS"
+echo "GEN: create TAGS file"
 cat cscope.files | etags -
 # ctags --langmap=c:+.ic -e -L cscope.files
 # ctags --langmap=c:+.ic -f tags -L cscope.files
