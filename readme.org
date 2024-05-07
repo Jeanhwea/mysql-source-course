@@ -5,6 +5,7 @@
 #+STARTUP: overview num indent
 #+OPTIONS: ^:nil
 
+[[file:figures/mysql-poster.svg]]
 
 * 快速链接
 1. 课程资源 | [[https://github.com/Jeanhwea/mysql-source-course][github]] | [[https://gitee.com/jeanhwea/mysql-source-course][gitee]]
