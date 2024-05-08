@@ -17,3 +17,4 @@
 | Timeline         | Topic                    | Slide | Video |
 |------------------+--------------------------+-------+-------|
 | <2024-05-06 Mon> | 关系型数据库管理系统绪论 | [[file:slides/p01-introduction-to-RDMS.pdf][p01]]   | [[https://www.bilibili.com/cheese/play/ss19642][v01]]   |
+| <2024-05-08 Wed> | 源码构建 MySQL 调试环境  | [[file:slides/p02-build-mysql-from-source.pdf][p02]]   |       |
