@@ -6,14 +6,17 @@ if [ -d $BOOST_DIR ]; then
     exit
 fi
 
+if [ ! -f "/tmp/boost_1_77_0.tar.bz2" ]; then
+    echo "Download from $BOOST_URL"
+    cd /tmp
+    wget -c $BOOST_URL
+fi
+
+tar xvf /tmp/boost_1_77_0.tar.bz2
+
 if [ $UID -ne 0 ]; then
     echo "Permission deny, sudo ..."
     exit 13 # EACCES
 fi
 
-echo "Download from $BOOST_URL"
-cd ~
-wget -c $BOOST_URL
-
-tar xvf boost_1_77_0.tar.bz2
 sudo mv boost_1_77_0 /opt
