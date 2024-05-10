@@ -18,3 +18,17 @@
 |------------------+--------------------------+-------+-------|
 | <2024-05-06 Mon> | 关系型数据库管理系统绪论 | [[file:slides/p01-introduction-to-RDMS.pdf][p01]]   | [[https://www.bilibili.com/cheese/play/ep676075][v01]]   |
 | <2024-05-08 Wed> | 源码构建 MySQL 调试环境  | [[file:slides/p02-build-mysql-from-source.pdf][p02]]   | [[https://www.bilibili.com/cheese/play/ep683149][v02]]   |
+
+* 课程资源
+课程中较大的资源文件存档在百度网盘中，大家可自行下载
+#+BEGIN_EXAMPLE
+  链接：https://pan.baidu.com/s/1XivUc1HAogTeXOWPc11-Og?pwd=rdms
+  提取码：rdms
+#+END_EXAMPLE
+
+| 说明           | 文件名                     | 来源         |
+|----------------+----------------------------+--------------|
+| boost 库       | boost_1_77_0.tar.bz2       | 官网下载     |
+| 数据库源代码   | mysql-8.0.37.tar.gz        | 官网下载     |
+| 数据库开发文档 | mysql-devdoc-8.0.37.tar.gz | 源码编译输出 |
+| 官方测试库     | test_db.tar.gz             | GitHub 下载  |
