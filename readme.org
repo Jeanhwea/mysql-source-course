@@ -26,9 +26,10 @@
   提取码：rdms
 #+END_EXAMPLE
 
-| 说明           | 文件名                     | 来源         |
-|----------------+----------------------------+--------------|
-| boost 库       | boost_1_77_0.tar.bz2       | 官网下载     |
-| 数据库源代码   | mysql-8.0.37.tar.gz        | 官网下载     |
-| 数据库开发文档 | mysql-devdoc-8.0.37.tar.gz | 源码编译输出 |
-| 官方测试库     | test_db.tar.gz             | GitHub 下载  |
+| 说明            | 文件名                     | 来源         |
+|-----------------+----------------------------+--------------|
+| boost 库        | boost_1_77_0.tar.bz2       | 官网下载     |
+| MySQL 源代码    | mysql-8.0.37.tar.gz        | 官网下载     |
+| MySQL 开发文档  | mysql-devdoc-8.0.37.tar.gz | 源码编译输出 |
+| MySQL 用户手册  | refman-8.0-en.a4.pdf       | 官网下载     |
+| Employee 测试库 | test_db.tar.gz             | GitHub 下载  |
