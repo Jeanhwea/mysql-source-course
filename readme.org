@@ -19,7 +19,7 @@
 | <2024-05-06 Mon> | 关系型数据库管理系统绪论     | [[file:slides/p01-introduction-to-RDMS.pdf][p01]]   | [[https://www.bilibili.com/cheese/play/ep676075][v01]]   |
 | <2024-05-08 Wed> | 源码构建 MySQL 调试环境      | [[file:slides/p02-build-mysql-from-source.pdf][p02]]   | [[https://www.bilibili.com/cheese/play/ep683149][v02]]   |
 | <2024-05-10 Fri> | MySQL 系统架构及模块功能概述 | [[file:slides/p03-mysql-architecture.pdf][p03]]   | [[https://www.bilibili.com/cheese/play/ep693532][v03]]   |
-| <2024-05-15 Wed> | MySQL 服务启动源码分析       | [[file:slides/p04-mysql-startup.pdf][p04]]   |       |
+| <2024-05-15 Wed> | MySQL 服务启动源码分析       | [[file:slides/p04-mysql-startup.pdf][p04]]   | [[https://www.bilibili.com/cheese/play/ep704954][v04]]   |
 
 * 课程资源
 课程中较大的资源文件存档在百度网盘中，大家可自行下载 | [[https://pan.baidu.com/s/1XivUc1HAogTeXOWPc11-Og?pwd=rdms][BaiduYun]]
