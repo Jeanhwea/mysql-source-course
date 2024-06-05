@@ -25,6 +25,7 @@
 | <2024-05-28 Tue> | 服务层组件线程管理和用户模块 | [[file:slides/p07-server-thd-manager.pdf][p07]]   | [[https://www.bilibili.com/cheese/play/ep740625][v07]]   |
 | <2024-05-30 Thu> | 网络模块和派发模块           | [[file:slides/p08-net-dispatch-command.pdf][p08]]   | [[https://www.bilibili.com/cheese/play/ep746335][v08]]   |
 | <2024-06-04 Tue> | MySQL 词法分析器的设计与实现 | [[file:slides/p09-lexical-scanner.pdf][p09]]   | [[https://www.bilibili.com/cheese/play/ep759933][v09]]   |
+| <2024-06-06 Thu> | MySQL 语法分析器的设计与实现 | [[file:slides/p10-syntax-parser.pdf][p10]]   |       |
 
 * 课程资源
 课程中较大的资源文件存档在百度网盘中，大家可自行下载 | [[https://pan.baidu.com/s/1XivUc1HAogTeXOWPc11-Og?pwd=rdms][BaiduYun]]
