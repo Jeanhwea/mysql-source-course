@@ -14,19 +14,20 @@
 
 * 课程安排
 - 课程预计时间 <2024-05-06 Mon> 至 <2024-09-01 Sun>
-| Timeline         | Topic                        | Slide | Video |
-|------------------+------------------------------+-------+-------|
-| <2024-05-06 Mon> | 关系型数据库管理系统绪论     | [[file:slides/p01-introduction-to-RDMS.pdf][p01]]   | [[https://www.bilibili.com/cheese/play/ep676075][v01]]   |
-| <2024-05-08 Wed> | 源码构建 MySQL 调试环境      | [[file:slides/p02-build-mysql-from-source.pdf][p02]]   | [[https://www.bilibili.com/cheese/play/ep683149][v02]]   |
-| <2024-05-10 Fri> | MySQL 系统架构及模块功能概述 | [[file:slides/p03-mysql-architecture.pdf][p03]]   | [[https://www.bilibili.com/cheese/play/ep693532][v03]]   |
-| <2024-05-15 Wed> | MySQL 服务启动源码分析       | [[file:slides/p04-mysql-startup.pdf][p04]]   | [[https://www.bilibili.com/cheese/play/ep704954][v04]]   |
-| <2024-05-20 Mon> | MySQL 的线程模型             | [[file:slides/p05-mysql-thread-model.pdf][p05]]   | [[https://www.bilibili.com/cheese/play/ep725138][v05]]   |
-| <2024-05-23 Thu> | 服务层组件连接器的设计与实现 | [[file:slides/p06-server-connection-manager.pdf][p06]]   | [[https://www.bilibili.com/cheese/play/ep731978][v06]]   |
-| <2024-05-28 Tue> | 服务层组件线程管理和用户模块 | [[file:slides/p07-server-thd-manager.pdf][p07]]   | [[https://www.bilibili.com/cheese/play/ep740625][v07]]   |
-| <2024-05-30 Thu> | 网络模块和派发模块           | [[file:slides/p08-net-dispatch-command.pdf][p08]]   | [[https://www.bilibili.com/cheese/play/ep746335][v08]]   |
-| <2024-06-04 Tue> | MySQL 词法分析器的设计与实现 | [[file:slides/p09-lexical-scanner.pdf][p09]]   | [[https://www.bilibili.com/cheese/play/ep759933][v09]]   |
-| <2024-06-06 Thu> | MySQL 语法分析器的设计与实现 | [[file:slides/p10-syntax-parser.pdf][p10]]   | [[https://www.bilibili.com/cheese/play/ep764493][v10]]   |
-| <2024-06-12 Wed> | 遍历解析树上下文构建词法单元 | [[file:slides/p11-contextualize-parse-tree.pdf][p11]]   | [[https://www.bilibili.com/cheese/play/ep785171][v11]]   |
+| Timeline         | Topic                            | Slide | Video |
+|------------------+----------------------------------+-------+-------|
+| <2024-05-06 Mon> | 关系型数据库管理系统绪论         | [[file:slides/p01-introduction-to-RDMS.pdf][p01]]   | [[https://www.bilibili.com/cheese/play/ep676075][v01]]   |
+| <2024-05-08 Wed> | 源码构建 MySQL 调试环境          | [[file:slides/p02-build-mysql-from-source.pdf][p02]]   | [[https://www.bilibili.com/cheese/play/ep683149][v02]]   |
+| <2024-05-10 Fri> | MySQL 系统架构及模块功能概述     | [[file:slides/p03-mysql-architecture.pdf][p03]]   | [[https://www.bilibili.com/cheese/play/ep693532][v03]]   |
+| <2024-05-15 Wed> | MySQL 服务启动源码分析           | [[file:slides/p04-mysql-startup.pdf][p04]]   | [[https://www.bilibili.com/cheese/play/ep704954][v04]]   |
+| <2024-05-20 Mon> | MySQL 的线程模型                 | [[file:slides/p05-mysql-thread-model.pdf][p05]]   | [[https://www.bilibili.com/cheese/play/ep725138][v05]]   |
+| <2024-05-23 Thu> | 服务层组件连接器的设计与实现     | [[file:slides/p06-server-connection-manager.pdf][p06]]   | [[https://www.bilibili.com/cheese/play/ep731978][v06]]   |
+| <2024-05-28 Tue> | 服务层组件线程管理和用户模块     | [[file:slides/p07-server-thd-manager.pdf][p07]]   | [[https://www.bilibili.com/cheese/play/ep740625][v07]]   |
+| <2024-05-30 Thu> | 网络模块和派发模块               | [[file:slides/p08-net-dispatch-command.pdf][p08]]   | [[https://www.bilibili.com/cheese/play/ep746335][v08]]   |
+| <2024-06-04 Tue> | MySQL 词法分析器的设计与实现     | [[file:slides/p09-lexical-scanner.pdf][p09]]   | [[https://www.bilibili.com/cheese/play/ep759933][v09]]   |
+| <2024-06-06 Thu> | MySQL 语法分析器的设计与实现     | [[file:slides/p10-syntax-parser.pdf][p10]]   | [[https://www.bilibili.com/cheese/play/ep764493][v10]]   |
+| <2024-06-12 Wed> | 遍历解析树上下文构建词法单元     | [[file:slides/p11-contextualize-parse-tree.pdf][p11]]   | [[https://www.bilibili.com/cheese/play/ep785171][v11]]   |
+| <2024-06-15 Sat> | MySQL 优化器功能概述及其观测工具 | [[file:slides/p12-introduction-to-optimizer.pdf][p12]]   |       |
 
 * 课程资源
 课程中较大的资源文件存档在百度网盘中，大家可自行下载 | [[https://pan.baidu.com/s/1XivUc1HAogTeXOWPc11-Og?pwd=rdms][BaiduYun]]
