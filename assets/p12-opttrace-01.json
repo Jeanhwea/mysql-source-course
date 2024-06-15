@@ -1,0 +1,195 @@
+{
+  "steps": [
+    {
+      "join_preparation": {
+        "select#": 1,
+        "steps": [
+          {
+            "expanded_query": "/* select#1 */ select `employees`.`emp_no` AS `emp_no`,`employees`.`birth_date` AS `birth_date`,`employees`.`first_name` AS `first_name`,`employees`.`last_name` AS `last_name`,`employees`.`gender` AS `gender`,`employees`.`hire_date` AS `hire_date` from `employees` where ((`employees`.`emp_no` < 10010) and (`employees`.`first_name` like 'a%'))"
+          }
+        ]
+      }
+    },
+    {
+      "join_optimization": {
+        "select#": 1,
+        "steps": [
+          {
+            "condition_processing": {
+              "condition": "WHERE",
+              "original_condition": "((`employees`.`emp_no` < 10010) and (`employees`.`first_name` like 'a%'))",
+              "steps": [
+                {
+                  "transformation": "equality_propagation",
+                  "resulting_condition": "((`employees`.`emp_no` < 10010) and (`employees`.`first_name` like 'a%'))"
+                },
+                {
+                  "transformation": "constant_propagation",
+                  "resulting_condition": "((`employees`.`emp_no` < 10010) and (`employees`.`first_name` like 'a%'))"
+                },
+                {
+                  "transformation": "trivial_condition_removal",
+                  "resulting_condition": "((`employees`.`emp_no` < 10010) and (`employees`.`first_name` like 'a%'))"
+                }
+              ]
+            }
+          },
+          {
+            "substitute_generated_columns": {
+            }
+          },
+          {
+            "table_dependencies": [
+              {
+                "table": "`employees`",
+                "row_may_be_null": false,
+                "map_bit": 0,
+                "depends_on_map_bits": [
+                ]
+              }
+            ]
+          },
+          {
+            "ref_optimizer_key_uses": [
+            ]
+          },
+          {
+            "rows_estimation": [
+              {
+                "table": "`employees`",
+                "range_analysis": {
+                  "table_scan": {
+                    "rows": 299556,
+                    "cost": 30878.8
+                  },
+                  "potential_range_indexes": [
+                    {
+                      "index": "PRIMARY",
+                      "usable": true,
+                      "key_parts": [
+                        "emp_no"
+                      ]
+                    }
+                  ],
+                  "setup_range_conditions": [
+                  ],
+                  "group_index_range": {
+                    "chosen": false,
+                    "cause": "not_group_by_or_distinct"
+                  },
+                  "skip_scan_range": {
+                    "potential_skip_scan_indexes": [
+                      {
+                        "index": "PRIMARY",
+                        "usable": false,
+                        "cause": "query_references_nonkey_column"
+                      }
+                    ]
+                  },
+                  "analyzing_range_alternatives": {
+                    "range_scan_alternatives": [
+                      {
+                        "index": "PRIMARY",
+                        "ranges": [
+                          "emp_no < 10010"
+                        ],
+                        "index_dives_for_eq_ranges": true,
+                        "rowid_ordered": true,
+                        "using_mrr": false,
+                        "index_only": false,
+                        "in_memory": 0.0112867,
+                        "rows": 9,
+                        "cost": 1.91039,
+                        "chosen": true
+                      }
+                    ],
+                    "analyzing_roworder_intersect": {
+                      "usable": false,
+                      "cause": "too_few_roworder_scans"
+                    }
+                  },
+                  "chosen_range_access_summary": {
+                    "range_access_plan": {
+                      "type": "range_scan",
+                      "index": "PRIMARY",
+                      "rows": 9,
+                      "ranges": [
+                        "emp_no < 10010"
+                      ]
+                    },
+                    "rows_for_plan": 9,
+                    "cost_for_plan": 1.91039,
+                    "chosen": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "considered_execution_plans": [
+              {
+                "plan_prefix": [
+                ],
+                "table": "`employees`",
+                "best_access_path": {
+                  "considered_access_paths": [
+                    {
+                      "rows_to_scan": 9,
+                      "access_type": "range",
+                      "range_details": {
+                        "used_index": "PRIMARY"
+                      },
+                      "resulting_rows": 9,
+                      "cost": 2.81039,
+                      "chosen": true
+                    }
+                  ]
+                },
+                "condition_filtering_pct": 100,
+                "rows_for_plan": 9,
+                "cost_for_plan": 2.81039,
+                "chosen": true
+              }
+            ]
+          },
+          {
+            "attaching_conditions_to_tables": {
+              "original_condition": "((`employees`.`emp_no` < 10010) and (`employees`.`first_name` like 'a%'))",
+              "attached_conditions_computation": [
+              ],
+              "attached_conditions_summary": [
+                {
+                  "table": "`employees`",
+                  "attached": "((`employees`.`emp_no` < 10010) and (`employees`.`first_name` like 'a%'))"
+                }
+              ]
+            }
+          },
+          {
+            "finalizing_table_conditions": [
+              {
+                "table": "`employees`",
+                "original_table_condition": "((`employees`.`emp_no` < 10010) and (`employees`.`first_name` like 'a%'))",
+                "final_table_condition   ": "((`employees`.`emp_no` < 10010) and (`employees`.`first_name` like 'a%'))"
+              }
+            ]
+          },
+          {
+            "refine_plan": [
+              {
+                "table": "`employees`"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "join_execution": {
+        "select#": 1,
+        "steps": [
+        ]
+      }
+    }
+  ]
+}
