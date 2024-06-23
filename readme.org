@@ -48,4 +48,4 @@
 | world 测试库     | world-db.tar.gz            | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]] / [[https://dev.mysql.com/doc/world-setup/en/][intro]] |
 | sakila 测试库    | sakila-db.tar.gz           | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]] / [[https://dev.mysql.com/doc/sakila/en/][intro]] |
 | airport 测试库   | airport-db.tar.gz          | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]] / [[https://dev.mysql.com/doc/airportdb/en/][intro]] |
-| menagerie 测试库 | menagerie-db.tar.gz        | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]] /       |
+| menagerie 测试库 | menagerie-db.tar.gz        | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]]         |
