@@ -29,6 +29,7 @@
 | <2024-06-12 Wed> | 遍历解析树上下文构建词法单元           | [[file:slides/p11-contextualize-parse-tree.pdf][p11]]   | [[https://www.bilibili.com/cheese/play/ep785171][v11]]   |
 | <2024-06-15 Sat> | MySQL 优化器功能概述及其观测工具       | [[file:slides/p12-introduction-to-optimizer.pdf][p12]]   | [[https://www.bilibili.com/cheese/play/ep795203][v12]]   |
 | <2024-06-20 Thu> | 准备阶段 Rewrite 和 Prepare 设计与实现 | [[file:slides/p13-rewrite-and-prepare.pdf][p13]]   | [[https://www.bilibili.com/cheese/play/ep813796][v13]]   |
+| <2024-06-23 Sun> | 进入优化器和优化器追踪日志实现         | [[file:slides/p14-enter-optimizer.pdf][p14]]   |       |
 
 * 课程资源
 课程中较大的资源文件存档在百度网盘中，大家可自行下载 | [[https://pan.baidu.com/s/1XivUc1HAogTeXOWPc11-Og?pwd=rdms][BaiduYun]]
