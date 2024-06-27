@@ -1,4 +1,4 @@
-select
+select /*+ rtc */
   e.first_name, e.last_name, a.from_date, a.to_date
 from
   dept_manager a, departments d, employees e
