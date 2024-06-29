@@ -1,0 +1,2231 @@
+T@10: | | >dispatch_sql_command
+T@10: | | | dispatch_sql_command: query: 'select /*+ rtc */
+  e.first_name, e.last_name, a.from_date
+from
+  dept_manager a join departments d join employees e
+where
+  a.dept_no = d.dept_no and a.emp_no = e.emp_no and d.dept_no = 'd001''
+T@10: | | | >THD::reset_for_next_command
+T@10: | | | | debug: reset_unsafe_rollback_flags
+T@10: | | | | >THD::clear_error
+T@10: | | | | <THD::clear_error
+T@10: | | | | >Diagnostics_area::reset_diagnostics_area
+T@10: | | | | <Diagnostics_area::reset_diagnostics_area
+T@10: | | | | >THD::reset_current_stmt_binlog_format_row
+T@10: | | | | | debug: in_sub_stmt: 0, system_thread: NON_SYSTEM_THREAD
+T@10: | | | | | >THD::set_current_stmt_binlog_format_row
+T@10: | | | | | <THD::set_current_stmt_binlog_format_row
+T@10: | | | | <THD::reset_current_stmt_binlog_format_row
+T@10: | | | | >THD::set_trans_pos
+T@10: | | | | | return: m_trans_log_file: (null), m_trans_fixed_log_file: (null), m_trans_end_pos: 0
+T@10: | | | | <THD::set_trans_pos
+T@10: | | | | debug: is_current_stmt_binlog_format_row(): 1
+T@10: | | | | >Security_context::checkout_access_maps
+T@10: | | | | <Security_context::checkout_access_maps
+T@10: | | | <THD::reset_for_next_command
+T@10: | | | >lex_start
+T@10: | | | | >LEX::new_top_level_query
+T@10: | | | | | >LEX::new_query
+T@10: | | | | | | outer_field: creating ctx 0x7fff30ab9988
+T@10: | | | | | | outer_field: ctx 0x7fff30ab9988 <-> SL# 1
+T@10: | | | | | <LEX::new_query
+T@10: | | | | <LEX::new_top_level_query
+T@10: | | | <lex_start
+T@10: | | | >Diagnostics_area::reset_diagnostics_area
+T@10: | | | <Diagnostics_area::reset_diagnostics_area
+T@10: | | | >MEM_ROOT::ClearForReuse
+T@10: | | | <MEM_ROOT::ClearForReuse
+T@10: | | | >mysql_audit_acquire_plugins
+T@10: | | | <mysql_audit_acquire_plugins
+T@10: | | | >parse_sql
+T@10: | | | | >Hint_scanner::get_next_token
+T@10: | | | | <Hint_scanner::get_next_token
+T@10: | | | | >push_warning_printf
+T@10: | | | | | enter: warning: 1064
+T@10: | | | | | >push_warning
+T@10: | | | | | | enter: code: 1064, msg: Optimizer hint syntax error near 'rtc */
+  e.first_name, e.last_name, a.from_date
+from
+  dept_manager a join depar' at line 1
+T@10: | | | | | | >THD::raise_condition
+T@10: | | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | | enter: root: 0x7fff300147b8
+T@10: | | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | | <THD::raise_condition
+T@10: | | | | | <push_warning
+T@10: | | | | <push_warning_printf
+T@10: | | | | >Hint_scanner::get_next_token
+T@10: | | | | <Hint_scanner::get_next_token
+T@10: | | | | >Hint_scanner::get_next_token
+T@10: | | | | <Hint_scanner::get_next_token
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >THD::convert_string
+T@10: | | | | <THD::convert_string
+T@10: | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | enter: root: 0x7fff30014480
+T@10: | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | >char* PFS_instr_name::str
+T@10: | | | | | | <char* PFS_instr_name::str
+T@10: | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | >Query_block::add_table_to_list
+T@10: | | | | <Query_block::add_table_to_list
+T@10: | | | | >Query_block::add_joined_table
+T@10: | | | | <Query_block::add_joined_table
+T@10: | | | | >Query_block::add_table_to_list
+T@10: | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | enter: root: 0x7fff30014480
+T@10: | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | >char* PFS_instr_name::str
+T@10: | | | | | | | <char* PFS_instr_name::str
+T@10: | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | <Query_block::add_table_to_list
+T@10: | | | | >Query_block::add_joined_table
+T@10: | | | | <Query_block::add_joined_table
+T@10: | | | | >nest_join
+T@10: | | | | <nest_join
+T@10: | | | | >Query_block::add_table_to_list
+T@10: | | | | <Query_block::add_table_to_list
+T@10: | | | | >Query_block::add_joined_table
+T@10: | | | | <Query_block::add_joined_table
+T@10: | | | | >nest_join
+T@10: | | | | <nest_join
+T@10: | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | enter: root: 0x7fff30014480
+T@10: | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | >char* PFS_instr_name::str
+T@10: | | | | | | <char* PFS_instr_name::str
+T@10: | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | >MEM_ROOT::ClearForReuse
+T@10: | | | | <MEM_ROOT::ClearForReuse
+T@10: | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | enter: root: 0x7fff300144d8
+T@10: | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | >Diagnostics_area::reset_diagnostics_area
+T@10: | | | | <Diagnostics_area::reset_diagnostics_area
+T@10: | | | | >MEM_ROOT::ClearForReuse
+T@10: | | | | <MEM_ROOT::ClearForReuse
+T@10: | | | <parse_sql
+T@10: | | | >Diagnostics_area::reset_diagnostics_area
+T@10: | | | <Diagnostics_area::reset_diagnostics_area
+T@10: | | | >MEM_ROOT::ClearForReuse
+T@10: | | | <MEM_ROOT::ClearForReuse
+T@10: | | | >mysql_audit_acquire_plugins
+T@10: | | | <mysql_audit_acquire_plugins
+T@10: | | | >mysql_rewrite_query
+T@10: | | | <mysql_rewrite_query
+T@10: | | | >mysql_audit_acquire_plugins
+T@10: | | | <mysql_audit_acquire_plugins
+T@10: | | | >resourcegroups::Resource_group_mgr* resourcegroups::Resource_group_mgr::instance
+T@10: | | | <resourcegroups::Resource_group_mgr* resourcegroups::Resource_group_mgr::instance
+T@10: | | | >mysql_execute_command
+T@10: | | | | >Diagnostics_area::reset_diagnostics_area
+T@10: | | | | <Diagnostics_area::reset_diagnostics_area
+T@10: | | | | >launch_hook_trans_begin
+T@10: | | | | | THD::enter_stage: 'Executing hook on transaction begin.' /opt/src/mysql-server/sql/rpl_handler.cc:1477
+T@10: | | | | | >PROFILING::status_change
+T@10: | | | | | <PROFILING::status_change
+T@10: | | | | | debug: is_empty: 1
+T@10: | | | | | THD::enter_stage: 'starting' /opt/src/mysql-server/sql/rpl_handler.cc:1479
+T@10: | | | | | >PROFILING::status_change
+T@10: | | | | | <PROFILING::status_change
+T@10: | | | | <launch_hook_trans_begin
+T@10: | | | | >deny_updates_if_read_only_option
+T@10: | | | | | >check_readonly
+T@10: | | | | | <check_readonly
+T@10: | | | | <deny_updates_if_read_only_option
+T@10: | | | | >Table_ref*, enum_sql_command, List<set_var_base>*, const char*, size_t, sp_printable*, const CHARSET_INFO*)
+T@10: | | | | | >Opt_trace_context::start
+T@10: | | | | | | opt: new stmt 0x7fff3000ee60 support_I_S 0
+T@10: | | | | | | >Opt_trace_context::purge_stmts
+T@10: | | | | | | <Opt_trace_context::purge_stmts
+T@10: | | | | | | opt: rc 1048576 max_mem_size 1048576
+T@10: | | | | | <Opt_trace_context::start
+T@10: | | | | | >{anonymous}::opt_trace_disable_if_no_tables_access
+T@10: | | | | | <{anonymous}::opt_trace_disable_if_no_tables_access
+T@10: | | | | <Table_ref*, enum_sql_command, List<set_var_base>*, const char*, size_t, sp_printable*, const CHARSET_INFO*)
+T@10: | | | | opt: (null): starting struct
+T@10: | | | | opt: steps: starting struct
+T@10: | | | | >gtid_pre_statement_checks
+T@10: | | | | | info: gtid_next->type=0 owned_gtid.{sidno,gno}={0,0}
+T@10: | | | | | >stmt_causes_implicit_commit
+T@10: | | | | | <stmt_causes_implicit_commit
+T@10: | | | | | >is_stmt_taking_table_wr_locks
+T@10: | | | | | <is_stmt_taking_table_wr_locks
+T@10: | | | | <gtid_pre_statement_checks
+T@10: | | | | >check_and_report_require_row_format_violation
+T@10: | | | | <check_and_report_require_row_format_violation
+T@10: | | | | >run_post_replication_filters_actions
+T@10: | | | | <run_post_replication_filters_actions
+T@10: | | | | >stmt_causes_implicit_commit
+T@10: | | | | <stmt_causes_implicit_commit
+T@10: | | | | >gtid_pre_statement_post_implicit_commit_checks
+T@10: | | | | | >is_stmt_taking_table_wr_locks
+T@10: | | | | | <is_stmt_taking_table_wr_locks
+T@10: | | | | | >THD::is_ddl_gtid_compatible
+T@10: | | | | | | info: is_binlog_open:1 is_binlog_enabled_for_session:1
+T@10: | | | | | | info: is_create_table:0 is_create_temporary_table:0 is_create_table_select:0 is_create_table_atomic:0 is_drop_table:0 is_drop_temporary_table:0 is_in_transaction:0 is_in_sub_statement:0 is_binlog_format_statement:0
+T@10: | | | | | <THD::is_ddl_gtid_compatible
+T@10: | | | | <gtid_pre_statement_post_implicit_commit_checks
+T@10: | | | | >mysql_audit_acquire_plugins
+T@10: | | | | <mysql_audit_acquire_plugins
+T@10: | | | | >open_temporary_tables
+T@10: | | | | | >open_temporary_table
+T@10: | | | | | | enter: table: 'employees'.'dept_manager'
+T@10: | | | | | <open_temporary_table
+T@10: | | | | | >open_temporary_table
+T@10: | | | | | | enter: table: 'employees'.'departments'
+T@10: | | | | | <open_temporary_table
+T@10: | | | | | >open_temporary_table
+T@10: | | | | | | enter: table: 'employees'.'employees'
+T@10: | | | | | <open_temporary_table
+T@10: | | | | <open_temporary_tables
+T@10: | | | | >bool Sql_cmd_dml::execute
+T@10: | | | | | >bool Sql_cmd_dml::prepare
+T@10: | | | | | | >check_table_access
+T@10: | | | | | | | info: table: dept_manager derived: 0  view: 0
+T@10: | | | | | | | >check_access
+T@10: | | | | | | | | enter: db: employees  want_access: 1  master_access: 2147483647
+T@10: | | | | | | | | THD::enter_stage: 'checking permissions' /opt/src/mysql-server/sql/auth/sql_authorization.cc:2146
+T@10: | | | | | | | | >PROFILING::status_change
+T@10: | | | | | | | | <PROFILING::status_change
+T@10: | | | | | | | | >Security_context::check_access
+T@10: | | | | | | | | <Security_context::check_access
+T@10: | | | | | | | | >Security_context::check_access
+T@10: | | | | | | | | <Security_context::check_access
+T@10: | | | | | | | <check_access
+T@10: | | | | | | | info: table: departments derived: 0  view: 0
+T@10: | | | | | | | >check_access
+T@10: | | | | | | | | enter: db: employees  want_access: 1  master_access: 2147483647
+T@10: | | | | | | | | THD::enter_stage: 'checking permissions' /opt/src/mysql-server/sql/auth/sql_authorization.cc:2146
+T@10: | | | | | | | | >PROFILING::status_change
+T@10: | | | | | | | | <PROFILING::status_change
+T@10: | | | | | | | | >Security_context::check_access
+T@10: | | | | | | | | <Security_context::check_access
+T@10: | | | | | | | | >Security_context::check_access
+T@10: | | | | | | | | <Security_context::check_access
+T@10: | | | | | | | <check_access
+T@10: | | | | | | | info: table: employees derived: 0  view: 0
+T@10: | | | | | | | >check_access
+T@10: | | | | | | | | enter: db: employees  want_access: 1  master_access: 2147483647
+T@10: | | | | | | | | THD::enter_stage: 'checking permissions' /opt/src/mysql-server/sql/auth/sql_authorization.cc:2146
+T@10: | | | | | | | | >PROFILING::status_change
+T@10: | | | | | | | | <PROFILING::status_change
+T@10: | | | | | | | | >Security_context::check_access
+T@10: | | | | | | | | <Security_context::check_access
+T@10: | | | | | | | | >Security_context::check_access
+T@10: | | | | | | | | <Security_context::check_access
+T@10: | | | | | | | <check_access
+T@10: | | | | | | | >check_grant
+T@10: | | | | | | | <check_grant
+T@10: | | | | | | <check_table_access
+T@10: | | | | | | >open_tables_for_query
+T@10: | | | | | | | >open_tables
+T@10: | | | | | | | | THD::enter_stage: 'Opening tables' /opt/src/mysql-server/sql/sql_base.cc:5797
+T@10: | | | | | | | | >PROFILING::status_change
+T@10: | | | | | | | | <PROFILING::status_change
+T@10: | | | | | | | | >open_and_process_table
+T@10: | | | | | | | | | tcache: opening table: 'employees'.'dept_manager'  item: 0x7fff300fa7f0
+T@10: | | | | | | | | | >open_table
+T@10: | | | | | | | | | | >get_table_share_with_discover
+T@10: | | | | | | | | | | | >get_table_share
+T@10: | | | | | | | | | | | | >process_found_table_share
+T@10: | | | | | | | | | | | | | exit: share: 0x7fff3010f670 ref_count: 2
+T@10: | | | | | | | | | | | | <process_found_table_share
+T@10: | | | | | | | | | | | <get_table_share
+T@10: | | | | | | | | | | <get_table_share_with_discover
+T@10: | | | | | | | | | | >MDL_context::release_lock
+T@10: | | | | | | | | | | | enter: db=employees name=
+T@10: | | | | | | | | | | <MDL_context::release_lock
+T@10: | | | | | | | | | | >open_table_from_share
+T@10: | | | | | | | | | | | enter: name: 'employees.dept_manager'  form: 0x7fff300eb300
+T@10: | | | | | | | | | | | >get_new_handler
+T@10: | | | | | | | | | | | | enter: alloc: 0x7fff300ebb90
+T@10: | | | | | | | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | | enter: root: 0x7fff300ebb90
+T@10: | | | | | | | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | info: handler created F_UNLCK 2 F_RDLCK 0 F_WRLCK 1
+T@10: | | | | | | | | | | | <get_new_handler
+T@10: | | | | | | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | enter: root: 0x7fff300ebb90
+T@10: | | | | | | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | >create_key_part_field_with_prefix_length
+T@10: | | | | | | | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | | enter: root: 0x7fff300ebb90
+T@10: | | | | | | | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | <create_key_part_field_with_prefix_length
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >handler::ha_open
+T@10: | | | | | | | | | | | | enter: name: ./employees/dept_manager  db_type: 12  db_stat: 39  mode: 2  lock_test: 2
+T@10: | | | | | | | | | | | | info: old m_lock_type: 2 F_UNLCK 2
+T@10: | | | | | | | | | | | | >int ha_innobase::open
+T@10: | | | | | | | | | | | | | >dict_table_check_if_in_cache_low
+T@10: | | | | | | | | | | | | | | dict_table_check_if_in_cache_low: table: 'employees/dept_manager'
+T@10: | | | | | | | | | | | | | <dict_table_check_if_in_cache_low
+T@10: | | | | | | | | | | | | | >filename_to_tablename
+T@10: | | | | | | | | | | | | | | enter: from 'employees'
+T@10: | | | | | | | | | | | | | | exit: to 'employees'
+T@10: | | | | | | | | | | | | | <filename_to_tablename
+T@10: | | | | | | | | | | | | | >filename_to_tablename
+T@10: | | | | | | | | | | | | | | enter: from 'dept_manager'
+T@10: | | | | | | | | | | | | | | exit: to 'dept_manager'
+T@10: | | | | | | | | | | | | | <filename_to_tablename
+T@10: | | | | | | | | | | | | | >row_create_prebuilt
+T@10: | | | | | | | | | | | | | <row_create_prebuilt
+T@10: | | | | | | | | | | | | | >innobase_build_index_translation
+T@10: | | | | | | | | | | | | | <innobase_build_index_translation
+T@10: | | | | | | | | | | | | | >int ha_innobase::info_low
+T@10: | | | | | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | | | | | ha_innobase::update_thd: user_thd: (nil) -> 0x7fff30011b40
+T@10: | | | | | | | | | | | | | | | >innobase_trx_allocate
+T@10: | | | | | | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | | | | | | <innobase_trx_allocate
+T@10: | | | | | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | <int ha_innobase::info_low
+T@10: | | | | | | | | | | | | <int ha_innobase::open
+T@10: | | | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | | <handler::ha_open
+T@10: | | | | | | | | | | <open_table_from_share
+T@10: | | | | | | | | | | >void handler::column_bitmaps_signal
+T@10: | | | | | | | | | | | info: read_set: 0x7fff300eb470  write_set: 0x7fff300eb488
+T@10: | | | | | | | | | | <void handler::column_bitmaps_signal
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | <open_table
+T@10: | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | <open_and_process_table
+T@10: | | | | | | | | >open_and_process_table
+T@10: | | | | | | | | | tcache: opening table: 'employees'.'departments'  item: 0x7fff30ad9270
+T@10: | | | | | | | | | >open_table
+T@10: | | | | | | | | | | >get_table_share_with_discover
+T@10: | | | | | | | | | | | >get_table_share
+T@10: | | | | | | | | | | | | >process_found_table_share
+T@10: | | | | | | | | | | | | | exit: share: 0x7fff30190860 ref_count: 2
+T@10: | | | | | | | | | | | | <process_found_table_share
+T@10: | | | | | | | | | | | <get_table_share
+T@10: | | | | | | | | | | <get_table_share_with_discover
+T@10: | | | | | | | | | | >MDL_context::release_lock
+T@10: | | | | | | | | | | | enter: db=employees name=
+T@10: | | | | | | | | | | <MDL_context::release_lock
+T@10: | | | | | | | | | | >open_table_from_share
+T@10: | | | | | | | | | | | enter: name: 'employees.departments'  form: 0x7fff300fcf60
+T@10: | | | | | | | | | | | >get_new_handler
+T@10: | | | | | | | | | | | | enter: alloc: 0x7fff300fd7f0
+T@10: | | | | | | | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | | enter: root: 0x7fff300fd7f0
+T@10: | | | | | | | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | info: handler created F_UNLCK 2 F_RDLCK 0 F_WRLCK 1
+T@10: | | | | | | | | | | | <get_new_handler
+T@10: | | | | | | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | enter: root: 0x7fff300fd7f0
+T@10: | | | | | | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | >create_key_part_field_with_prefix_length
+T@10: | | | | | | | | | | | <create_key_part_field_with_prefix_length
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >handler::ha_open
+T@10: | | | | | | | | | | | | enter: name: ./employees/departments  db_type: 12  db_stat: 39  mode: 2  lock_test: 2
+T@10: | | | | | | | | | | | | info: old m_lock_type: 2 F_UNLCK 2
+T@10: | | | | | | | | | | | | >int ha_innobase::open
+T@10: | | | | | | | | | | | | | >dict_table_check_if_in_cache_low
+T@10: | | | | | | | | | | | | | | dict_table_check_if_in_cache_low: table: 'employees/departments'
+T@10: | | | | | | | | | | | | | <dict_table_check_if_in_cache_low
+T@10: | | | | | | | | | | | | | >filename_to_tablename
+T@10: | | | | | | | | | | | | | | enter: from 'employees'
+T@10: | | | | | | | | | | | | | | exit: to 'employees'
+T@10: | | | | | | | | | | | | | <filename_to_tablename
+T@10: | | | | | | | | | | | | | >filename_to_tablename
+T@10: | | | | | | | | | | | | | | enter: from 'departments'
+T@10: | | | | | | | | | | | | | | exit: to 'departments'
+T@10: | | | | | | | | | | | | | <filename_to_tablename
+T@10: | | | | | | | | | | | | | >row_create_prebuilt
+T@10: | | | | | | | | | | | | | <row_create_prebuilt
+T@10: | | | | | | | | | | | | | >innobase_build_index_translation
+T@10: | | | | | | | | | | | | | <innobase_build_index_translation
+T@10: | | | | | | | | | | | | | >int ha_innobase::info_low
+T@10: | | | | | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | | | | | ha_innobase::update_thd: user_thd: (nil) -> 0x7fff30011b40
+T@10: | | | | | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | <int ha_innobase::info_low
+T@10: | | | | | | | | | | | | <int ha_innobase::open
+T@10: | | | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | | <handler::ha_open
+T@10: | | | | | | | | | | <open_table_from_share
+T@10: | | | | | | | | | | >void handler::column_bitmaps_signal
+T@10: | | | | | | | | | | | info: read_set: 0x7fff300fd0d0  write_set: 0x7fff300fd0e8
+T@10: | | | | | | | | | | <void handler::column_bitmaps_signal
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | <open_table
+T@10: | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | <open_and_process_table
+T@10: | | | | | | | | >open_and_process_table
+T@10: | | | | | | | | | tcache: opening table: 'employees'.'employees'  item: 0x7fff30ada488
+T@10: | | | | | | | | | >open_table
+T@10: | | | | | | | | | | >get_table_share_with_discover
+T@10: | | | | | | | | | | | >get_table_share
+T@10: | | | | | | | | | | | | >process_found_table_share
+T@10: | | | | | | | | | | | | | exit: share: 0x7fff301017f0 ref_count: 2
+T@10: | | | | | | | | | | | | <process_found_table_share
+T@10: | | | | | | | | | | | <get_table_share
+T@10: | | | | | | | | | | <get_table_share_with_discover
+T@10: | | | | | | | | | | >MDL_context::release_lock
+T@10: | | | | | | | | | | | enter: db=employees name=
+T@10: | | | | | | | | | | <MDL_context::release_lock
+T@10: | | | | | | | | | | >open_table_from_share
+T@10: | | | | | | | | | | | enter: name: 'employees.employees'  form: 0x7fff30ac4e60
+T@10: | | | | | | | | | | | >get_new_handler
+T@10: | | | | | | | | | | | | enter: alloc: 0x7fff30ac56f0
+T@10: | | | | | | | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | | enter: root: 0x7fff30ac56f0
+T@10: | | | | | | | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | info: handler created F_UNLCK 2 F_RDLCK 0 F_WRLCK 1
+T@10: | | | | | | | | | | | <get_new_handler
+T@10: | | | | | | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | enter: root: 0x7fff30ac56f0
+T@10: | | | | | | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | enter: root: 0x7fff30ac56f0
+T@10: | | | | | | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | >create_key_part_field_with_prefix_length
+T@10: | | | | | | | | | | | <create_key_part_field_with_prefix_length
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | >handler::ha_open
+T@10: | | | | | | | | | | | | enter: name: ./employees/employees  db_type: 12  db_stat: 39  mode: 2  lock_test: 2
+T@10: | | | | | | | | | | | | info: old m_lock_type: 2 F_UNLCK 2
+T@10: | | | | | | | | | | | | >int ha_innobase::open
+T@10: | | | | | | | | | | | | | >dict_table_check_if_in_cache_low
+T@10: | | | | | | | | | | | | | | dict_table_check_if_in_cache_low: table: 'employees/employees'
+T@10: | | | | | | | | | | | | | <dict_table_check_if_in_cache_low
+T@10: | | | | | | | | | | | | | >filename_to_tablename
+T@10: | | | | | | | | | | | | | | enter: from 'employees'
+T@10: | | | | | | | | | | | | | | exit: to 'employees'
+T@10: | | | | | | | | | | | | | <filename_to_tablename
+T@10: | | | | | | | | | | | | | >filename_to_tablename
+T@10: | | | | | | | | | | | | | | enter: from 'employees'
+T@10: | | | | | | | | | | | | | | exit: to 'employees'
+T@10: | | | | | | | | | | | | | <filename_to_tablename
+T@10: | | | | | | | | | | | | | >row_create_prebuilt
+T@10: | | | | | | | | | | | | | <row_create_prebuilt
+T@10: | | | | | | | | | | | | | >innobase_build_index_translation
+T@10: | | | | | | | | | | | | | <innobase_build_index_translation
+T@10: | | | | | | | | | | | | | >int ha_innobase::info_low
+T@10: | | | | | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | | | | | ha_innobase::update_thd: user_thd: (nil) -> 0x7fff30011b40
+T@10: | | | | | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | <int ha_innobase::info_low
+T@10: | | | | | | | | | | | | <int ha_innobase::open
+T@10: | | | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | | <handler::ha_open
+T@10: | | | | | | | | | | <open_table_from_share
+T@10: | | | | | | | | | | >void handler::column_bitmaps_signal
+T@10: | | | | | | | | | | | info: read_set: 0x7fff30ac4fd0  write_set: 0x7fff30ac4fe8
+T@10: | | | | | | | | | | <void handler::column_bitmaps_signal
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | <open_table
+T@10: | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | <open_and_process_table
+T@10: | | | | | | | | >mysql_audit_acquire_plugins
+T@10: | | | | | | | | <mysql_audit_acquire_plugins
+T@10: | | | | | | | | >mysql_audit_acquire_plugins
+T@10: | | | | | | | | <mysql_audit_acquire_plugins
+T@10: | | | | | | | | >mysql_audit_acquire_plugins
+T@10: | | | | | | | | <mysql_audit_acquire_plugins
+T@10: | | | | | | | | open_tables: returning: 0
+T@10: | | | | | | | <open_tables
+T@10: | | | | | | <open_tables_for_query
+T@10: | | | | | | >Query_block::prepare
+T@10: | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | opt: join_preparation: starting struct
+T@10: | | | | | | | opt: select#: 1
+T@10: | | | | | | | opt: steps: starting struct
+T@10: | | | | | | | >Query_block::setup_tables
+T@10: | | | | | | | <Query_block::setup_tables
+T@10: | | | | | | | >setup_natural_join_row_types
+T@10: | | | | | | | | >store_top_level_join_columns
+T@10: | | | | | | | | | >store_top_level_join_columns
+T@10: | | | | | | | | | <store_top_level_join_columns
+T@10: | | | | | | | | <store_top_level_join_columns
+T@10: | | | | | | | <setup_natural_join_row_types
+T@10: | | | | | | | info: setup_ref_array this 0x7fff30ab97d0   20 :    0    0    3    9    8    0    0
+T@10: | | | | | | | >setup_fields
+T@10: | | | | | | | | info: thd->mark_used_columns: 1
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'a'  field name: 'first_name'  item name: 'first_name'  ref 0x7fff300fa5f0
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'd'  field name: 'first_name'  item name: 'first_name'  ref 0x7fff300fa5f0
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'e'  field name: 'first_name'  item name: 'first_name'  ref 0x7fff300fa5f0
+T@10: | | | | | | | | | >find_field_in_table
+T@10: | | | | | | | | | | enter: table: 'e', field name: 'first_name'
+T@10: | | | | | | | | | <find_field_in_table
+T@10: | | | | | | | | | >check_column_grant_in_table_ref
+T@10: | | | | | | | | | | >check_grant_column
+T@10: | | | | | | | | | | | enter: table: employees  want_privilege: 1
+T@10: | | | | | | | | | | <check_grant_column
+T@10: | | | | | | | | | <check_column_grant_in_table_ref
+T@10: | | | | | | | | | >TABLE::mark_column_used
+T@10: | | | | | | | | | <TABLE::mark_column_used
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'a'  field name: 'last_name'  item name: 'last_name'  ref 0x7fff300fa5f8
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'd'  field name: 'last_name'  item name: 'last_name'  ref 0x7fff300fa5f8
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'e'  field name: 'last_name'  item name: 'last_name'  ref 0x7fff300fa5f8
+T@10: | | | | | | | | | >find_field_in_table
+T@10: | | | | | | | | | | enter: table: 'e', field name: 'last_name'
+T@10: | | | | | | | | | <find_field_in_table
+T@10: | | | | | | | | | >check_column_grant_in_table_ref
+T@10: | | | | | | | | | | >check_grant_column
+T@10: | | | | | | | | | | | enter: table: employees  want_privilege: 1
+T@10: | | | | | | | | | | <check_grant_column
+T@10: | | | | | | | | | <check_column_grant_in_table_ref
+T@10: | | | | | | | | | >TABLE::mark_column_used
+T@10: | | | | | | | | | <TABLE::mark_column_used
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'a'  field name: 'from_date'  item name: 'from_date'  ref 0x7fff300fa600
+T@10: | | | | | | | | | >find_field_in_table
+T@10: | | | | | | | | | | enter: table: 'a', field name: 'from_date'
+T@10: | | | | | | | | | <find_field_in_table
+T@10: | | | | | | | | | >check_column_grant_in_table_ref
+T@10: | | | | | | | | | | >check_grant_column
+T@10: | | | | | | | | | | | enter: table: dept_manager  want_privilege: 1
+T@10: | | | | | | | | | | <check_grant_column
+T@10: | | | | | | | | | <check_column_grant_in_table_ref
+T@10: | | | | | | | | | >TABLE::mark_column_used
+T@10: | | | | | | | | | <TABLE::mark_column_used
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'd'  field name: 'from_date'  item name: 'from_date'  ref 0x7fff300fa600
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'e'  field name: 'from_date'  item name: 'from_date'  ref 0x7fff300fa600
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | info: thd->mark_used_columns: 1
+T@10: | | | | | | | <setup_fields
+T@10: | | | | | | | >Query_block::setup_conds
+T@10: | | | | | | | | info: thd->mark_used_columns: 1
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'a'  field name: 'dept_no'  item name: 'dept_no'  ref 0x7fff30adb9d8
+T@10: | | | | | | | | | >find_field_in_table
+T@10: | | | | | | | | | | enter: table: 'a', field name: 'dept_no'
+T@10: | | | | | | | | | <find_field_in_table
+T@10: | | | | | | | | | >check_column_grant_in_table_ref
+T@10: | | | | | | | | | | >check_grant_column
+T@10: | | | | | | | | | | | enter: table: dept_manager  want_privilege: 1
+T@10: | | | | | | | | | | <check_grant_column
+T@10: | | | | | | | | | <check_column_grant_in_table_ref
+T@10: | | | | | | | | | >TABLE::mark_column_used
+T@10: | | | | | | | | | <TABLE::mark_column_used
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'd'  field name: 'dept_no'  item name: 'dept_no'  ref 0x7fff30adb9d8
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'e'  field name: 'dept_no'  item name: 'dept_no'  ref 0x7fff30adb9d8
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'a'  field name: 'dept_no'  item name: 'dept_no'  ref 0x7fff30adb9e0
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'd'  field name: 'dept_no'  item name: 'dept_no'  ref 0x7fff30adb9e0
+T@10: | | | | | | | | | >find_field_in_table
+T@10: | | | | | | | | | | enter: table: 'd', field name: 'dept_no'
+T@10: | | | | | | | | | <find_field_in_table
+T@10: | | | | | | | | | >check_column_grant_in_table_ref
+T@10: | | | | | | | | | | >check_grant_column
+T@10: | | | | | | | | | | | enter: table: departments  want_privilege: 1
+T@10: | | | | | | | | | | <check_grant_column
+T@10: | | | | | | | | | <check_column_grant_in_table_ref
+T@10: | | | | | | | | | >TABLE::mark_column_used
+T@10: | | | | | | | | | <TABLE::mark_column_used
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'e'  field name: 'dept_no'  item name: 'dept_no'  ref 0x7fff30adb9e0
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >bool Item_bool_func2::resolve_type
+T@10: | | | | | | | | <bool Item_bool_func2::resolve_type
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'a'  field name: 'emp_no'  item name: 'emp_no'  ref 0x7fff30adbe20
+T@10: | | | | | | | | | >find_field_in_table
+T@10: | | | | | | | | | | enter: table: 'a', field name: 'emp_no'
+T@10: | | | | | | | | | <find_field_in_table
+T@10: | | | | | | | | | >check_column_grant_in_table_ref
+T@10: | | | | | | | | | | >check_grant_column
+T@10: | | | | | | | | | | | enter: table: dept_manager  want_privilege: 1
+T@10: | | | | | | | | | | <check_grant_column
+T@10: | | | | | | | | | <check_column_grant_in_table_ref
+T@10: | | | | | | | | | >TABLE::mark_column_used
+T@10: | | | | | | | | | <TABLE::mark_column_used
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'd'  field name: 'emp_no'  item name: 'emp_no'  ref 0x7fff30adbe20
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'e'  field name: 'emp_no'  item name: 'emp_no'  ref 0x7fff30adbe20
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'a'  field name: 'emp_no'  item name: 'emp_no'  ref 0x7fff30adbe28
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'd'  field name: 'emp_no'  item name: 'emp_no'  ref 0x7fff30adbe28
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'e'  field name: 'emp_no'  item name: 'emp_no'  ref 0x7fff30adbe28
+T@10: | | | | | | | | | >find_field_in_table
+T@10: | | | | | | | | | | enter: table: 'e', field name: 'emp_no'
+T@10: | | | | | | | | | <find_field_in_table
+T@10: | | | | | | | | | >check_column_grant_in_table_ref
+T@10: | | | | | | | | | | >check_grant_column
+T@10: | | | | | | | | | | | enter: table: employees  want_privilege: 1
+T@10: | | | | | | | | | | <check_grant_column
+T@10: | | | | | | | | | <check_column_grant_in_table_ref
+T@10: | | | | | | | | | >TABLE::mark_column_used
+T@10: | | | | | | | | | <TABLE::mark_column_used
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >bool Item_bool_func2::resolve_type
+T@10: | | | | | | | | <bool Item_bool_func2::resolve_type
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'a'  field name: 'dept_no'  item name: 'dept_no'  ref 0x7fff30adc130
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'd'  field name: 'dept_no'  item name: 'dept_no'  ref 0x7fff30adc130
+T@10: | | | | | | | | | >find_field_in_table
+T@10: | | | | | | | | | | enter: table: 'd', field name: 'dept_no'
+T@10: | | | | | | | | | <find_field_in_table
+T@10: | | | | | | | | | >check_column_grant_in_table_ref
+T@10: | | | | | | | | | | >check_grant_column
+T@10: | | | | | | | | | | | enter: table: departments  want_privilege: 1
+T@10: | | | | | | | | | | <check_grant_column
+T@10: | | | | | | | | | <check_column_grant_in_table_ref
+T@10: | | | | | | | | | >TABLE::mark_column_used
+T@10: | | | | | | | | | <TABLE::mark_column_used
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >find_field_in_table_ref
+T@10: | | | | | | | | | enter: table: 'e'  field name: 'dept_no'  item name: 'dept_no'  ref 0x7fff30adc130
+T@10: | | | | | | | | <find_field_in_table_ref
+T@10: | | | | | | | | >bool Item_bool_func2::resolve_type
+T@10: | | | | | | | | <bool Item_bool_func2::resolve_type
+T@10: | | | | | | | | >Query_block::setup_join_cond
+T@10: | | | | | | | | | >Query_block::setup_join_cond
+T@10: | | | | | | | | | | >Query_block::setup_join_cond
+T@10: | | | | | | | | | | <Query_block::setup_join_cond
+T@10: | | | | | | | | | <Query_block::setup_join_cond
+T@10: | | | | | | | | <Query_block::setup_join_cond
+T@10: | | | | | | | <Query_block::setup_conds
+T@10: | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | >Query_block::apply_local_transforms
+T@10: | | | | | | | | >Query_block::simplify_joins
+T@10: | | | | | | | | | >Query_block::simplify_joins
+T@10: | | | | | | | | | | >Query_block::simplify_joins
+T@10: | | | | | | | | | | <Query_block::simplify_joins
+T@10: | | | | | | | | | <Query_block::simplify_joins
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: transformations_to_nested_joins: starting struct
+T@10: | | | | | | | | | opt: transformations: starting struct
+T@10: | | | | | | | | | opt: (null): "parenthesis_removal"
+T@10: | | | | | | | | | opt: transformations: ending struct
+T@10: | | | | | | | | | opt: transformations_to_nested_joins: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | <Query_block::simplify_joins
+T@10: | | | | | | | | >build_bitmap_for_nested_joins
+T@10: | | | | | | | | <build_bitmap_for_nested_joins
+T@10: | | | | | | | <Query_block::apply_local_transforms
+T@10: | | | | | | | opt: steps: ending struct
+T@10: | | | | | | | opt: join_preparation: ending struct
+T@10: | | | | | | | opt: (null): ending struct
+T@10: | | | | | | <Query_block::prepare
+T@10: | | | | | <bool Sql_cmd_dml::prepare
+T@10: | | | | | THD::enter_stage: 'init' /opt/src/mysql-server/sql/sql_select.cc:772
+T@10: | | | | | >PROFILING::status_change
+T@10: | | | | | <PROFILING::status_change
+T@10: | | | | | >lock_tables
+T@10: | | | | | | >mysql_lock_tables
+T@10: | | | | | | | >lock_tables_check
+T@10: | | | | | | | <lock_tables_check
+T@10: | | | | | | | >get_lock_data
+T@10: | | | | | | | | info: count 3
+T@10: | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | info: sql_lock->table_count 3 sql_lock->lock_count 0
+T@10: | | | | | | | <get_lock_data
+T@10: | | | | | | | THD::enter_stage: 'System lock' /opt/src/mysql-server/sql/lock.cc:332
+T@10: | | | | | | | >PROFILING::status_change
+T@10: | | | | | | | <PROFILING::status_change
+T@10: | | | | | | | info: thd->proc_info System lock
+T@10: | | | | | | | >lock_external
+T@10: | | | | | | | | info: count 3
+T@10: | | | | | | | | >handler::ha_external_lock
+T@10: | | | | | | | | | >int ha_innobase::external_lock
+T@10: | | | | | | | | | | enter: lock_type: 0
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | >trans_register_ha
+T@10: | | | | | | | | | | | enter: stmt
+T@10: | | | | | | | | | | | >Ha_trx_info::register_ha
+T@10: | | | | | | | | | | | <Ha_trx_info::register_ha
+T@10: | | | | | | | | | | | >Transaction_ctx::set_ha_trx_info
+T@10: | | | | | | | | | | | <Transaction_ctx::set_ha_trx_info
+T@10: | | | | | | | | | | | >gtid_set_performance_schema_values
+T@10: | | | | | | | | | | | <gtid_set_performance_schema_values
+T@10: | | | | | | | | | | <trans_register_ha
+T@10: | | | | | | | | | <int ha_innobase::external_lock
+T@10: | | | | | | | | <handler::ha_external_lock
+T@10: | | | | | | | | >handler::ha_external_lock
+T@10: | | | | | | | | | >int ha_innobase::external_lock
+T@10: | | | | | | | | | | enter: lock_type: 0
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | >trans_register_ha
+T@10: | | | | | | | | | | | enter: stmt
+T@10: | | | | | | | | | | <trans_register_ha
+T@10: | | | | | | | | | <int ha_innobase::external_lock
+T@10: | | | | | | | | <handler::ha_external_lock
+T@10: | | | | | | | | >handler::ha_external_lock
+T@10: | | | | | | | | | >int ha_innobase::external_lock
+T@10: | | | | | | | | | | enter: lock_type: 0
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | >trans_register_ha
+T@10: | | | | | | | | | | | enter: stmt
+T@10: | | | | | | | | | | <trans_register_ha
+T@10: | | | | | | | | | <int ha_innobase::external_lock
+T@10: | | | | | | | | <handler::ha_external_lock
+T@10: | | | | | | | <lock_external
+T@10: | | | | | | | >thr_multi_lock
+T@10: | | | | | | | | lock: data: 0x7fff30102098  count: 0
+T@10: | | | | | | | <thr_multi_lock
+T@10: | | | | | | <mysql_lock_tables
+T@10: | | | | | | >THD::decide_logging_format
+T@10: | | | | | | | info: query: select /*+ rtc */
+  e.first_name, e.last_name, a.from_date
+from
+  dept_manager a join departments d join employees e
+where
+  a.dept_no = d.dept_no and a.emp_no = e.emp_no and d.dept_no = 'd001'
+T@10: | | | | | | | info: variables.binlog_format: 2
+T@10: | | | | | | | >Query_tables_list::get_stmt_unsafe_flags
+T@10: | | | | | | | <Query_tables_list::get_stmt_unsafe_flags
+T@10: | | | | | | | info: lex->get_stmt_unsafe_flags(): 0x0
+T@10: | | | | | | | debug: prelocked_mode: LTM_NONE
+T@10: | | | | | | | info: table: dept_manager; ha_table_flags: 0x8ffa8c00638496
+T@10: | | | | | | | >Query_tables_list::set_stmt_accessed_table
+T@10: | | | | | | | <Query_tables_list::set_stmt_accessed_table
+T@10: | | | | | | | info: table: departments; ha_table_flags: 0x8ffa8c00638496
+T@10: | | | | | | | >Query_tables_list::set_stmt_accessed_table
+T@10: | | | | | | | <Query_tables_list::set_stmt_accessed_table
+T@10: | | | | | | | info: table: employees; ha_table_flags: 0x8ffa8c00638496
+T@10: | | | | | | | >Query_tables_list::set_stmt_accessed_table
+T@10: | | | | | | | <Query_tables_list::set_stmt_accessed_table
+T@10: | | | | | | | info: flags_write_all_set: 0xc00000000
+T@10: | | | | | | | info: flags_write_some_set: 0x0
+T@10: | | | | | | | info: flags_access_some_set: 0x8ffa8c00638496
+T@10: | | | | | | | info: multi_write_engine: 0
+T@10: | | | | | | | info: multi_access_engine: 0
+T@10: | | | | | | | >Query_tables_list::stmt_accessed_table
+T@10: | | | | | | | <Query_tables_list::stmt_accessed_table
+T@10: | | | | | | | >Query_tables_list::stmt_accessed_table
+T@10: | | | | | | | <Query_tables_list::stmt_accessed_table
+T@10: | | | | | | | >Query_tables_list::get_stmt_unsafe_flags
+T@10: | | | | | | | <Query_tables_list::get_stmt_unsafe_flags
+T@10: | | | | | | | >Query_tables_list::stmt_accessed_table
+T@10: | | | | | | | <Query_tables_list::stmt_accessed_table
+T@10: | | | | | | | >Query_tables_list::stmt_accessed_table
+T@10: | | | | | | | <Query_tables_list::stmt_accessed_table
+T@10: | | | | | | | >THD::is_dml_gtid_compatible
+T@10: | | | | | | | | info: some_non_transactional_table=0 some_transactional_table=0 trans_has_updated_trans_table=0 non_transactional_tables_are_tmp=0 is_current_stmt_binlog_format_row=1
+T@10: | | | | | | | <THD::is_dml_gtid_compatible
+T@10: | | | | | | | info: decision: logging in ROW format
+T@10: | | | | | | <THD::decide_logging_format
+T@10: | | | | | <lock_tables
+T@10: | | | | | >Query_expression::optimize
+T@10: | | | | | | >Query_block::optimize
+T@10: | | | | | | | >JOIN::optimize
+T@10: | | | | | | | | THD::enter_stage: 'optimizing' /opt/src/mysql-server/sql/sql_optimizer.cc:354
+T@10: | | | | | | | | >PROFILING::status_change
+T@10: | | | | | | | | <PROFILING::status_change
+T@10: | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | opt: join_optimization: starting struct
+T@10: | | | | | | | | opt: select#: 1
+T@10: | | | | | | | | opt: steps: starting struct
+T@10: | | | | | | | | >count_field_types
+T@10: | | | | | | | | <count_field_types
+T@10: | | | | | | | | >JOIN::alloc_func_list
+T@10: | | | | | | | | <JOIN::alloc_func_list
+T@10: | | | | | | | | >optimize_cond
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: condition_processing: starting struct
+T@10: | | | | | | | | | opt: condition: "WHERE"
+T@10: | | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | | opt: original_condition: "((`a`.`dept_no` = `d`.`dept_no`) and (`a`.`emp_no` = `e`.`emp_no`) and (`d`.`dept_no` = 'd001'))"
+T@10: | | | | | | | | | opt: steps: starting struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: transformation: "equality_propagation"
+T@10: | | | | | | | | | opt: subselect_evaluation: starting struct
+T@10: | | | | | | | | | opt: subselect_evaluation: ending struct
+T@10: | | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | | opt: resulting_condition: "(multiple equal('d001', `a`.`dept_no`, `d`.`dept_no`) and multiple equal(`a`.`emp_no`, `e`.`emp_no`))"
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: transformation: "constant_propagation"
+T@10: | | | | | | | | | opt: subselect_evaluation: starting struct
+T@10: | | | | | | | | | opt: subselect_evaluation: ending struct
+T@10: | | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | | opt: resulting_condition: "(multiple equal('d001', `a`.`dept_no`, `d`.`dept_no`) and multiple equal(`a`.`emp_no`, `e`.`emp_no`))"
+T@10: | | | | | | | | | opt: (null): ending struct
+
+WHERE:(after const change) 0x7fff30abad20 (multiple equal('d001', `employees`.`a`.`dept_no`, `employees`.`d`.`dept_no`) and multiple equal(`employees`.`a`.`emp_no`, `employees`.`e`.`emp_no`))
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: transformation: "trivial_condition_removal"
+T@10: | | | | | | | | | opt: subselect_evaluation: starting struct
+T@10: | | | | | | | | | opt: subselect_evaluation: ending struct
+T@10: | | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | | opt: resulting_condition: "(multiple equal('d001', `a`.`dept_no`, `d`.`dept_no`) and multiple equal(`a`.`emp_no`, `e`.`emp_no`))"
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: steps: ending struct
+T@10: | | | | | | | | | opt: condition_processing: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | <optimize_cond
+T@10: | | | | | | | | >get_sort_by_table
+T@10: | | | | | | | | <get_sort_by_table
+T@10: | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | opt: substitute_generated_columns: starting struct
+T@10: | | | | | | | | opt: substitute_generated_columns: ending struct
+T@10: | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | THD::enter_stage: 'statistics' /opt/src/mysql-server/sql/sql_optimizer.cc:694
+T@10: | | | | | | | | >PROFILING::status_change
+T@10: | | | | | | | | <PROFILING::status_change
+T@10: | | | | | | | | >JOIN::make_join_plan
+T@10: | | | | | | | | | >int ha_innobase::info_low
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | <int ha_innobase::info_low
+T@10: | | | | | | | | | >int ha_innobase::info_low
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | <int ha_innobase::info_low
+T@10: | | | | | | | | | >int ha_innobase::info_low
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | <int ha_innobase::info_low
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table_dependencies: starting struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`dept_manager` `a`"
+T@10: | | | | | | | | | opt: row_may_be_null: 0
+T@10: | | | | | | | | | opt: map_bit: 0
+T@10: | | | | | | | | | opt: depends_on_map_bits: starting struct
+T@10: | | | | | | | | | opt: depends_on_map_bits: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`departments` `d`"
+T@10: | | | | | | | | | opt: row_may_be_null: 0
+T@10: | | | | | | | | | opt: map_bit: 1
+T@10: | | | | | | | | | opt: depends_on_map_bits: starting struct
+T@10: | | | | | | | | | opt: depends_on_map_bits: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`employees` `e`"
+T@10: | | | | | | | | | opt: row_may_be_null: 0
+T@10: | | | | | | | | | opt: map_bit: 2
+T@10: | | | | | | | | | opt: depends_on_map_bits: starting struct
+T@10: | | | | | | | | | opt: depends_on_map_bits: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: table_dependencies: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | info: add_key_field for field dept_no
+T@10: | | | | | | | | | info: add_key_field for field dept_no
+T@10: | | | | | | | | | info: add_key_field for field emp_no
+T@10: | | | | | | | | | info: add_key_field for field emp_no
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: ref_optimizer_key_uses: starting struct
+T@10: | | | | | | | | | opt: Key_use array (6 elements)
+T@10: | | | | | | | | | opt: Key_use: optimize= 0 used_tables=0x4 ref_table_rows= 18446744073709551615 keypart_map= 1
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`dept_manager` `a`"
+T@10: | | | | | | | | | opt: field: "emp_no"
+T@10: | | | | | | | | | opt: equals: "`e`.`emp_no`"
+T@10: | | | | | | | | | opt: null_rejecting: 1
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: Key_use: optimize= 0 used_tables=0x0 ref_table_rows= 18446744073709551615 keypart_map= 2
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`dept_manager` `a`"
+T@10: | | | | | | | | | opt: field: "dept_no"
+T@10: | | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | | opt: equals: "'d001'"
+T@10: | | | | | | | | | opt: null_rejecting: 1
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: Key_use: optimize= 0 used_tables=0x0 ref_table_rows= 18446744073709551615 keypart_map= 1
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`dept_manager` `a`"
+T@10: | | | | | | | | | opt: field: "dept_no"
+T@10: | | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | | opt: equals: "'d001'"
+T@10: | | | | | | | | | opt: null_rejecting: 1
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: Key_use: optimize= 0 used_tables=0x4 ref_table_rows= 18446744073709551615 keypart_map= 2
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`dept_manager` `a`"
+T@10: | | | | | | | | | opt: field: "emp_no"
+T@10: | | | | | | | | | opt: equals: "`e`.`emp_no`"
+T@10: | | | | | | | | | opt: null_rejecting: 1
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: Key_use: optimize= 0 used_tables=0x0 ref_table_rows= 18446744073709551615 keypart_map= 1
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`departments` `d`"
+T@10: | | | | | | | | | opt: field: "dept_no"
+T@10: | | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | | opt: equals: "'d001'"
+T@10: | | | | | | | | | opt: null_rejecting: 1
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: Key_use: optimize= 0 used_tables=0x1 ref_table_rows= 18446744073709551615 keypart_map= 1
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`employees` `e`"
+T@10: | | | | | | | | | opt: field: "emp_no"
+T@10: | | | | | | | | | opt: equals: "`a`.`emp_no`"
+T@10: | | | | | | | | | opt: null_rejecting: 1
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: ref_optimizer_key_uses: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | >create_ref_for_key
+T@10: | | | | | | | | | | >Item::save_in_field
+T@10: | | | | | | | | | | <Item::save_in_field
+T@10: | | | | | | | | | <create_ref_for_key
+T@10: | | | | | | | | | >join_read_const_table
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | >read_const
+T@10: | | | | | | | | | | | >handler::ha_index_init
+T@10: | | | | | | | | | | | | >int ha_innobase::index_init
+T@10: | | | | | | | | | | | | | >ha_innobase::change_active_index
+T@10: | | | | | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | <ha_innobase::change_active_index
+T@10: | | | | | | | | | | | | <int ha_innobase::index_init
+T@10: | | | | | | | | | | | <handler::ha_index_init
+T@10: | | | | | | | | | | | >handler::ha_index_read_map
+T@10: | | | | | | | | | | | | >int ha_innobase::index_read
+T@10: | | | | | | | | | | | | | >row_search_mvcc
+T@10: | | | | | | | | | | | | | | >btr_cur_search_to_nth_level
+T@10: | | | | | | | | | | | | | | | >my_realpath
+T@10: | | | | | | | | | | | | | | | | info: executing realpath
+T@10: | | | | | | | | | | | | | | | <my_realpath
+T@10: | | | | | | | | | | | | | | | >my_realpath
+T@10: | | | | | | | | | | | | | | | | info: executing realpath
+T@10: | | | | | | | | | | | | | | | <my_realpath
+T@10: | | | | | | | | | | | | | | | ib_buf: read page 3:4 size=16384 unzip=0,sync
+T@10: | | | | | | | | | | | | | | | ib_buf: read page 3:1 size=16384 unzip=0,sync
+T@10: | | | | | | | | | | | | | | | ib_buf: read page 3:1
+T@10: | | | | | | | | | | | | | | | ib_buf: read page 3:4
+T@10: | | | | | | | | | | | | | | <btr_cur_search_to_nth_level
+T@10: | | | | | | | | | | | | | | >row_sel_store_mysql_rec
+T@10: | | | | | | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | | | | | | <row_sel_store_mysql_rec
+T@10: | | | | | | | | | | | | | <row_search_mvcc
+T@10: | | | | | | | | | | | | <int ha_innobase::index_read
+T@10: | | | | | | | | | | | <handler::ha_index_read_map
+T@10: | | | | | | | | | | <read_const
+T@10: | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | <join_read_const_table
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: rows_estimation: starting struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`dept_manager` `a`"
+T@10: | | | | | | | | | >get_quick_record_count
+T@10: | | | | | | | | | | >test_quick_select
+T@10: | | | | | | | | | | | enter: keys_to_use: 2  prev_tables: 0  
+T@10: | | | | | | | | | | | opt: range_analysis: starting struct
+T@10: | | | | | | | | | | | opt: table_scan: starting struct
+T@10: | | | | | | | | | | | opt: rows: 24
+T@10: | | | | | | | | | | | opt: cost: 4.75
+T@10: | | | | | | | | | | | opt: table_scan: ending struct
+T@10: | | | | | | | | | | | opt: potential_range_indexes: starting struct
+T@10: | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | opt: index: "PRIMARY"
+T@10: | | | | | | | | | | | opt: usable: 0
+T@10: | | | | | | | | | | | opt: cause: "not_applicable"
+T@10: | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | opt: index: "dept_no"
+T@10: | | | | | | | | | | | opt: usable: 1
+T@10: | | | | | | | | | | | opt: key_parts: starting struct
+T@10: | | | | | | | | | | | opt: (null): "dept_no"
+T@10: | | | | | | | | | | | opt: (null): "emp_no"
+T@10: | | | | | | | | | | | opt: key_parts: ending struct
+T@10: | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | opt: potential_range_indexes: ending struct
+T@10: | | | | | | | | | | | opt: setup_range_conditions: starting struct
+T@10: | | | | | | | | | | | >get_mm_tree
+T@10: | | | | | | | | | | | | >get_mm_tree
+T@10: | | | | | | | | | | | | | >get_mm_parts
+T@10: | | | | | | | | | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | | | | enter: root: 0x7fffe03ee780
+T@10: | | | | | | | | | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | | | | | >char* PFS_instr_name::str
+T@10: | | | | | | | | | | | | | | | | <char* PFS_instr_name::str
+T@10: | | | | | | | | | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | | | | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | | | | | | | | | | >get_mm_leaf
+T@10: | | | | | | | | | | | | | | | >Item::save_in_field_no_warnings
+T@10: | | | | | | | | | | | | | | | | >Item::save_in_field
+T@10: | | | | | | | | | | | | | | | | <Item::save_in_field
+T@10: | | | | | | | | | | | | | | | <Item::save_in_field_no_warnings
+T@10: | | | | | | | | | | | | | | <get_mm_leaf
+T@10: | | | | | | | | | | | | | <get_mm_parts
+T@10: | | | | | | | | | | | | | info: sel_tree: 0x7fff30ab0db0, type=2, tree_returned->keys[0(1)]: (dept_no = 'd001')
+T@10: | | | | | | | | | | | | <get_mm_tree
+T@10: | | | | | | | | | | | | >get_mm_tree
+T@10: | | | | | | | | | | | | <get_mm_tree
+T@10: | | | | | | | | | | | | >tree_and
+T@10: | | | | | | | | | | | | <tree_and
+T@10: | | | | | | | | | | | | info: sel_tree: 0x7fff30ab0db0, type=2, after_and->keys[0(1)]: (dept_no = 'd001')
+T@10: | | | | | | | | | | | | info: sel_tree: 0x7fff30ab0db0, type=2, tree_returned->keys[0(1)]: (dept_no = 'd001')
+T@10: | | | | | | | | | | | <get_mm_tree
+T@10: | | | | | | | | | | | opt: setup_range_conditions: ending struct
+T@10: | | | | | | | | | | | >get_best_group_min_max
+T@10: | | | | | | | | | | | | opt: group_index_range: starting struct
+T@10: | | | | | | | | | | | | opt: chosen: 0
+T@10: | | | | | | | | | | | | opt: cause: "not_single_table"
+T@10: | | | | | | | | | | | | opt: group_index_range: ending struct
+T@10: | | | | | | | | | | | <get_best_group_min_max
+T@10: | | | | | | | | | | | >get_best_skip_scan
+T@10: | | | | | | | | | | | | opt: skip_scan_range: starting struct
+T@10: | | | | | | | | | | | | opt: chosen: 0
+T@10: | | | | | | | | | | | | opt: cause: "not_single_table"
+T@10: | | | | | | | | | | | | opt: skip_scan_range: ending struct
+T@10: | | | | | | | | | | | <get_best_skip_scan
+T@10: | | | | | | | | | | | info: sel_tree: 0x7fff30ab0db0, type=2, final_tree->keys[0(1)]: (dept_no = 'd001')
+T@10: | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | opt: analyzing_range_alternatives: starting struct
+T@10: | | | | | | | | | | | >get_key_scans_params
+T@10: | | | | | | | | | | | | >print_sel_tree
+T@10: | | | | | | | | | | | | | info: SEL_TREE: 0x7fff30ab0cd0 (tree scans)  scans: dept_no
+T@10: | | | | | | | | | | | | <print_sel_tree
+T@10: | | | | | | | | | | | | opt: range_scan_alternatives: starting struct
+T@10: | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | opt: index: "dept_no"
+T@10: | | | | | | | | | | | | >check_quick_select
+T@10: | | | | | | | | | | | | | >ha_rows ha_innobase::records_in_range
+T@10: | | | | | | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | | | | | | >btr_cur_search_to_nth_level
+T@10: | | | | | | | | | | | | | | | ib_buf: read page 4:5 size=16384 unzip=0,sync
+T@10: | | | | | | | | | | | | | | | ib_buf: read page 4:5
+T@10: | | | | | | | | | | | | | | <btr_cur_search_to_nth_level
+T@10: | | | | | | | | | | | | | | >btr_cur_search_to_nth_level
+T@10: | | | | | | | | | | | | | | <btr_cur_search_to_nth_level
+T@10: | | | | | | | | | | | | | <ha_rows ha_innobase::records_in_range
+T@10: | | | | | | | | | | | | | info: Default MRR implementation choosen
+T@10: | | | | | | | | | | | | | exit: Records: 2
+T@10: | | | | | | | | | | | | <check_quick_select
+T@10: | | | | | | | | | | | | opt: ranges: starting struct
+T@10: | | | | | | | | | | | | opt: (null): "dept_no = 'd001'"
+T@10: | | | | | | | | | | | | opt: ranges: ending struct
+T@10: | | | | | | | | | | | | opt: index_dives_for_eq_ranges: 1
+T@10: | | | | | | | | | | | | opt: rowid_ordered: 1
+T@10: | | | | | | | | | | | | opt: using_mrr: 0
+T@10: | | | | | | | | | | | | opt: index_only: 0
+T@10: | | | | | | | | | | | | opt: in_memory: 0
+T@10: | | | | | | | | | | | | opt: rows: 2
+T@10: | | | | | | | | | | | | opt: cost: 0.96
+T@10: | | | | | | | | | | | | opt: chosen: 1
+T@10: | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | | >print_sel_tree
+T@10: | | | | | | | | | | | | | info: SEL_TREE: 0x7fff30ab0cd0 (ROR scans)  scans: dept_no
+T@10: | | | | | | | | | | | | <print_sel_tree
+T@10: | | | | | | | | | | | | info: Returning range plan for key dept_no, cost 0.96, records 2
+T@10: | | | | | | | | | | | | opt: range_scan_alternatives: ending struct
+T@10: | | | | | | | | | | | <get_key_scans_params
+T@10: | | | | | | | | | | | >get_best_ror_intersect
+T@10: | | | | | | | | | | | | opt: analyzing_roworder_intersect: starting struct
+T@10: | | | | | | | | | | | | opt: usable: 0
+T@10: | | | | | | | | | | | | opt: cause: "too_few_roworder_scans"
+T@10: | | | | | | | | | | | | opt: analyzing_roworder_intersect: ending struct
+T@10: | | | | | | | | | | | <get_best_ror_intersect
+T@10: | | | | | | | | | | | opt: analyzing_range_alternatives: ending struct
+T@10: | | | | | | | | | | | opt: chosen_range_access_summary: starting struct
+T@10: | | | | | | | | | | | opt: range_access_plan: starting struct
+T@10: | | | | | | | | | | | opt: type: "range_scan"
+T@10: | | | | | | | | | | | opt: index: "dept_no"
+T@10: | | | | | | | | | | | opt: rows: 2
+T@10: | | | | | | | | | | | opt: ranges: starting struct
+T@10: | | | | | | | | | | | opt: (null): "dept_no = 'd001'"
+T@10: | | | | | | | | | | | opt: ranges: ending struct
+T@10: | | | | | | | | | | | opt: range_access_plan: ending struct
+T@10: | | | | | | | | | | | opt: rows_for_plan: 2
+T@10: | | | | | | | | | | | opt: cost_for_plan: 0.96
+T@10: | | | | | | | | | | | opt: chosen: 1
+T@10: | | | | | | | | | | | opt: chosen_range_access_summary: ending struct
+T@10: | | | | | | | | | | | >print_quick
+quick range select, key dept_no, length: 16
+  d001 <= X <= d001
+other_keys: 0x0:
+T@10: | | | | | | | | | | | <print_quick
+T@10: | | | | | | | | | | | opt: range_analysis: ending struct
+T@10: | | | | | | | | | | <test_quick_select
+T@10: | | | | | | | | | | >MEM_ROOT::Clear
+T@10: | | | | | | | | | | | enter: root: 0x7fffe03ee780
+T@10: | | | | | | | | | | <MEM_ROOT::Clear
+T@10: | | | | | | | | | <get_quick_record_count
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`departments` `d`"
+T@10: | | | | | | | | | opt: rows: 1
+T@10: | | | | | | | | | opt: cost: 1
+T@10: | | | | | | | | | opt: table_type: "const"
+T@10: | | | | | | | | | opt: empty: 0
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`employees` `e`"
+T@10: | | | | | | | | | opt: table_scan: starting struct
+T@10: | | | | | | | | | opt: rows: 276023
+T@10: | | | | | | | | | opt: cost: 864.206
+T@10: | | | | | | | | | opt: table_scan: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: rows_estimation: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | >Optimize_table_order::choose_table_order
+T@10: | | | | | | | | | | >Query_block::reset_nj_counters
+T@10: | | | | | | | | | | <Query_block::reset_nj_counters
+T@10: | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | opt: considered_execution_plans: starting struct
+T@10: | | | | | | | | | | >bool Item_field::add_field_to_cond_set_processor
+T@10: | | | | | | | | | | | info: dept_no
+T@10: | | | | | | | | | | <bool Item_field::add_field_to_cond_set_processor
+T@10: | | | | | | | | | | >bool Item_field::add_field_to_cond_set_processor
+T@10: | | | | | | | | | | | info: emp_no
+T@10: | | | | | | | | | | <bool Item_field::add_field_to_cond_set_processor
+T@10: | | | | | | | | | | >bool Item_field::add_field_to_cond_set_processor
+T@10: | | | | | | | | | | | info: emp_no
+T@10: | | | | | | | | | | <bool Item_field::add_field_to_cond_set_processor
+T@10: | | | | | | | | | | >Optimize_table_order::greedy_search
+T@10: | | | | | | | | | | | >Optimize_table_order::best_extension_by_limited_search
+part_plan; idx: 1  best: DBL_MAX  atime: 0  itime: 0  count: 1
+     POSITIONS: d 
+
+      BEST_REF: departments(1,1,1) dept_manager(2,24,0) employees(276023,276023,864) 
+T@10: | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | opt: plan_prefix: starting struct
+T@10: | | | | | | | | | | | | opt: (null): "`departments` `d`"
+T@10: | | | | | | | | | | | | opt: plan_prefix: ending struct
+T@10: | | | | | | | | | | | | opt: table: "`dept_manager` `a`"
+T@10: | | | | | | | | | | | | >Optimize_table_order::best_access_path
+T@10: | | | | | | | | | | | | | opt: best_access_path: starting struct
+T@10: | | | | | | | | | | | | | opt: considered_access_paths: starting struct
+T@10: | | | | | | | | | | | | | info: Considering ref access on key PRIMARY
+T@10: | | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | | opt: access_type: "ref"
+T@10: | | | | | | | | | | | | | opt: index: "PRIMARY"
+T@10: | | | | | | | | | | | | | opt: usable: 0
+T@10: | | | | | | | | | | | | | opt: chosen: 0
+T@10: | | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | | | info: Considering ref access on key dept_no
+T@10: | | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | | opt: access_type: "ref"
+T@10: | | | | | | | | | | | | | opt: index: "dept_no"
+T@10: | | | | | | | | | | | | | opt: rows: 2
+T@10: | | | | | | | | | | | | | opt: cost: 0.7
+T@10: | | | | | | | | | | | | | opt: chosen: 1
+T@10: | | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | | opt: access_type: "range"
+T@10: | | | | | | | | | | | | | opt: range_details: starting struct
+T@10: | | | | | | | | | | | | | opt: used_index: "dept_no"
+T@10: | | | | | | | | | | | | | opt: range_details: ending struct
+T@10: | | | | | | | | | | | | | opt: chosen: 0
+T@10: | | | | | | | | | | | | | opt: cause: "heuristic_index_cheaper"
+T@10: | | | | | | | | | | | | | opt: filtering_effect: starting struct
+T@10: | | | | | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | | | | | opt: filtering_effect: ending struct
+T@10: | | | | | | | | | | | | | opt: final_filtering_effect: 1
+T@10: | | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | | | opt: considered_access_paths: ending struct
+T@10: | | | | | | | | | | | | | opt: best_access_path: ending struct
+T@10: | | | | | | | | | | | | <Optimize_table_order::best_access_path
+T@10: | | | | | | | | | | | | opt: condition_filtering_pct: 100
+T@10: | | | | | | | | | | | | opt: rows_for_plan: 2
+T@10: | | | | | | | | | | | | opt: cost_for_plan: 0.7
+T@10: | | | | | | | | | | | | opt: rest_of_plan: starting struct
+T@10: | | | | | | | | | | | | >Optimize_table_order::best_extension_by_limited_search
+part_plan; idx: 2  best: DBL_MAX  atime: 0.7  itime: 0.7  count: 2
+     POSITIONS: d a 
+
+      BEST_REF: departments(1,1,1) dept_manager(2,24,0) employees(276023,276023,864) 
+T@10: | | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | | opt: plan_prefix: starting struct
+T@10: | | | | | | | | | | | | | opt: (null): "`departments` `d`"
+T@10: | | | | | | | | | | | | | opt: (null): "`dept_manager` `a`"
+T@10: | | | | | | | | | | | | | opt: plan_prefix: ending struct
+T@10: | | | | | | | | | | | | | opt: table: "`employees` `e`"
+T@10: | | | | | | | | | | | | | >Optimize_table_order::best_access_path
+T@10: | | | | | | | | | | | | | | opt: best_access_path: starting struct
+T@10: | | | | | | | | | | | | | | opt: considered_access_paths: starting struct
+T@10: | | | | | | | | | | | | | | info: Considering ref access on key PRIMARY
+T@10: | | | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | | | opt: access_type: "eq_ref"
+T@10: | | | | | | | | | | | | | | opt: index: "PRIMARY"
+T@10: | | | | | | | | | | | | | | opt: rows: 1
+T@10: | | | | | | | | | | | | | | opt: cost: 2.19816
+T@10: | | | | | | | | | | | | | | opt: chosen: 1
+T@10: | | | | | | | | | | | | | | opt: cause: "clustered_pk_chosen_by_heuristics"
+T@10: | | | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | | | opt: access_type: "scan"
+T@10: | | | | | | | | | | | | | | opt: cost: 28466.5
+T@10: | | | | | | | | | | | | | | opt: rows: 276023
+T@10: | | | | | | | | | | | | | | opt: chosen: 0
+T@10: | | | | | | | | | | | | | | opt: cause: "cost"
+T@10: | | | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | | | | opt: considered_access_paths: ending struct
+T@10: | | | | | | | | | | | | | | opt: best_access_path: ending struct
+T@10: | | | | | | | | | | | | | <Optimize_table_order::best_access_path
+T@10: | | | | | | | | | | | | | opt: condition_filtering_pct: 100
+T@10: | | | | | | | | | | | | | opt: rows_for_plan: 2
+T@10: | | | | | | | | | | | | | opt: cost_for_plan: 2.89816
+T@10: | | | | | | | | | | | | | opt: chosen: 1
+full_plan; idx :3  best: 2.89716  accumulated: 2.89816  increment: 2.89816  count: 2
+     POSITIONS: d a e 
+BEST_POSITIONS: d a e 
+      BEST_REF: departments(1,1,1) dept_manager(2,24,0) employees(276023,276023,864) 
+T@10: | | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | | <Optimize_table_order::best_extension_by_limited_search
+T@10: | | | | | | | | | | | | opt: rest_of_plan: ending struct
+T@10: | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | opt: plan_prefix: starting struct
+T@10: | | | | | | | | | | | | opt: (null): "`departments` `d`"
+T@10: | | | | | | | | | | | | opt: plan_prefix: ending struct
+T@10: | | | | | | | | | | | | opt: table: "`employees` `e`"
+T@10: | | | | | | | | | | | | >Optimize_table_order::best_access_path
+T@10: | | | | | | | | | | | | | opt: best_access_path: starting struct
+T@10: | | | | | | | | | | | | | opt: considered_access_paths: starting struct
+T@10: | | | | | | | | | | | | | info: Considering ref access on key PRIMARY
+T@10: | | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | | opt: access_type: "ref"
+T@10: | | | | | | | | | | | | | opt: index: "PRIMARY"
+T@10: | | | | | | | | | | | | | opt: usable: 0
+T@10: | | | | | | | | | | | | | opt: chosen: 0
+T@10: | | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | | | | | opt: rows_to_scan: 276023
+T@10: | | | | | | | | | | | | | opt: filtering_effect: starting struct
+T@10: | | | | | | | | | | | | | opt: filtering_effect: ending struct
+T@10: | | | | | | | | | | | | | opt: final_filtering_effect: 1
+T@10: | | | | | | | | | | | | | opt: access_type: "scan"
+T@10: | | | | | | | | | | | | | opt: resulting_rows: 276023
+T@10: | | | | | | | | | | | | | opt: cost: 28466.5
+T@10: | | | | | | | | | | | | | opt: filtering_effect: starting struct
+T@10: | | | | | | | | | | | | | opt: filtering_effect: ending struct
+T@10: | | | | | | | | | | | | | opt: final_filtering_effect: 1
+T@10: | | | | | | | | | | | | | opt: chosen: 1
+T@10: | | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | | | opt: considered_access_paths: ending struct
+T@10: | | | | | | | | | | | | | opt: best_access_path: ending struct
+T@10: | | | | | | | | | | | | <Optimize_table_order::best_access_path
+T@10: | | | | | | | | | | | | opt: condition_filtering_pct: 100
+T@10: | | | | | | | | | | | | opt: rows_for_plan: 276023
+T@10: | | | | | | | | | | | | opt: cost_for_plan: 28466.5
+prune_by_cost; idx :2  best: 2.89716  accumulated: 28466.5  increment: 864.206  count: 276023
+     POSITIONS: d e 
+BEST_POSITIONS: d a 
+      BEST_REF: departments(1,1,1) employees(276023,276023,864) dept_manager(2,24,0) 
+T@10: | | | | | | | | | | | | opt: pruned_by_cost: 1
+T@10: | | | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | | | <Optimize_table_order::best_extension_by_limited_search
+optimal; idx :2  best: 2.89716  accumulated: 0  increment: 0  count: 1
+     POSITIONS: d e 
+BEST_POSITIONS: d a 
+      BEST_REF: departments(1,1,1) dept_manager(2,24,0) employees(276023,276023,864) 
+T@10: | | | | | | | | | | <Optimize_table_order::greedy_search
+T@10: | | | | | | | | | | >Optimize_table_order::fix_semijoin_strategies
+T@10: | | | | | | | | | | <Optimize_table_order::fix_semijoin_strategies
+T@10: | | | | | | | | | | opt: considered_execution_plans: ending struct
+T@10: | | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | <Optimize_table_order::choose_table_order
+T@10: | | | | | | | | | >JOIN::get_best_combination
+T@10: | | | | | | | | | <JOIN::get_best_combination
+T@10: | | | | | | | | <JOIN::make_join_plan
+T@10: | | | | | | | | >handler::ha_index_end
+T@10: | | | | | | | | | >int ha_innobase::index_end
+T@10: | | | | | | | | | | >DsMrr_impl::dsmrr_close
+T@10: | | | | | | | | | | <DsMrr_impl::dsmrr_close
+T@10: | | | | | | | | | <int ha_innobase::index_end
+T@10: | | | | | | | | <handler::ha_index_end
+T@10: | | | | | | | | >get_lock_data
+T@10: | | | | | | | | | info: count 1
+T@10: | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | info: sql_lock->table_count 1 sql_lock->lock_count 0
+T@10: | | | | | | | | <get_lock_data
+T@10: | | | | | | | | >mysql_unlock_tables
+T@10: | | | | | | | | | >unlock_external
+T@10: | | | | | | | | | | >handler::ha_external_lock
+T@10: | | | | | | | | | | | >int ha_innobase::external_lock
+T@10: | | | | | | | | | | | | enter: lock_type: 2
+T@10: | | | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | | <int ha_innobase::external_lock
+T@10: | | | | | | | | | | <handler::ha_external_lock
+T@10: | | | | | | | | | <unlock_external
+T@10: | | | | | | | | <mysql_unlock_tables
+
+WHERE:(after substitute_best_equal) 0x7fff30abad20 ((`employees`.`e`.`emp_no` = `employees`.`a`.`emp_no`) and (`employees`.`a`.`dept_no` = 'd001'))
+T@10: | | | | | | | | >JOIN::init_ref_access
+T@10: | | | | | | | | | >create_ref_for_key
+T@10: | | | | | | | | | | >Item::save_in_field
+T@10: | | | | | | | | | | <Item::save_in_field
+T@10: | | | | | | | | | <create_ref_for_key
+T@10: | | | | | | | | | >create_ref_for_key
+T@10: | | | | | | | | | <create_ref_for_key
+T@10: | | | | | | | | <JOIN::init_ref_access
+T@10: | | | | | | | | THD::enter_stage: 'preparing' /opt/src/mysql-server/sql/sql_optimizer.cc:778
+T@10: | | | | | | | | >PROFILING::status_change
+T@10: | | | | | | | | <PROFILING::status_change
+T@10: | | | | | | | | >make_join_query_block
+T@10: | | | | | | | | | >add_not_null_conds
+T@10: | | | | | | | | | <add_not_null_conds
+
+WHERE:(constants) (nil) 
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: attaching_conditions_to_tables: starting struct
+T@10: | | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | | opt: original_condition: "((`e`.`emp_no` = `a`.`emp_no`) and (`a`.`dept_no` = 'd001'))"
+T@10: | | | | | | | | | opt: attached_conditions_computation: starting struct
+
+WHERE:(a) 0x7fff30adf9b8 (`employees`.`a`.`dept_no` = 'd001')
+
+WHERE:(a) 0x7fff30adf9b8 (`employees`.`a`.`dept_no` = 'd001')
+T@10: | | | | | | | | | >JOIN::attach_join_conditions
+T@10: | | | | | | | | | <JOIN::attach_join_conditions
+
+WHERE:(e) 0x7fff30adfb80 (`employees`.`e`.`emp_no` = `employees`.`a`.`emp_no`)
+
+WHERE:(e) 0x7fff30adfb80 (`employees`.`e`.`emp_no` = `employees`.`a`.`emp_no`)
+T@10: | | | | | | | | | >JOIN::attach_join_conditions
+T@10: | | | | | | | | | <JOIN::attach_join_conditions
+T@10: | | | | | | | | | opt: attached_conditions_computation: ending struct
+T@10: | | | | | | | | | opt: attached_conditions_summary: starting struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`dept_manager` `a`"
+T@10: | | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | | opt: attached: "(`a`.`dept_no` = 'd001')"
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`employees` `e`"
+T@10: | | | | | | | | | opt: attached: "(`e`.`emp_no` = `a`.`emp_no`)"
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: attached_conditions_summary: ending struct
+T@10: | | | | | | | | | opt: attaching_conditions_to_tables: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | <make_join_query_block
+T@10: | | | | | | | | >JOIN::optimize_distinct_group_order
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: optimizing_distinct_group_by_order_by: starting struct
+T@10: | | | | | | | | | >JOIN::remove_const
+T@10: | | | | | | | | | | opt: simplifying_order_by: starting struct
+T@10: | | | | | | | | | | opt: original_clause: ""
+T@10: | | | | | | | | | | opt: items: starting struct
+T@10: | | | | | | | | | | >JOIN::update_depend_map
+T@10: | | | | | | | | | | <JOIN::update_depend_map
+T@10: | | | | | | | | | | exit: simple_order: 1
+T@10: | | | | | | | | | | opt: items: ending struct
+T@10: | | | | | | | | | | opt: resulting_clause_is_simple: 1
+T@10: | | | | | | | | | | opt: resulting_clause: ""
+T@10: | | | | | | | | | | opt: simplifying_order_by: ending struct
+T@10: | | | | | | | | | <JOIN::remove_const
+T@10: | | | | | | | | | >JOIN::remove_const
+T@10: | | | | | | | | | | opt: simplifying_group_by: starting struct
+T@10: | | | | | | | | | | opt: original_clause: ""
+T@10: | | | | | | | | | | opt: items: starting struct
+T@10: | | | | | | | | | | >JOIN::update_depend_map
+T@10: | | | | | | | | | | <JOIN::update_depend_map
+T@10: | | | | | | | | | | exit: simple_order: 1
+T@10: | | | | | | | | | | opt: items: ending struct
+T@10: | | | | | | | | | | opt: resulting_clause_is_simple: 1
+T@10: | | | | | | | | | | opt: resulting_clause: ""
+T@10: | | | | | | | | | | opt: simplifying_group_by: ending struct
+T@10: | | | | | | | | | <JOIN::remove_const
+T@10: | | | | | | | | | >calc_group_buffer
+T@10: | | | | | | | | | <calc_group_buffer
+T@10: | | | | | | | | | >bitmap_init
+T@10: | | | | | | | | | <bitmap_init
+T@10: | | | | | | | | | opt: optimizing_distinct_group_by_order_by: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | <JOIN::optimize_distinct_group_order
+T@10: | | | | | | | | >JOIN::replace_index_subquery
+T@10: | | | | | | | | <JOIN::replace_index_subquery
+T@10: | | | | | | | | >TEST_join
+
+Info about JOIN
+d                 type: const    q_keys: 1  refs: 1  key: 0  len: 16
+                  refs:  d001  
+a                 type: ref      q_keys: 3  refs: 1  key: 1  len: 16
+                  refs:  d001  
+e                 type: eq_ref   q_keys: 1  refs: 1  key: 0  len: 4
+                  refs:  employees.a.emp_no  
+T@10: | | | | | | | | <TEST_join
+T@10: | | | | | | | | >JOIN::test_skip_sort
+T@10: | | | | | | | | <JOIN::test_skip_sort
+T@10: | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | opt: finalizing_table_conditions: starting struct
+T@10: | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | opt: table: "`dept_manager` `a`"
+T@10: | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | opt: original_table_condition: "(`a`.`dept_no` = 'd001')"
+T@10: | | | | | | | | >reduce_cond_for_table
+
+WHERE:(cond term) 0x7fff30adf9b8 (`employees`.`a`.`dept_no` = 'd001')
+T@10: | | | | | | | | <reduce_cond_for_table
+T@10: | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | opt: final_table_condition   : "(`a`.`dept_no` = 'd001')"
+T@10: | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | opt: table: "`employees` `e`"
+T@10: | | | | | | | | opt: original_table_condition: "(`e`.`emp_no` = `a`.`emp_no`)"
+T@10: | | | | | | | | >reduce_cond_for_table
+
+WHERE:(cond term) 0x7fff30adfb80 (`employees`.`e`.`emp_no` = `employees`.`a`.`emp_no`)
+T@10: | | | | | | | | <reduce_cond_for_table
+T@10: | | | | | | | | opt: final_table_condition   : null
+T@10: | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | opt: finalizing_table_conditions: ending struct
+T@10: | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | >make_join_readinfo
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: refine_plan: starting struct
+T@10: | | | | | | | | | >setup_semijoin_dups_elimination
+T@10: | | | | | | | | | <setup_semijoin_dups_elimination
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`dept_manager` `a`"
+T@10: | | | | | | | | | >QEP_TAB::push_index_cond
+
+WHERE:(full cond) 0x7fff30adf9b8 (`employees`.`a`.`dept_no` = 'd001')
+
+WHERE:(idx cond) 0x7fff30adf9b8 (`employees`.`a`.`dept_no` = 'd001')
+T@10: | | | | | | | | | | >Item* ha_innobase::idx_cond_push
+T@10: | | | | | | | | | | <Item* ha_innobase::idx_cond_push
+
+WHERE:(icp cond) 0x7fff30adf9b8 (`employees`.`a`.`dept_no` = 'd001')
+T@10: | | | | | | | | | | >THD::convert_string
+T@10: | | | | | | | | | | <THD::convert_string
+T@10: | | | | | | | | | | opt: pushed_index_condition: "(`a`.`dept_no` = 'd001')"
+
+WHERE:(remainder cond) (nil) 
+T@10: | | | | | | | | | | opt: table_condition_attached: null
+T@10: | | | | | | | | | <QEP_TAB::push_index_cond
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | | opt: table: "`employees` `e`"
+T@10: | | | | | | | | | >QEP_TAB::push_index_cond
+T@10: | | | | | | | | | <QEP_TAB::push_index_cond
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | | opt: refine_plan: ending struct
+T@10: | | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | <make_join_readinfo
+T@10: | | | | | | | | opt: (null): starting struct
+T@10: | | | | | | | | opt: considering_tmp_tables: starting struct
+T@10: | | | | | | | | >JOIN::make_tmp_tables_info
+T@10: | | | | | | | | | >JOIN::get_end_select_func
+T@10: | | | | | | | | | | info: Using end_send
+T@10: | | | | | | | | | <JOIN::get_end_select_func
+T@10: | | | | | | | | <JOIN::make_tmp_tables_info
+T@10: | | | | | | | | opt: considering_tmp_tables: ending struct
+T@10: | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | | >count_field_types
+T@10: | | | | | | | | <count_field_types
+T@10: | | | | | | | | >JOIN::push_to_engines
+T@10: | | | | | | | | <JOIN::push_to_engines
+T@10: | | | | | | | | opt: steps: ending struct
+T@10: | | | | | | | | opt: join_optimization: ending struct
+T@10: | | | | | | | | opt: (null): ending struct
+T@10: | | | | | | | <JOIN::optimize
+T@10: | | | | | | <Query_block::optimize
+T@10: | | | | | | >MEM_ROOT::AllocSlow
+T@10: | | | | | | | enter: root: 0x7fff30014480
+T@10: | | | | | | | >MEM_ROOT::AllocBlock
+T@10: | | | | | | | | >char* PFS_instr_name::str
+T@10: | | | | | | | | <char* PFS_instr_name::str
+T@10: | | | | | | | <MEM_ROOT::AllocBlock
+T@10: | | | | | | <MEM_ROOT::AllocSlow
+T@10: | | | | | <Query_expression::optimize
+T@10: | | | | | >Query_expression::execute
+T@10: | | | | | | THD::enter_stage: 'executing' /opt/src/mysql-server/sql/sql_union.cc:1670
+T@10: | | | | | | >PROFILING::status_change
+T@10: | | | | | | <PROFILING::status_change
+T@10: | | | | | | opt: (null): starting struct
+T@10: | | | | | | opt: join_execution: starting struct
+T@10: | | | | | | opt: select#: 1
+T@10: | | | | | | opt: steps: starting struct
+T@10: | | | | | | >THD::send_result_metadata
+T@10: | | | | | | | >bool Protocol_classic::start_result_metadata
+T@10: | | | | | | | | info: num_cols 3, flags 5
+T@10: | | | | | | | | net write: Memory: 0x7fffe03eed0f  Bytes: (1)
+03 
+T@10: | | | | | | | | >vio_is_blocking
+T@10: | | | | | | | | <vio_is_blocking
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | <bool Protocol_classic::start_result_metadata
+T@10: | | | | | | | >bool Protocol_classic::send_field_metadata
+T@10: | | | | | | | <bool Protocol_classic::send_field_metadata
+T@10: | | | | | | | >bool Protocol_classic::end_row
+T@10: | | | | | | | | net write: Memory: 0x7fff30006150  Bytes: (61)
+03 64 65 66 09 65 6D 70 6C 6F 79 65 65 73 01 65 09 65 6D 70 6C 6F 79 65 65 73 
+0A 66 69 72 73 74 5F 6E 61 6D 65 0A 66 69 72 73 74 5F 6E 61 6D 65 0C FF 00 38 
+00 00 00 FD 01 10 00 00 00 
+T@10: | | | | | | | | >vio_is_blocking
+T@10: | | | | | | | | <vio_is_blocking
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | <bool Protocol_classic::end_row
+T@10: | | | | | | | >bool Protocol_classic::send_field_metadata
+T@10: | | | | | | | <bool Protocol_classic::send_field_metadata
+T@10: | | | | | | | >bool Protocol_classic::end_row
+T@10: | | | | | | | | net write: Memory: 0x7fff30006150  Bytes: (59)
+03 64 65 66 09 65 6D 70 6C 6F 79 65 65 73 01 65 09 65 6D 70 6C 6F 79 65 65 73 
+09 6C 61 73 74 5F 6E 61 6D 65 09 6C 61 73 74 5F 6E 61 6D 65 0C FF 00 40 00 00 
+00 FD 01 10 00 00 00 
+T@10: | | | | | | | | >vio_is_blocking
+T@10: | | | | | | | | <vio_is_blocking
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | <bool Protocol_classic::end_row
+T@10: | | | | | | | >bool Protocol_classic::send_field_metadata
+T@10: | | | | | | | <bool Protocol_classic::send_field_metadata
+T@10: | | | | | | | >bool Protocol_classic::end_row
+T@10: | | | | | | | | net write: Memory: 0x7fff30006150  Bytes: (62)
+03 64 65 66 09 65 6D 70 6C 6F 79 65 65 73 01 61 0C 64 65 70 74 5F 6D 61 6E 61 
+67 65 72 09 66 72 6F 6D 5F 64 61 74 65 09 66 72 6F 6D 5F 64 61 74 65 0C 3F 00 
+0A 00 00 00 0A 81 10 00 00 00 
+T@10: | | | | | | | | >vio_is_blocking
+T@10: | | | | | | | | <vio_is_blocking
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | <bool Protocol_classic::end_row
+T@10: | | | | | | | >bool Protocol_classic::end_result_metadata
+T@10: | | | | | | | | info: num_cols 3, flags 5
+T@10: | | | | | | | <bool Protocol_classic::end_result_metadata
+T@10: | | | | | | <THD::send_result_metadata
+T@10: | | | | | | >handler::ha_index_init
+T@10: | | | | | | | >int ha_innobase::index_init
+T@10: | | | | | | | | >ha_innobase::change_active_index
+T@10: | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | <ha_innobase::change_active_index
+T@10: | | | | | | | <int ha_innobase::index_init
+T@10: | | | | | | <handler::ha_index_init
+T@10: | | | | | | >handler::ha_index_read_map
+T@10: | | | | | | | >int ha_innobase::index_read
+T@10: | | | | | | | | >row_search_mvcc
+T@10: | | | | | | | | | >btr_cur_search_to_nth_level
+T@10: | | | | | | | | | <btr_cur_search_to_nth_level
+T@10: | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | >innobase_index_cond
+T@10: | | | | | | | | | <innobase_index_cond
+T@10: | | | | | | | | | >Row_sel_get_clust_rec_for_mysql::operator
+T@10: | | | | | | | | | | >btr_cur_search_to_nth_level
+T@10: | | | | | | | | | | <btr_cur_search_to_nth_level
+T@10: | | | | | | | | | <Row_sel_get_clust_rec_for_mysql::operator
+T@10: | | | | | | | | | >row_sel_store_mysql_rec
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | <row_sel_store_mysql_rec
+T@10: | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | >innobase_index_cond
+T@10: | | | | | | | | | <innobase_index_cond
+T@10: | | | | | | | | | >Row_sel_get_clust_rec_for_mysql::operator
+T@10: | | | | | | | | | | >btr_cur_search_to_nth_level
+T@10: | | | | | | | | | | <btr_cur_search_to_nth_level
+T@10: | | | | | | | | | <Row_sel_get_clust_rec_for_mysql::operator
+T@10: | | | | | | | | | >row_sel_store_mysql_rec
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | <row_sel_store_mysql_rec
+T@10: | | | | | | | | <row_search_mvcc
+T@10: | | | | | | | <int ha_innobase::index_read
+T@10: | | | | | | <handler::ha_index_read_map
+T@10: | | | | | | >handler::ha_index_init
+T@10: | | | | | | | >int ha_innobase::index_init
+T@10: | | | | | | | | >ha_innobase::change_active_index
+T@10: | | | | | | | | | >dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | | <dict_index_t* ha_innobase::innobase_get_index
+T@10: | | | | | | | | <ha_innobase::change_active_index
+T@10: | | | | | | | <int ha_innobase::index_init
+T@10: | | | | | | <handler::ha_index_init
+T@10: | | | | | | >Item::save_in_field
+T@10: | | | | | | | >type_conversion_status Item_field::save_in_field_inner
+T@10: | | | | | | | <type_conversion_status Item_field::save_in_field_inner
+T@10: | | | | | | <Item::save_in_field
+T@10: | | | | | | >handler::ha_index_read_map
+T@10: | | | | | | | >int ha_innobase::index_read
+T@10: | | | | | | | | >row_search_mvcc
+T@10: | | | | | | | | | >btr_cur_search_to_nth_level
+T@10: | | | | | | | | | | ib_buf: read page 2:4 size=16384 unzip=0,sync
+T@10: | | | | | | | | | | ib_buf: read page 2:4
+T@10: | | | | | | | | | <btr_cur_search_to_nth_level
+T@10: | | | | | | | | | >row_sel_store_mysql_rec
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | <row_sel_store_mysql_rec
+T@10: | | | | | | | | <row_search_mvcc
+T@10: | | | | | | | <int ha_innobase::index_read
+T@10: | | | | | | <handler::ha_index_read_map
+T@10: | | | | | | >bool Query_result_send::send_data
+T@10: | | | | | | | >THD::send_result_set_row
+T@10: | | | | | | | <THD::send_result_set_row
+T@10: | | | | | | | >bool Protocol_classic::end_row
+T@10: | | | | | | | | net write: Memory: 0x7fff30006150  Bytes: (32)
+09 4D 61 72 67 61 72 65 74 61 0A 4D 61 72 6B 6F 76 69 74 63 68 0A 31 39 38 35 
+2D 30 31 2D 30 31 
+T@10: | | | | | | | | >vio_is_blocking
+T@10: | | | | | | | | <vio_is_blocking
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | <bool Protocol_classic::end_row
+T@10: | | | | | | <bool Query_result_send::send_data
+T@10: | | | | | | >handler::ha_index_next_same
+T@10: | | | | | | | >ha_innobase::general_fetch
+T@10: | | | | | | | | >row_search_mvcc
+T@10: | | | | | | | | <row_search_mvcc
+T@10: | | | | | | | <ha_innobase::general_fetch
+T@10: | | | | | | <handler::ha_index_next_same
+T@10: | | | | | | >Item::save_in_field
+T@10: | | | | | | | >type_conversion_status Item_field::save_in_field_inner
+T@10: | | | | | | | <type_conversion_status Item_field::save_in_field_inner
+T@10: | | | | | | <Item::save_in_field
+T@10: | | | | | | >handler::ha_index_read_map
+T@10: | | | | | | | >int ha_innobase::index_read
+T@10: | | | | | | | | >row_search_mvcc
+T@10: | | | | | | | | | >btr_cur_search_to_nth_level
+T@10: | | | | | | | | | <btr_cur_search_to_nth_level
+T@10: | | | | | | | | | >row_sel_store_mysql_rec
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | | >row_sel_store_mysql_field
+T@10: | | | | | | | | | | <row_sel_store_mysql_field
+T@10: | | | | | | | | | <row_sel_store_mysql_rec
+T@10: | | | | | | | | <row_search_mvcc
+T@10: | | | | | | | <int ha_innobase::index_read
+T@10: | | | | | | <handler::ha_index_read_map
+T@10: | | | | | | >bool Query_result_send::send_data
+T@10: | | | | | | | >THD::send_result_set_row
+T@10: | | | | | | | <THD::send_result_set_row
+T@10: | | | | | | | >bool Protocol_classic::end_row
+T@10: | | | | | | | | net write: Memory: 0x7fff30006150  Bytes: (29)
+08 56 69 73 68 77 61 6E 69 08 4D 69 6E 61 6B 61 77 61 0A 31 39 39 31 2D 31 30 
+2D 30 31 
+T@10: | | | | | | | | >vio_is_blocking
+T@10: | | | | | | | | <vio_is_blocking
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | | >net_write_buff
+T@10: | | | | | | | | <net_write_buff
+T@10: | | | | | | | <bool Protocol_classic::end_row
+T@10: | | | | | | <bool Query_result_send::send_data
+T@10: | | | | | | >handler::ha_index_next_same
+T@10: | | | | | | | >ha_innobase::general_fetch
+T@10: | | | | | | | | >row_search_mvcc
+T@10: | | | | | | | | <row_search_mvcc
+T@10: | | | | | | | <ha_innobase::general_fetch
+T@10: | | | | | | <handler::ha_index_next_same
+T@10: | | | | | | >JOIN::join_free
+T@10: | | | | | | | >JOIN::cleanup
+T@10: | | | | | | | | >free_io_cache
+T@10: | | | | | | | | <free_io_cache
+T@10: | | | | | | | | >filesort_free_buffers
+T@10: | | | | | | | | <filesort_free_buffers
+T@10: | | | | | | | | >handler::ha_index_end
+T@10: | | | | | | | | | >int ha_innobase::index_end
+T@10: | | | | | | | | | | >DsMrr_impl::dsmrr_close
+T@10: | | | | | | | | | | <DsMrr_impl::dsmrr_close
+T@10: | | | | | | | | | <int ha_innobase::index_end
+T@10: | | | | | | | | <handler::ha_index_end
+T@10: | | | | | | | | >free_io_cache
+T@10: | | | | | | | | <free_io_cache
+T@10: | | | | | | | | >filesort_free_buffers
+T@10: | | | | | | | | <filesort_free_buffers
+T@10: | | | | | | | | >handler::ha_index_end
+T@10: | | | | | | | | | >int ha_innobase::index_end
+T@10: | | | | | | | | | | >DsMrr_impl::dsmrr_close
+T@10: | | | | | | | | | | <DsMrr_impl::dsmrr_close
+T@10: | | | | | | | | | <int ha_innobase::index_end
+T@10: | | | | | | | | <handler::ha_index_end
+T@10: | | | | | | | | >free_io_cache
+T@10: | | | | | | | | <free_io_cache
+T@10: | | | | | | | | >filesort_free_buffers
+T@10: | | | | | | | | <filesort_free_buffers
+T@10: | | | | | | | <JOIN::cleanup
+T@10: | | | | | | | >mysql_unlock_read_tables
+T@10: | | | | | | | | >unlock_external
+T@10: | | | | | | | | | >handler::ha_external_lock
+T@10: | | | | | | | | | | >int ha_innobase::external_lock
+T@10: | | | | | | | | | | | enter: lock_type: 2
+T@10: | | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | <int ha_innobase::external_lock
+T@10: | | | | | | | | | <handler::ha_external_lock
+T@10: | | | | | | | | | >handler::ha_external_lock
+T@10: | | | | | | | | | | >int ha_innobase::external_lock
+T@10: | | | | | | | | | | | enter: lock_type: 2
+T@10: | | | | | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | | | | | >innobase_commit
+T@10: | | | | | | | | | | | | trans: ending transaction
+T@10: | | | | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | | | | <innobase_commit
+T@10: | | | | | | | | | | <int ha_innobase::external_lock
+T@10: | | | | | | | | | <handler::ha_external_lock
+T@10: | | | | | | | | <unlock_external
+T@10: | | | | | | | <mysql_unlock_read_tables
+T@10: | | | | | | <JOIN::join_free
+T@10: | | | | | | >Diagnostics_area::set_eof_status
+T@10: | | | | | | <Diagnostics_area::set_eof_status
+T@10: | | | | | | opt: steps: ending struct
+T@10: | | | | | | opt: join_execution: ending struct
+T@10: | | | | | | opt: (null): ending struct
+T@10: | | | | | <Query_expression::execute
+T@10: | | | | | THD::enter_stage: 'end' /opt/src/mysql-server/sql/sql_select.cc:805
+T@10: | | | | | >PROFILING::status_change
+T@10: | | | | | <PROFILING::status_change
+T@10: | | | | | >Query_expression::cleanup
+T@10: | | | | | | >JOIN::cleanup
+T@10: | | | | | | | >free_io_cache
+T@10: | | | | | | | <free_io_cache
+T@10: | | | | | | | >filesort_free_buffers
+T@10: | | | | | | | <filesort_free_buffers
+T@10: | | | | | | | >free_io_cache
+T@10: | | | | | | | <free_io_cache
+T@10: | | | | | | | >filesort_free_buffers
+T@10: | | | | | | | <filesort_free_buffers
+T@10: | | | | | | | >free_io_cache
+T@10: | | | | | | | <free_io_cache
+T@10: | | | | | | | >filesort_free_buffers
+T@10: | | | | | | | <filesort_free_buffers
+T@10: | | | | | | <JOIN::cleanup
+T@10: | | | | | <Query_expression::cleanup
+T@10: | | | | <bool Sql_cmd_dml::execute
+T@10: | | | | THD::enter_stage: 'query end' /opt/src/mysql-server/sql/sql_parse.cc:4881
+T@10: | | | | >PROFILING::status_change
+T@10: | | | | <PROFILING::status_change
+T@10: | | | | >mysql_audit_acquire_plugins
+T@10: | | | | <mysql_audit_acquire_plugins
+T@10: | | | | >trans_commit_stmt
+T@10: | | | | | debug: add_unsafe_rollback_flags: 0
+T@10: | | | | | THD::enter_stage: 'waiting for handler commit' /opt/src/mysql-server/sql/handler.cc:1610
+T@10: | | | | | >PROFILING::status_change
+T@10: | | | | | <PROFILING::status_change
+T@10: | | | | | >bool> commit_owned_gtids
+T@10: | | | | | | >THD::is_low_level_commit_ordering_enabled
+T@10: | | | | | | <THD::is_low_level_commit_ordering_enabled
+T@10: | | | | | <bool> commit_owned_gtids
+T@10: | | | | | >ha_commit_trans
+T@10: | | | | | | info: all=0 thd->in_sub_stmt=0 ha_info=0x7fff30013508 is_real_trans=1
+T@10: | | | | | | >TC_LOG::enum_result MYSQL_BIN_LOG::commit
+T@10: | | | | | | | info: query='select /*+ rtc */
+  e.first_name, e.last_name, a.from_date
+from
+  dept_manager a join departments d join employees e
+where
+  a.dept_no = d.dept_no and a.emp_no = e.emp_no and d.dept_no = 'd001''
+T@10: | | | | | | | enter: thd: 0x7fff30011b40, all: no, xid: 17, cache_mngr: 0x0
+T@10: | | | | | | | >MYSQL_BIN_LOG::is_current_stmt_binlog_enabled_and_caches_empty
+T@10: | | | | | | | <MYSQL_BIN_LOG::is_current_stmt_binlog_enabled_and_caches_empty
+T@10: | | | | | | | >THD::enable_low_level_commit_ordering
+T@10: | | | | | | | <THD::enable_low_level_commit_ordering
+T@10: | | | | | | | >ha_commit_low
+T@10: | | | | | | | | >THD::is_low_level_commit_ordering_enabled
+T@10: | | | | | | | | <THD::is_low_level_commit_ordering_enabled
+T@10: | | | | | | | | >bool Commit_order_manager::wait
+T@10: | | | | | | | | <bool Commit_order_manager::wait
+T@10: | | | | | | | | >innobase_commit
+T@10: | | | | | | | | | trans: ending transaction
+T@10: | | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | | <innobase_commit
+T@10: | | | | | | | | >Ha_trx_info::reset
+T@10: | | | | | | | | <Ha_trx_info::reset
+T@10: | | | | | | | | >Transaction_ctx::reset_scope
+T@10: | | | | | | | | <Transaction_ctx::reset_scope
+T@10: | | | | | | | | >void Commit_order_manager::wait_and_finish
+T@10: | | | | | | | | <void Commit_order_manager::wait_and_finish
+T@10: | | | | | | | <ha_commit_low
+T@10: | | | | | | | >THD::disable_low_level_commit_ordering
+T@10: | | | | | | | <THD::disable_low_level_commit_ordering
+T@10: | | | | | | <TC_LOG::enum_result MYSQL_BIN_LOG::commit
+T@10: | | | | | | >Transaction_ctx::cleanup
+T@10: | | | | | | | >Rpl_transaction_ctx::cleanup
+T@10: | | | | | | | <Rpl_transaction_ctx::cleanup
+T@10: | | | | | | | >Rpl_transaction_write_set_ctx::reset_state
+T@10: | | | | | | | | >Rpl_transaction_write_set_ctx::clear_write_set
+T@10: | | | | | | | | <Rpl_transaction_write_set_ctx::clear_write_set
+T@10: | | | | | | | <Rpl_transaction_write_set_ctx::reset_state
+T@10: | | | | | | | >MEM_ROOT::ClearForReuse
+T@10: | | | | | | | <MEM_ROOT::ClearForReuse
+T@10: | | | | | | <Transaction_ctx::cleanup
+T@10: | | | | | <ha_commit_trans
+T@10: | | | | | >bool Session_consistency_gtids_ctx::notify_after_transaction_commit
+T@10: | | | | | <bool Session_consistency_gtids_ctx::notify_after_transaction_commit
+T@10: | | | | | debug: reset_unsafe_rollback_flags
+T@10: | | | | <trans_commit_stmt
+T@10: | | | | >Query_expression::cleanup
+T@10: | | | | | >free_io_cache
+T@10: | | | | | <free_io_cache
+T@10: | | | | | >filesort_free_buffers
+T@10: | | | | | <filesort_free_buffers
+T@10: | | | | | >free_io_cache
+T@10: | | | | | <free_io_cache
+T@10: | | | | | >filesort_free_buffers
+T@10: | | | | | <filesort_free_buffers
+T@10: | | | | | >free_io_cache
+T@10: | | | | | <free_io_cache
+T@10: | | | | | >filesort_free_buffers
+T@10: | | | | | <filesort_free_buffers
+T@10: | | | | <Query_expression::cleanup
+T@10: | | | | THD::enter_stage: 'closing tables' /opt/src/mysql-server/sql/sql_parse.cc:4944
+T@10: | | | | >PROFILING::status_change
+T@10: | | | | <PROFILING::status_change
+T@10: | | | | >close_thread_tables
+T@10: | | | | | tcache: table: 'employees'  query_id: 0
+T@10: | | | | | >ha_innobase::update_thd
+T@10: | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | >innobase_trx_init
+T@10: | | | | | | <innobase_trx_init
+T@10: | | | | | <ha_innobase::update_thd
+T@10: | | | | | >TABLE::cleanup_partial_update
+T@10: | | | | | <TABLE::cleanup_partial_update
+T@10: | | | | | tcache: table: 'departments'  query_id: 0
+T@10: | | | | | >ha_innobase::update_thd
+T@10: | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | >innobase_trx_init
+T@10: | | | | | | <innobase_trx_init
+T@10: | | | | | <ha_innobase::update_thd
+T@10: | | | | | >TABLE::cleanup_partial_update
+T@10: | | | | | <TABLE::cleanup_partial_update
+T@10: | | | | | tcache: table: 'dept_manager'  query_id: 0
+T@10: | | | | | >ha_innobase::update_thd
+T@10: | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | >innobase_trx_init
+T@10: | | | | | | <innobase_trx_init
+T@10: | | | | | <ha_innobase::update_thd
+T@10: | | | | | >TABLE::cleanup_partial_update
+T@10: | | | | | <TABLE::cleanup_partial_update
+T@10: | | | | | >THD::binlog_flush_pending_rows_event
+T@10: | | | | | <THD::binlog_flush_pending_rows_event
+T@10: | | | | | >THD::binlog_flush_pending_rows_event
+T@10: | | | | | <THD::binlog_flush_pending_rows_event
+T@10: | | | | | >mysql_unlock_tables
+T@10: | | | | | <mysql_unlock_tables
+T@10: | | | | | info: thd->open_tables: 0x7fff30ac4e60
+T@10: | | | | | >close_thread_table
+T@10: | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | >innobase_trx_init
+T@10: | | | | | | | <innobase_trx_init
+T@10: | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | >handler::ha_reset
+T@10: | | | | | | | >free_io_cache
+T@10: | | | | | | | <free_io_cache
+T@10: | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | >DsMrr_impl::reset
+T@10: | | | | | | | <DsMrr_impl::reset
+T@10: | | | | | | <handler::ha_reset
+T@10: | | | | | <close_thread_table
+T@10: | | | | | >close_thread_table
+T@10: | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | >innobase_trx_init
+T@10: | | | | | | | <innobase_trx_init
+T@10: | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | >handler::ha_reset
+T@10: | | | | | | | >free_io_cache
+T@10: | | | | | | | <free_io_cache
+T@10: | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | >DsMrr_impl::reset
+T@10: | | | | | | | <DsMrr_impl::reset
+T@10: | | | | | | <handler::ha_reset
+T@10: | | | | | <close_thread_table
+T@10: | | | | | >close_thread_table
+T@10: | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | >innobase_trx_init
+T@10: | | | | | | | <innobase_trx_init
+T@10: | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | >handler::ha_reset
+T@10: | | | | | | | >free_io_cache
+T@10: | | | | | | | <free_io_cache
+T@10: | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | >ha_innobase::update_thd
+T@10: | | | | | | | | ha_innobase::update_thd: user_thd: 0x7fff30011b40 -> 0x7fff30011b40
+T@10: | | | | | | | | >innobase_trx_init
+T@10: | | | | | | | | <innobase_trx_init
+T@10: | | | | | | | <ha_innobase::update_thd
+T@10: | | | | | | | >DsMrr_impl::reset
+T@10: | | | | | | | <DsMrr_impl::reset
+T@10: | | | | | | <handler::ha_reset
+T@10: | | | | | <close_thread_table
+T@10: | | | | <close_thread_tables
+T@10: | | | | >THD::rollback_item_tree_changes
+T@10: | | | | <THD::rollback_item_tree_changes
+T@10: | | | | >stmt_causes_implicit_commit
+T@10: | | | | <stmt_causes_implicit_commit
+T@10: | | | | >MDL_context::release_transactional_locks
+T@10: | | | | | >MDL_context::release_locks_stored_before
+T@10: | | | | | <MDL_context::release_locks_stored_before
+T@10: | | | | | >MDL_context::release_locks_stored_before
+T@10: | | | | | | info: found lock to release ticket=0x7fff30acf900
+T@10: | | | | | | >MDL_context::release_lock
+T@10: | | | | | | | enter: db=employees name=employees
+T@10: | | | | | | <MDL_context::release_lock
+T@10: | | | | | | info: found lock to release ticket=0x7fff30046830
+T@10: | | | | | | >MDL_context::release_lock
+T@10: | | | | | | | enter: db=employees name=departments
+T@10: | | | | | | <MDL_context::release_lock
+T@10: | | | | | | info: found lock to release ticket=0x7fff30ac6140
+T@10: | | | | | | >MDL_context::release_lock
+T@10: | | | | | | | enter: db=employees name=dept_manager
+T@10: | | | | | | <MDL_context::release_lock
+T@10: | | | | | <MDL_context::release_locks_stored_before
+T@10: | | | | <MDL_context::release_transactional_locks
+T@10: | | | | >binlog_gtid_end_transaction
+T@10: | | | | | >stmt_causes_implicit_commit
+T@10: | | | | | <stmt_causes_implicit_commit
+T@10: | | | | <binlog_gtid_end_transaction
+T@10: | | | | opt: steps: ending struct
+T@10: | | | | opt: (null): ending struct
+T@10: | | | | >Opt_trace_start::~Opt_trace_start
+Complete optimizer trace:
+T@10: | | | | | >Opt_trace_context::purge_stmts
+T@10: | | | | | <Opt_trace_context::purge_stmts
+T@10: | | | | <Opt_trace_start::~Opt_trace_start
+T@10: | | | <mysql_execute_command
+T@10: | | | THD::enter_stage: 'freeing items' /opt/src/mysql-server/sql/sql_parse.cc:5413
+T@10: | | | >PROFILING::status_change
+T@10: | | | <PROFILING::status_change
+T@10: | | | >THD::end_statement
+T@10: | | | | >lex_end
+T@10: | | | | | enter: lex: 0x7fff30015020
+T@10: | | | | <lex_end
+T@10: | | | <THD::end_statement
+T@10: | | | >cleanup_items
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_field::cleanup
+T@10: | | | | <void Item_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_field::cleanup
+T@10: | | | | <void Item_field::cleanup
+T@10: | | | | >void Item_field::cleanup
+T@10: | | | | <void Item_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_field::cleanup
+T@10: | | | | <void Item_field::cleanup
+T@10: | | | | >void Item_field::cleanup
+T@10: | | | | <void Item_field::cleanup
+T@10: | | | | >void Item_result_field::cleanup
+T@10: | | | | <void Item_result_field::cleanup
+T@10: | | | | >void Item_field::cleanup
+T@10: | | | | <void Item_field::cleanup
+T@10: | | | | >void Item_field::cleanup
+T@10: | | | | <void Item_field::cleanup
+T@10: | | | | >void Item_field::cleanup
+T@10: | | | | <void Item_field::cleanup
+T@10: | | | <cleanup_items
+T@10: | | | >Query_arena::free_items
+T@10: | | | <Query_arena::free_items
+T@10: | | <dispatch_sql_command
