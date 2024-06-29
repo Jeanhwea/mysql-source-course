@@ -1,5 +1,5 @@
 select /*+ rtc */
-  d.dept_no, e.first_name, e.last_name, s.from_date, s.to_date, s.salary
+  d.dept_no, e.first_name, e.last_name, s.from_date, s.salary
 from
   dept_manager a join departments d join employees e join salaries s
 where

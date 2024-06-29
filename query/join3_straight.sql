@@ -1,5 +1,5 @@
 select /*+ rtc */
-  e.first_name, e.last_name, a.from_date, a.to_date
+  e.first_name, e.last_name, a.from_date
 from
   dept_manager a straight_join departments d straight_join employees e
 where
