@@ -31,6 +31,7 @@
 | <2024-06-20 Thu> | 准备阶段 Rewrite 和 Prepare 设计与实现 | [[file:slides/p13-rewrite-and-prepare.pdf][p13]]   | [[https://www.bilibili.com/cheese/play/ep813796][v13]]   |
 | <2024-06-23 Sun> | 进入优化器和优化器追踪日志实现         | [[file:slides/p14-enter-optimizer.pdf][p14]]   | [[https://www.bilibili.com/cheese/play/ep820168][v14]]   |
 | <2024-06-27 Thu> | 代价模型和优化模块的设计与实现         | [[file:slides/p15-optimizer-and-cost-model.pdf][p15]]   | [[https://www.bilibili.com/cheese/play/ep834530][v15]]   |
+| <2024-06-29 Sat> | 联表查询 Join 优化器的设计与实现       | [[file:slides/p16-join-order-optimizer.pdf][p16]]   |       |
 
 * 课程资源
 课程中较大的资源文件存档在百度网盘中，大家可自行下载 | [[https://pan.baidu.com/s/1XivUc1HAogTeXOWPc11-Og?pwd=rdms][BaiduYun]]
