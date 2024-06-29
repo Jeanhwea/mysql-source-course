@@ -1,0 +1,348 @@
+{
+  "steps": [
+    {
+      "join_preparation": {
+        "select#": 1,
+        "steps": [
+          {
+            "expanded_query": "/* select#1 */ select `e`.`first_name` AS `first_name`,`e`.`last_name` AS `last_name`,`a`.`from_date` AS `from_date` from ((`dept_manager` `a` join `departments` `d` on((`a`.`dept_no` = `d`.`dept_no`))) join `employees` `e` on((`a`.`emp_no` = `e`.`emp_no`))) where (`d`.`dept_no` = 'd001')"
+          },
+          {
+            "transformations_to_nested_joins": {
+              "transformations": [
+                "JOIN_condition_to_WHERE",
+                "parenthesis_removal"
+              ],
+              "expanded_query": "/* select#1 */ select `e`.`first_name` AS `first_name`,`e`.`last_name` AS `last_name`,`a`.`from_date` AS `from_date` from `dept_manager` `a` join `departments` `d` join `employees` `e` where ((`d`.`dept_no` = 'd001') and (`a`.`emp_no` = `e`.`emp_no`) and (`a`.`dept_no` = `d`.`dept_no`))"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "join_optimization": {
+        "select#": 1,
+        "steps": [
+          {
+            "condition_processing": {
+              "condition": "WHERE",
+              "original_condition": "((`d`.`dept_no` = 'd001') and (`a`.`emp_no` = `e`.`emp_no`) and (`a`.`dept_no` = `d`.`dept_no`))",
+              "steps": [
+                {
+                  "transformation": "equality_propagation",
+                  "resulting_condition": "(multiple equal('d001', `d`.`dept_no`, `a`.`dept_no`) and multiple equal(`a`.`emp_no`, `e`.`emp_no`))"
+                },
+                {
+                  "transformation": "constant_propagation",
+                  "resulting_condition": "(multiple equal('d001', `d`.`dept_no`, `a`.`dept_no`) and multiple equal(`a`.`emp_no`, `e`.`emp_no`))"
+                },
+                {
+                  "transformation": "trivial_condition_removal",
+                  "resulting_condition": "(multiple equal('d001', `d`.`dept_no`, `a`.`dept_no`) and multiple equal(`a`.`emp_no`, `e`.`emp_no`))"
+                }
+              ]
+            }
+          },
+          {
+            "substitute_generated_columns": {}
+          },
+          {
+            "table_dependencies": [
+              {
+                "table": "`dept_manager` `a`",
+                "row_may_be_null": false,
+                "map_bit": 0,
+                "depends_on_map_bits": []
+              },
+              {
+                "table": "`departments` `d`",
+                "row_may_be_null": false,
+                "map_bit": 1,
+                "depends_on_map_bits": []
+              },
+              {
+                "table": "`employees` `e`",
+                "row_may_be_null": false,
+                "map_bit": 2,
+                "depends_on_map_bits": []
+              }
+            ]
+          },
+          {
+            "ref_optimizer_key_uses": [
+              {
+                "table": "`dept_manager` `a`",
+                "field": "emp_no",
+                "equals": "`e`.`emp_no`",
+                "null_rejecting": true
+              },
+              {
+                "table": "`dept_manager` `a`",
+                "field": "dept_no",
+                "equals": "'d001'",
+                "null_rejecting": true
+              },
+              {
+                "table": "`dept_manager` `a`",
+                "field": "dept_no",
+                "equals": "'d001'",
+                "null_rejecting": true
+              },
+              {
+                "table": "`dept_manager` `a`",
+                "field": "emp_no",
+                "equals": "`e`.`emp_no`",
+                "null_rejecting": true
+              },
+              {
+                "table": "`departments` `d`",
+                "field": "dept_no",
+                "equals": "'d001'",
+                "null_rejecting": true
+              },
+              {
+                "table": "`employees` `e`",
+                "field": "emp_no",
+                "equals": "`a`.`emp_no`",
+                "null_rejecting": true
+              }
+            ]
+          },
+          {
+            "rows_estimation": [
+              {
+                "table": "`dept_manager` `a`",
+                "range_analysis": {
+                  "table_scan": {
+                    "rows": 24,
+                    "cost": 4.75
+                  },
+                  "potential_range_indexes": [
+                    {
+                      "index": "PRIMARY",
+                      "usable": false,
+                      "cause": "not_applicable"
+                    },
+                    {
+                      "index": "dept_no",
+                      "usable": true,
+                      "key_parts": [
+                        "dept_no",
+                        "emp_no"
+                      ]
+                    }
+                  ],
+                  "setup_range_conditions": [],
+                  "group_index_range": {
+                    "chosen": false,
+                    "cause": "not_single_table"
+                  },
+                  "skip_scan_range": {
+                    "chosen": false,
+                    "cause": "not_single_table"
+                  },
+                  "analyzing_range_alternatives": {
+                    "range_scan_alternatives": [
+                      {
+                        "index": "dept_no",
+                        "ranges": [
+                          "dept_no = 'd001'"
+                        ],
+                        "index_dives_for_eq_ranges": true,
+                        "rowid_ordered": true,
+                        "using_mrr": false,
+                        "index_only": false,
+                        "in_memory": 1,
+                        "rows": 2,
+                        "cost": 0.96,
+                        "chosen": true
+                      }
+                    ],
+                    "analyzing_roworder_intersect": {
+                      "usable": false,
+                      "cause": "too_few_roworder_scans"
+                    }
+                  },
+                  "chosen_range_access_summary": {
+                    "range_access_plan": {
+                      "type": "range_scan",
+                      "index": "dept_no",
+                      "rows": 2,
+                      "ranges": [
+                        "dept_no = 'd001'"
+                      ]
+                    },
+                    "rows_for_plan": 2,
+                    "cost_for_plan": 0.96,
+                    "chosen": true
+                  }
+                }
+              },
+              {
+                "table": "`departments` `d`",
+                "rows": 1,
+                "cost": 1,
+                "table_type": "const",
+                "empty": false
+              },
+              {
+                "table": "`employees` `e`",
+                "table_scan": {
+                  "rows": 276023,
+                  "cost": 864.206
+                }
+              }
+            ]
+          },
+          {
+            "considered_execution_plans": [
+              {
+                "plan_prefix": [
+                  "`departments` `d`"
+                ],
+                "table": "`dept_manager` `a`",
+                "best_access_path": {
+                  "considered_access_paths": [
+                    {
+                      "access_type": "ref",
+                      "index": "PRIMARY",
+                      "usable": false,
+                      "chosen": false
+                    },
+                    {
+                      "access_type": "ref",
+                      "index": "dept_no",
+                      "rows": 2,
+                      "cost": 0.7,
+                      "chosen": true
+                    },
+                    {
+                      "access_type": "range",
+                      "range_details": {
+                        "used_index": "dept_no"
+                      },
+                      "chosen": false,
+                      "cause": "heuristic_index_cheaper"
+                    }
+                  ]
+                },
+                "condition_filtering_pct": 100,
+                "rows_for_plan": 2,
+                "cost_for_plan": 0.7,
+                "rest_of_plan": [
+                  {
+                    "plan_prefix": [
+                      "`departments` `d`",
+                      "`dept_manager` `a`"
+                    ],
+                    "table": "`employees` `e`",
+                    "best_access_path": {
+                      "considered_access_paths": [
+                        {
+                          "access_type": "eq_ref",
+                          "index": "PRIMARY",
+                          "rows": 1,
+                          "cost": 2.19816,
+                          "chosen": true,
+                          "cause": "clustered_pk_chosen_by_heuristics"
+                        },
+                        {
+                          "access_type": "scan",
+                          "cost": 28466.5,
+                          "rows": 276023,
+                          "chosen": false,
+                          "cause": "cost"
+                        }
+                      ]
+                    },
+                    "condition_filtering_pct": 100,
+                    "rows_for_plan": 2,
+                    "cost_for_plan": 2.89816,
+                    "chosen": true
+                  }
+                ]
+              },
+              {
+                "plan_prefix": [
+                  "`departments` `d`"
+                ],
+                "table": "`employees` `e`",
+                "best_access_path": {
+                  "considered_access_paths": [
+                    {
+                      "access_type": "ref",
+                      "index": "PRIMARY",
+                      "usable": false,
+                      "chosen": false
+                    },
+                    {
+                      "rows_to_scan": 276023,
+                      "filtering_effect": [],
+                      "final_filtering_effect": 1,
+                      "access_type": "scan",
+                      "resulting_rows": 276023,
+                      "cost": 28466.5,
+                      "chosen": true
+                    }
+                  ]
+                },
+                "condition_filtering_pct": 100,
+                "rows_for_plan": 276023,
+                "cost_for_plan": 28466.5,
+                "pruned_by_cost": true
+              }
+            ]
+          },
+          {
+            "attaching_conditions_to_tables": {
+              "original_condition": "((`e`.`emp_no` = `a`.`emp_no`) and (`a`.`dept_no` = 'd001'))",
+              "attached_conditions_computation": [],
+              "attached_conditions_summary": [
+                {
+                  "table": "`dept_manager` `a`",
+                  "attached": "(`a`.`dept_no` = 'd001')"
+                },
+                {
+                  "table": "`employees` `e`",
+                  "attached": "(`e`.`emp_no` = `a`.`emp_no`)"
+                }
+              ]
+            }
+          },
+          {
+            "finalizing_table_conditions": [
+              {
+                "table": "`dept_manager` `a`",
+                "original_table_condition": "(`a`.`dept_no` = 'd001')",
+                "final_table_condition   ": "(`a`.`dept_no` = 'd001')"
+              },
+              {
+                "table": "`employees` `e`",
+                "original_table_condition": "(`e`.`emp_no` = `a`.`emp_no`)",
+                "final_table_condition   ": null
+              }
+            ]
+          },
+          {
+            "refine_plan": [
+              {
+                "table": "`dept_manager` `a`",
+                "pushed_index_condition": "(`a`.`dept_no` = 'd001')",
+                "table_condition_attached": null
+              },
+              {
+                "table": "`employees` `e`"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "join_execution": {
+        "select#": 1,
+        "steps": []
+      }
+    }
+  ]
+}
