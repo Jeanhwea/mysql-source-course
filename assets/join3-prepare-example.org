@@ -1,0 +1,42 @@
+#+TITLE: Join3 Preparation 示例
+#+AUTHOR: Jinghui Hu
+#+EMAIL: hujinghui@buaa.edu.cn
+#+DATE: <2024-06-29 Sat>
+#+STARTUP: overview num indent
+#+OPTIONS: ^:nil
+
+
+* join3_01
+- [[file:join3_01_opt.sql][sql]] | [[file:join3_01_opt.sql.json][opt_trace]]
+#+BEGIN_SRC sql
+  select
+    e.first_name, e.last_name, a.from_date
+  from
+    dept_manager a
+    join departments d on a.dept_no = d.dept_no
+    join employees e on a.emp_no = e.emp_no
+  where
+    d.dept_no = 'd001';
+#+END_SRC
+
+* join3_02
+- [[file:join3_02_opt.sql][sql]] | [[file:join3_02_opt.sql.json][opt_trace]]
+#+BEGIN_SRC sql
+  select
+    e.first_name, e.last_name, a.from_date
+  from
+    dept_manager a join departments d join employees e
+  where
+    a.dept_no = d.dept_no and a.emp_no = e.emp_no and d.dept_no = 'd001';
+#+END_SRC
+
+* join3_03
+- [[file:join3_03_opt.sql][sql]] | [[file:join3_03_opt.sql.json][opt_trace]]
+#+BEGIN_SRC sql
+  select
+    e.first_name, e.last_name, a.from_date
+  from
+    dept_manager a, departments d, employees e
+  where
+    a.dept_no = d.dept_no and a.emp_no = e.emp_no and d.dept_no = 'd001';
+#+END_SRC
