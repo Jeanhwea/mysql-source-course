@@ -8,9 +8,9 @@
 [[file:figures/mysql-poster.svg]]
 
 * 快速链接
-1. 课程资源 | [[https://github.com/Jeanhwea/mysql-source-course][github]] | [[https://gitee.com/jeanhwea/mysql-source-course][gitee]]
+1. 课程主页 | [[https://github.com/Jeanhwea/mysql-source-course][github]] | [[https://gitee.com/jeanhwea/mysql-source-course][gitee]]
 2. 源码仓库 | [[https://github.com/Jeanhwea/mysql-server][github]] | [[https://gitee.com/jeanhwea/mysql-server][gitee]]
-3. 视频课程 | [[https://www.bilibili.com/cheese/play/ss19642][bilibili]]
+3. 视频讲解 | [[https://www.bilibili.com/cheese/play/ss19642][bilibili]]
 
 * 课程安排
 ** 课程大纲
