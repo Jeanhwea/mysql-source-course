@@ -13,6 +13,7 @@
 3. 视频课程 | [[https://www.bilibili.com/cheese/play/ss19642][bilibili]]
 
 * 课程安排
+** 课程大纲
 - 课程预计时间 <2024-05-06 Mon> 至 <2024-09-01 Sun>
 | Timeline         | Topic                                  | Slide | Video |
 |------------------+----------------------------------------+-------+-------|
@@ -32,6 +33,10 @@
 | <2024-06-23 Sun> | 进入优化器和优化器追踪日志实现         | [[file:slides/p14-enter-optimizer.pdf][p14]]   | [[https://www.bilibili.com/cheese/play/ep820168][v14]]   |
 | <2024-06-27 Thu> | 代价模型和优化模块的设计与实现         | [[file:slides/p15-optimizer-and-cost-model.pdf][p15]]   | [[https://www.bilibili.com/cheese/play/ep834530][v15]]   |
 | <2024-06-29 Sat> | 联表查询 Join 优化器的设计与实现       | [[file:slides/p16-join-order-optimizer.pdf][p16]]   |       |
+
+** 辅助材料
+1. 系统线程名称和性能视图表名称对应 | [[file:assets/thd-name-ref.org][link]]
+2. 三表连接不同查询写法的 Opt_trace 对比 | [[file:assets/join3-prepare-example.org][link]]
 
 * 课程资源
 课程中较大的资源文件存档在百度网盘中，大家可自行下载 | [[https://pan.baidu.com/s/1XivUc1HAogTeXOWPc11-Og?pwd=rdms][BaiduYun]]

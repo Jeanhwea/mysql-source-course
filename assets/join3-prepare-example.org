@@ -1,4 +1,4 @@
-#+TITLE: Join3 Preparation 示例
+#+TITLE: 三表连接不同查询写法的 Opt_trace 对比
 #+AUTHOR: Jinghui Hu
 #+EMAIL: hujinghui@buaa.edu.cn
 #+DATE: <2024-06-29 Sat>
