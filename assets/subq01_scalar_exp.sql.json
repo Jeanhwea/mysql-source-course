@@ -1,0 +1,78 @@
+{
+  "query_block": {
+    "select_id": 1,
+    "cost_info": {
+      "query_cost": "6.69"
+    },
+    "table": {
+      "table_name": "a",
+      "access_type": "range",
+      "possible_keys": [
+        "PRIMARY",
+        "dept_no"
+      ],
+      "key": "dept_no",
+      "used_key_parts": [
+        "dept_no",
+        "emp_no"
+      ],
+      "key_length": "20",
+      "rows_examined_per_scan": 32,
+      "rows_produced_per_join": 32,
+      "filtered": "100.00",
+      "using_index": true,
+      "cost_info": {
+        "read_cost": "3.49",
+        "eval_cost": "3.20",
+        "prefix_cost": "6.69",
+        "data_read_per_join": "1024"
+      },
+      "used_columns": [
+        "emp_no",
+        "dept_no"
+      ],
+      "attached_condition": "((`employees`.`a`.`dept_no` = (/* select#2 */ select 'd005' from `employees`.`departments` `d` where true)) and (`employees`.`a`.`emp_no` < 10100))",
+      "attached_subqueries": [
+        {
+          "dependent": false,
+          "cacheable": true,
+          "query_block": {
+            "select_id": 2,
+            "cost_info": {
+              "query_cost": "1.00"
+            },
+            "table": {
+              "table_name": "d",
+              "access_type": "const",
+              "possible_keys": [
+                "dept_name"
+              ],
+              "key": "dept_name",
+              "used_key_parts": [
+                "dept_name"
+              ],
+              "key_length": "162",
+              "ref": [
+                "const"
+              ],
+              "rows_examined_per_scan": 1,
+              "rows_produced_per_join": 1,
+              "filtered": "100.00",
+              "using_index": true,
+              "cost_info": {
+                "read_cost": "0.00",
+                "eval_cost": "0.10",
+                "prefix_cost": "0.00",
+                "data_read_per_join": "184"
+              },
+              "used_columns": [
+                "dept_no",
+                "dept_name"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

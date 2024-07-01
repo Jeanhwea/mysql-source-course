@@ -1,0 +1,33 @@
+#+TITLE: 子查询优化器分析示例
+#+AUTHOR: Jinghui Hu
+#+EMAIL: hujinghui@buaa.edu.cn
+#+DATE: <2024-07-01 Mon>
+#+STARTUP: overview num indent
+#+OPTIONS: ^:nil
+#+PROPERTY: header-args:sql :dbhost 127.0.0.1 :database employees :engine mysql :dbuser root :exports both
+
+
+* 标量子查询 ~subq01.sql~
+- [[file:subq01_scalar_exp.sql.json][explain]] | [[file:subq01_scalar_opt.sql.json][opt_trace]]
+  #+BEGIN_SRC sql
+    explain
+    select
+      count(distinct emp_no) as emp_cnt
+    from
+      dept_emp a
+    where
+      a.emp_no < 10100
+      and a.dept_no = (
+        select
+          d.dept_no
+        from
+          departments d
+        where
+          d.dept_name = 'Development');
+  #+END_SRC
+
+  #+RESULTS:
+  | id | select_type | table | partitions | type  | possible_keys   | key       | key_len | ref   | rows | filtered | Extra                    |
+  |----+-------------+-------+------------+-------+-----------------+-----------+---------+-------+------+----------+--------------------------|
+  |  1 | PRIMARY     | a     | NULL       | range | PRIMARY,dept_no | dept_no   |      20 | NULL  |   32 |   100.00 | Using where; Using index |
+  |  2 | SUBQUERY    | d     | NULL       | const | dept_name       | dept_name |     162 | const |    1 |   100.00 | Using index              |

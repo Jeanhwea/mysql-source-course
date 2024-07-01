@@ -1,0 +1,574 @@
+{
+  "steps": [
+    {
+      "join_preparation": {
+        "select#": 1,
+        "steps": [
+          {
+            "join_preparation": {
+              "select#": 2,
+              "steps": [
+                {
+                  "expanded_query": "/* select#2 */ select `d`.`dept_no` from `departments` `d` where (`d`.`dept_name` = 'Development')"
+                }
+              ]
+            }
+          },
+          {
+            "expanded_query": "/* select#1 */ select count(distinct `a`.`emp_no`) AS `emp_cnt` from `dept_emp` `a` where ((`a`.`emp_no` < 10100) and (`a`.`dept_no` = (/* select#2 */ select `d`.`dept_no` from `departments` `d` where (`d`.`dept_name` = 'Development'))))"
+          }
+        ]
+      }
+    },
+    {
+      "join_optimization": {
+        "select#": 1,
+        "steps": [
+          {
+            "condition_processing": {
+              "condition": "WHERE",
+              "original_condition": "((`a`.`emp_no` < 10100) and (`a`.`dept_no` = (/* select#2 */ select `d`.`dept_no` from `departments` `d` where (`d`.`dept_name` = 'Development'))))",
+              "steps": [
+                {
+                  "transformation": "equality_propagation",
+                  "subselect_evaluation": [],
+                  "resulting_condition": "((`a`.`emp_no` < 10100) and multiple equal((/* select#2 */ select `d`.`dept_no` from `departments` `d` where (`d`.`dept_name` = 'Development')), `a`.`dept_no`))"
+                },
+                {
+                  "transformation": "constant_propagation",
+                  "resulting_condition": "((`a`.`emp_no` < 10100) and multiple equal((/* select#2 */ select `d`.`dept_no` from `departments` `d` where (`d`.`dept_name` = 'Development')), `a`.`dept_no`))"
+                },
+                {
+                  "transformation": "trivial_condition_removal",
+                  "resulting_condition": "((`a`.`emp_no` < 10100) and multiple equal((/* select#2 */ select `d`.`dept_no` from `departments` `d` where (`d`.`dept_name` = 'Development')), `a`.`dept_no`))"
+                }
+              ]
+            }
+          },
+          {
+            "substitute_generated_columns": {}
+          },
+          {
+            "table_dependencies": [
+              {
+                "table": "`dept_emp` `a`",
+                "row_may_be_null": false,
+                "map_bit": 0,
+                "depends_on_map_bits": []
+              }
+            ]
+          },
+          {
+            "ref_optimizer_key_uses": [
+              {
+                "table": "`dept_emp` `a`",
+                "field": "dept_no",
+                "equals": "(/* select#2 */ select `d`.`dept_no` from `departments` `d` where (`d`.`dept_name` = 'Development'))",
+                "null_rejecting": true
+              }
+            ]
+          },
+          {
+            "rows_estimation": [
+              {
+                "table": "`dept_emp` `a`",
+                "range_analysis": {
+                  "table_scan": {
+                    "rows": 325879,
+                    "cost": 32774.2
+                  },
+                  "potential_range_indexes": [
+                    {
+                      "index": "PRIMARY",
+                      "usable": true,
+                      "key_parts": [
+                        "emp_no",
+                        "dept_no"
+                      ]
+                    },
+                    {
+                      "index": "dept_no",
+                      "usable": true,
+                      "key_parts": [
+                        "dept_no",
+                        "emp_no"
+                      ]
+                    }
+                  ],
+                  "best_covering_index_scan": {
+                    "index": "dept_no",
+                    "cost": 32945.5,
+                    "chosen": false,
+                    "cause": "cost"
+                  },
+                  "setup_range_conditions": [
+                    {
+                      "subselect_execution": {
+                        "select#": 2,
+                        "steps": [
+                          {
+                            "join_optimization": {
+                              "select#": 2,
+                              "steps": [
+                                {
+                                  "condition_processing": {
+                                    "condition": "WHERE",
+                                    "original_condition": "(`d`.`dept_name` = 'Development')",
+                                    "steps": [
+                                      {
+                                        "transformation": "equality_propagation",
+                                        "resulting_condition": "multiple equal('Development', `d`.`dept_name`)"
+                                      },
+                                      {
+                                        "transformation": "constant_propagation",
+                                        "resulting_condition": "multiple equal('Development', `d`.`dept_name`)"
+                                      },
+                                      {
+                                        "transformation": "trivial_condition_removal",
+                                        "resulting_condition": "multiple equal('Development', `d`.`dept_name`)"
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "substitute_generated_columns": {}
+                                },
+                                {
+                                  "table_dependencies": [
+                                    {
+                                      "table": "`departments` `d`",
+                                      "row_may_be_null": false,
+                                      "map_bit": 0,
+                                      "depends_on_map_bits": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "ref_optimizer_key_uses": [
+                                    {
+                                      "table": "`departments` `d`",
+                                      "field": "dept_name",
+                                      "equals": "'Development'",
+                                      "null_rejecting": true
+                                    }
+                                  ]
+                                },
+                                {
+                                  "rows_estimation": [
+                                    {
+                                      "table": "`departments` `d`",
+                                      "rows": 1,
+                                      "cost": 1,
+                                      "table_type": "const",
+                                      "empty": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "condition_on_constant_tables": "true",
+                                  "condition_value": true
+                                },
+                                {
+                                  "attaching_conditions_to_tables": {
+                                    "original_condition": "true",
+                                    "attached_conditions_computation": [],
+                                    "attached_conditions_summary": []
+                                  }
+                                },
+                                {
+                                  "refine_plan": []
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "join_execution": {
+                              "select#": 2,
+                              "steps": []
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "subselect_execution": {
+                        "select#": 2,
+                        "steps": []
+                      }
+                    }
+                  ],
+                  "group_index_range": {
+                    "potential_group_range_indexes": [
+                      {
+                        "index": "PRIMARY",
+                        "covering": true,
+                        "usable": false,
+                        "cause": "primary_key_is_clustered"
+                      },
+                      {
+                        "index": "dept_no",
+                        "covering": true
+                      }
+                    ]
+                  },
+                  "skip_scan_range": {
+                    "potential_skip_scan_indexes": [
+                      false,
+                      "has_aggregate_distinct"
+                    ]
+                  },
+                  "analyzing_range_alternatives": {
+                    "range_scan_alternatives": [
+                      {
+                        "index": "PRIMARY",
+                        "ranges": [
+                          "emp_no < 10100"
+                        ],
+                        "index_dives_for_eq_ranges": true,
+                        "rowid_ordered": true,
+                        "using_mrr": false,
+                        "index_only": true,
+                        "in_memory": 1,
+                        "rows": 109,
+                        "cost": 11.1847,
+                        "chosen": true
+                      },
+                      {
+                        "index": "dept_no",
+                        "ranges": [
+                          "dept_no = 'd005' AND emp_no < 10100"
+                        ],
+                        "index_dives_for_eq_ranges": true,
+                        "rowid_ordered": true,
+                        "using_mrr": false,
+                        "index_only": true,
+                        "in_memory": 1,
+                        "rows": 32,
+                        "cost": 3.49399,
+                        "chosen": true
+                      }
+                    ],
+                    "analyzing_roworder_intersect": {
+                      "intersecting_indexes": [
+                        {
+                          "index": "dept_no",
+                          "index_scan_cost": 0.283991,
+                          "cumulated_index_scan_cost": 0.283991,
+                          "disk_sweep_cost": 0,
+                          "cumulated_total_cost": 0.283991,
+                          "usable": true,
+                          "matching_rows_now": 32,
+                          "isect_covering_with_this_index": true,
+                          "chosen": true
+                        }
+                      ],
+                      "clustered_pk": {
+                        "clustered_pk_added_to_intersect": false,
+                        "cause": "roworder_is_covering"
+                      },
+                      "chosen": false,
+                      "cause": "too_few_indexes_to_merge"
+                    }
+                  },
+                  "chosen_range_access_summary": {
+                    "range_access_plan": {
+                      "type": "range_scan",
+                      "index": "dept_no",
+                      "rows": 32,
+                      "ranges": [
+                        "dept_no = 'd005' AND emp_no < 10100"
+                      ]
+                    },
+                    "rows_for_plan": 32,
+                    "cost_for_plan": 3.49399,
+                    "chosen": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "considered_execution_plans": [
+              {
+                "plan_prefix": [],
+                "table": "`dept_emp` `a`",
+                "best_access_path": {
+                  "considered_access_paths": [
+                    {
+                      "access_type": "ref",
+                      "index": "dept_no",
+                      "chosen": false,
+                      "cause": "range_uses_more_keyparts"
+                    },
+                    {
+                      "rows_to_scan": 32,
+                      "access_type": "range",
+                      "range_details": {
+                        "used_index": "dept_no"
+                      },
+                      "resulting_rows": 32,
+                      "cost": 6.69399,
+                      "chosen": true
+                    }
+                  ]
+                },
+                "condition_filtering_pct": 100,
+                "rows_for_plan": 32,
+                "cost_for_plan": 6.69399,
+                "chosen": true
+              }
+            ]
+          },
+          {
+            "attaching_conditions_to_tables": {
+              "original_condition": "((`a`.`dept_no` = (/* select#2 */ select 'd005' from `departments` `d` where true)) and (`a`.`emp_no` < 10100))",
+              "attached_conditions_computation": [],
+              "attached_conditions_summary": [
+                {
+                  "table": "`dept_emp` `a`",
+                  "attached": "((`a`.`dept_no` = (/* select#2 */ select 'd005' from `departments` `d` where true)) and (`a`.`emp_no` < 10100))"
+                }
+              ]
+            }
+          },
+          {
+            "optimizing_distinct_group_by_order_by": {}
+          },
+          {
+            "finalizing_table_conditions": [
+              {
+                "table": "`dept_emp` `a`",
+                "original_table_condition": "((`a`.`dept_no` = (/* select#2 */ select 'd005' from `departments` `d` where true)) and (`a`.`emp_no` < 10100))",
+                "final_table_condition   ": "((`a`.`dept_no` = (/* select#2 */ select 'd005' from `departments` `d` where true)) and (`a`.`emp_no` < 10100))"
+              }
+            ]
+          },
+          {
+            "refine_plan": [
+              {
+                "table": "`dept_emp` `a`"
+              }
+            ]
+          },
+          {
+            "considering_tmp_tables": [
+              {
+                "creating_tmp_table": {
+                  "tmp_table_info": {
+                    "table": "intermediate_tmp_table",
+                    "columns": 1,
+                    "row_length": 5,
+                    "key_length": 4,
+                    "unique_constraint": false,
+                    "makes_grouped_rows": false,
+                    "cannot_insert_duplicates": true,
+                    "location": "TempTable"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "join_execution": {
+        "select#": 1,
+        "steps": [
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          },
+          {
+            "subselect_execution": {
+              "select#": 2,
+              "steps": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
