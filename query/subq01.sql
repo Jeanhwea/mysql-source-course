@@ -1,31 +1,12 @@
-select distinct
-  first_name
+select
+  count(*)
 from
-  employees a
-  left join dept_emp x on a.emp_no = x.emp_no
+  dept_emp a
 where
-  x.dept_no = 'd001'
-  and (
+  a.dept_no = (
     select
-      count(*)
+      d.dept_no
     from
-      employees b
-    left join dept_emp d on b.emp_no = d.emp_no
-  where
-    d.dept_no = 'd001'
-    and b.first_name = a.first_name) > 20;
-
-
--- select
---   first_name,
---   count(*) cnt
--- from
---   employees a,
---   dept_emp x
--- where
---   a.emp_no = x.emp_no
---   and x.dept_no = 'd001'
--- group by
---   first_name
--- having
---   count(*) > 1;
+      departments d
+    where
+      d.dept_name = 'Development');
