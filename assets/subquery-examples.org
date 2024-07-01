@@ -8,7 +8,7 @@
 
 
 * 标量子查询 ~subq01.sql~
-- [[file:subq01_scalar_exp.sql.json][explain]] | [[file:subq01_scalar_opt.sql.json][opt_trace]]
+- [[file:subq01_scalar_exp.sql.json][exp_json]] | [[file:subq01_scalar_opt.sql.json][opt_trace]]
   #+BEGIN_SRC sql
     explain
     select
