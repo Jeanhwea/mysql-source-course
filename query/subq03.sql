@@ -9,4 +9,4 @@ where
     from
       dept_manager a
     where
-      a.from_date > '1995-01-01');
+      a.from_date >= '1995-01-01');
