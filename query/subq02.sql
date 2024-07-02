@@ -1,12 +1,12 @@
 select
-  count(x.emp_no) as emp_cnt
+  e.first_name, e.last_name
 from
-  dept_emp x
+  employees e
 where
-  x.dept_no in (
+  e.emp_no in (
     select
-      a.dept_no
+      a.emp_no
     from
-      dept_manager a
+       dept_manager a
     where
-      a.emp_no = 110022);
+      a.dept_no = 'd001');

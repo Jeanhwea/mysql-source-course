@@ -1,12 +1,12 @@
 select
-  e.first_name, e.last_name
+  *
 from
-  employees e
+  departments d
 where
-  e.emp_no in (
+  d.dept_no in (
     select
-      a.emp_no
+      a.dept_no
     from
-       dept_manager a
+      dept_manager a
     where
-      a.dept_no = 'd001');
+      a.from_date > '1995-01-01');
