@@ -31,3 +31,52 @@
   |----+-------------+-------+------------+-------+-----------------+-----------+---------+-------+------+----------+--------------------------|
   |  1 | PRIMARY     | a     | NULL       | range | PRIMARY,dept_no | dept_no   |      20 | NULL  |   32 |   100.00 | Using where; Using index |
   |  2 | SUBQUERY    | d     | NULL       | const | dept_name       | dept_name |     162 | const |    1 |   100.00 | Using index              |
+
+* 唯一性的 IN 子查询 ~subq02.sql~
+- [[file:subq02_unique_exp.sql.json][exp_json]] | [[file:subq02_unique_opt.sql.json][opt_trace]]
+  #+BEGIN_SRC sql
+    explain
+    select
+      e.first_name, e.last_name
+    from
+      employees e
+    where
+      e.emp_no in (
+        select
+          a.emp_no
+        from
+           dept_manager a
+        where
+          a.dept_no = 'd001');
+  #+END_SRC
+
+  #+RESULTS:
+  | id | select_type | table | partitions | type   | possible_keys   | key     | key_len | ref                | rows | filtered | Extra                    |
+  |----+-------------+-------+------------+--------+-----------------+---------+---------+--------------------+------+----------+--------------------------|
+  |  1 | SIMPLE      | a     | NULL       | ref    | PRIMARY,dept_no | dept_no |      16 | const              |    2 |   100.00 | Using where; Using index |
+  |  1 | SIMPLE      | e     | NULL       | eq_ref | PRIMARY         | PRIMARY |       4 | employees.a.emp_no |    1 |   100.00 | NULL                     |
+
+* 非唯一性的 IN 子查询 ~subq03.sql~
+- [[file:subq03_non-unique_exp.sql.json][exp_json]] | [[file:subq03_non-unique_opt.sql.json][opt_trace]]
+  #+BEGIN_SRC sql
+    explain
+    select
+      ,*
+    from
+      departments d
+    where
+      d.dept_no in (
+        select
+          a.dept_no
+        from
+          dept_manager a
+        where
+          a.from_date >= '1995-01-01');
+  #+END_SRC
+
+  #+RESULTS:
+  | id | select_type  | table       | partitions | type   | possible_keys       | key                 | key_len | ref                 | rows | filtered | Extra       |
+  |----+--------------+-------------+------------+--------+---------------------+---------------------+---------+---------------------+------+----------+-------------|
+  |  1 | SIMPLE       | d           | NULL       | index  | PRIMARY             | dept_name           |     162 | NULL                |    9 |   100.00 | Using index |
+  |  1 | SIMPLE       | <subquery2> | NULL       | eq_ref | <auto_distinct_key> | <auto_distinct_key> |      16 | employees.d.dept_no |    1 |   100.00 | NULL        |
+  |  2 | MATERIALIZED | a           | NULL       | ALL    | dept_no             | NULL                |    NULL | NULL                |   24 |    33.33 | Using where |

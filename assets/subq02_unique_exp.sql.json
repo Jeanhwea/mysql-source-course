@@ -1,0 +1,74 @@
+{
+  "query_block": {
+    "select_id": 1,
+    "cost_info": {
+      "query_cost": "2.65"
+    },
+    "nested_loop": [
+      {
+        "table": {
+          "table_name": "a",
+          "access_type": "ref",
+          "possible_keys": [
+            "PRIMARY",
+            "dept_no"
+          ],
+          "key": "dept_no",
+          "used_key_parts": [
+            "dept_no"
+          ],
+          "key_length": "16",
+          "ref": [
+            "const"
+          ],
+          "rows_examined_per_scan": 2,
+          "rows_produced_per_join": 2,
+          "filtered": "100.00",
+          "using_index": true,
+          "cost_info": {
+            "read_cost": "0.25",
+            "eval_cost": "0.20",
+            "prefix_cost": "0.45",
+            "data_read_per_join": "64"
+          },
+          "used_columns": [
+            "emp_no",
+            "dept_no"
+          ],
+          "attached_condition": "(`employees`.`a`.`dept_no` = 'd001')"
+        }
+      },
+      {
+        "table": {
+          "table_name": "e",
+          "access_type": "eq_ref",
+          "possible_keys": [
+            "PRIMARY"
+          ],
+          "key": "PRIMARY",
+          "used_key_parts": [
+            "emp_no"
+          ],
+          "key_length": "4",
+          "ref": [
+            "employees.a.emp_no"
+          ],
+          "rows_examined_per_scan": 1,
+          "rows_produced_per_join": 2,
+          "filtered": "100.00",
+          "cost_info": {
+            "read_cost": "2.00",
+            "eval_cost": "0.20",
+            "prefix_cost": "2.65",
+            "data_read_per_join": "272"
+          },
+          "used_columns": [
+            "emp_no",
+            "first_name",
+            "last_name"
+          ]
+        }
+      }
+    ]
+  }
+}
