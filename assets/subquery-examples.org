@@ -80,3 +80,23 @@
   |  1 | SIMPLE       | d           | NULL       | index  | PRIMARY             | dept_name           |     162 | NULL                |    9 |   100.00 | Using index |
   |  1 | SIMPLE       | <subquery2> | NULL       | eq_ref | <auto_distinct_key> | <auto_distinct_key> |      16 | employees.d.dept_no |    1 |   100.00 | NULL        |
   |  2 | MATERIALIZED | a           | NULL       | ALL    | dept_no             | NULL                |    NULL | NULL                |   24 |    33.33 | Using where |
+
+* EXISTS 子查询 ~subq04.sql~
+- [[file:subq04_exists_exp.sql.json][exp_json]] | [[file:subq04_exists_opt.sql.json][opt_trace]]
+  #+BEGIN_SRC sql
+    explain
+    select
+      e.first_name,
+      e.last_name
+    from
+      employees e
+    where
+      exists (
+        select
+          ,*
+        from
+          dept_manager a
+        where
+          a.dept_no = 'd001'
+          and a.emp_no = e.emp_no);
+  #+END_SRC
