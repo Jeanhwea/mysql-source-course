@@ -37,6 +37,7 @@
 ** 阅读材料
 1. 系统线程名称和性能视图表名称对应 | [[file:assets/thd-name-ref.org][link]]
 2. 三表连接不同查询写法的 Opt_trace 对比 | [[file:assets/join3-prepare-example.org][link]]
+3. 子查询优化器分析示例 | [[file:assets/subquery-examples.org][link]]
 
 ** 课程资源
 课程中较大的资源文件存档在百度网盘中，大家可自行下载 | [[https://pan.baidu.com/s/1XivUc1HAogTeXOWPc11-Og?pwd=rdms][BaiduYun]]
