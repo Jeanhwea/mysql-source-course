@@ -1,18 +1,5 @@
 -- explain
--- select
---   *
--- from
---   employees e
--- where
---   e.emp_no in (
---     select
---       a.emp_no
---     from
---       dept_manager a
---     where
---       a.dept_no >= 'd003');
 
-explain
 select
   *
 from
@@ -20,9 +7,8 @@ from
 where
   e.emp_no in (
     select
-      /*+ SEMIJOIN(FIRSTMATCH) */
       a.emp_no
     from
       dept_manager a
     where
-      a.from_date >= '1995-01-01');
+      date_sub(a.from_date, interval 30 day) < e.hire_date);
