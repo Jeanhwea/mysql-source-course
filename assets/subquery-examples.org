@@ -130,3 +130,6 @@
   |----+-------------+-------+------------+--------+-----------------+---------+---------+--------------------+------+----------+-------------------------------------|
   |  1 | SIMPLE      | a     | NULL       | index  | PRIMARY,dept_no | PRIMARY |      20 | NULL               |   24 |   100.00 | Using where; Using index; LooseScan |
   |  1 | SIMPLE      | e     | NULL       | eq_ref | PRIMARY         | PRIMARY |       4 | employees.a.emp_no |    1 |   100.00 | NULL                                |
+
+* subq12
+- MaterializeScan 参考 | [[*subq03][subq03]]
