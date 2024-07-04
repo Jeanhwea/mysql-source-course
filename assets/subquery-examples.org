@@ -109,8 +109,7 @@
 
 * subq10
 ** subq10 - Default
-1. [[https://dev.mysql.com/doc/refman/8.0/en/optimizer-hints.html][hits]]
-- 默认
+- EXISTS 子查询 [[file:subq04_exists_exp.sql.json][exp_json]] | [[file:subq04_exists_opt.sql.json][opt_trace]]
   #+BEGIN_SRC sql
     explain
     select

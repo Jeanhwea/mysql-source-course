@@ -1,0 +1,70 @@
+{
+  "query_block": {
+    "select_id": 1,
+    "cost_info": {
+      "query_cost": "124440.10"
+    },
+    "nested_loop": [
+      {
+        "table": {
+          "table_name": "e",
+          "access_type": "ALL",
+          "possible_keys": [
+            "PRIMARY"
+          ],
+          "rows_examined_per_scan": 276023,
+          "rows_produced_per_join": 276023,
+          "filtered": "100.00",
+          "cost_info": {
+            "read_cost": "229.75",
+            "eval_cost": "27602.30",
+            "prefix_cost": "27832.05",
+            "data_read_per_join": "35M"
+          },
+          "used_columns": [
+            "emp_no",
+            "birth_date",
+            "first_name",
+            "last_name",
+            "gender",
+            "hire_date"
+          ]
+        }
+      },
+      {
+        "table": {
+          "table_name": "a",
+          "access_type": "ref",
+          "possible_keys": [
+            "PRIMARY",
+            "dept_no"
+          ],
+          "key": "PRIMARY",
+          "used_key_parts": [
+            "emp_no"
+          ],
+          "key_length": "4",
+          "ref": [
+            "employees.e.emp_no"
+          ],
+          "rows_examined_per_scan": 1,
+          "rows_produced_per_join": 276023,
+          "filtered": "83.33",
+          "using_index": true,
+          "first_match": "e",
+          "cost_info": {
+            "read_cost": "69005.75",
+            "eval_cost": "27602.30",
+            "prefix_cost": "124440.10",
+            "data_read_per_join": "8M"
+          },
+          "used_columns": [
+            "emp_no",
+            "dept_no"
+          ],
+          "attached_condition": "(`employees`.`a`.`dept_no` >= 'd003')"
+        }
+      }
+    ]
+  }
+}

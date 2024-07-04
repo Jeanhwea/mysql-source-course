@@ -1,0 +1,366 @@
+{
+  "steps": [
+    {
+      "join_preparation": {
+        "select#": 1,
+        "steps": [
+          {
+            "join_preparation": {
+              "select#": 2,
+              "steps": [
+                {
+                  "expanded_query": "/* select#2 */ select `a`.`emp_no` from `dept_manager` `a` where (`a`.`dept_no` >= 'd003')"
+                }
+              ]
+            }
+          },
+          {
+            "expanded_query": "/* select#1 */ select /*+ SEMIJOIN(@`select#2` DUPSWEEDOUT) */ `e`.`emp_no` AS `emp_no`,`e`.`birth_date` AS `birth_date`,`e`.`first_name` AS `first_name`,`e`.`last_name` AS `last_name`,`e`.`gender` AS `gender`,`e`.`hire_date` AS `hire_date` from `employees` `e` where `e`.`emp_no` in (/* select#2 */ select `a`.`emp_no` from `dept_manager` `a` where (`a`.`dept_no` >= 'd003'))"
+          },
+          {
+            "transformation": {
+              "select#": 2,
+              "from": "IN (SELECT)",
+              "to": "semijoin",
+              "chosen": true,
+              "transformation_to_semi_join": {
+                "subquery_predicate": "`e`.`emp_no` in (/* select#2 */ select `a`.`emp_no` from `dept_manager` `a` where (`a`.`dept_no` >= 'd003'))",
+                "embedded in": "WHERE",
+                "evaluating_constant_semijoin_conditions": [],
+                "semi-join condition": "((`a`.`dept_no` >= 'd003') and (`e`.`emp_no` = `a`.`emp_no`))",
+                "decorrelated_predicates": [
+                  {
+                    "outer": "`e`.`emp_no`",
+                    "inner": "`a`.`emp_no`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "transformations_to_nested_joins": {
+              "transformations": [
+                "semijoin"
+              ],
+              "expanded_query": "/* select#1 */ select /*+ SEMIJOIN(@`select#2` DUPSWEEDOUT) */ `e`.`emp_no` AS `emp_no`,`e`.`birth_date` AS `birth_date`,`e`.`first_name` AS `first_name`,`e`.`last_name` AS `last_name`,`e`.`gender` AS `gender`,`e`.`hire_date` AS `hire_date` from `employees` `e` semi join (`dept_manager` `a`) where ((`a`.`dept_no` >= 'd003') and (`e`.`emp_no` = `a`.`emp_no`))"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "join_optimization": {
+        "select#": 1,
+        "steps": [
+          {
+            "condition_processing": {
+              "condition": "WHERE",
+              "original_condition": "((`a`.`dept_no` >= 'd003') and (`e`.`emp_no` = `a`.`emp_no`))",
+              "steps": [
+                {
+                  "transformation": "equality_propagation",
+                  "resulting_condition": "((`a`.`dept_no` >= 'd003') and multiple equal(`e`.`emp_no`, `a`.`emp_no`))"
+                },
+                {
+                  "transformation": "constant_propagation",
+                  "resulting_condition": "((`a`.`dept_no` >= 'd003') and multiple equal(`e`.`emp_no`, `a`.`emp_no`))"
+                },
+                {
+                  "transformation": "trivial_condition_removal",
+                  "resulting_condition": "((`a`.`dept_no` >= 'd003') and multiple equal(`e`.`emp_no`, `a`.`emp_no`))"
+                }
+              ]
+            }
+          },
+          {
+            "substitute_generated_columns": {}
+          },
+          {
+            "table_dependencies": [
+              {
+                "table": "`employees` `e`",
+                "row_may_be_null": false,
+                "map_bit": 0,
+                "depends_on_map_bits": []
+              },
+              {
+                "table": "`dept_manager` `a`",
+                "row_may_be_null": false,
+                "map_bit": 1,
+                "depends_on_map_bits": []
+              }
+            ]
+          },
+          {
+            "ref_optimizer_key_uses": [
+              {
+                "table": "`employees` `e`",
+                "field": "emp_no",
+                "equals": "`a`.`emp_no`",
+                "null_rejecting": true
+              },
+              {
+                "table": "`dept_manager` `a`",
+                "field": "emp_no",
+                "equals": "`e`.`emp_no`",
+                "null_rejecting": true
+              }
+            ]
+          },
+          {
+            "pulled_out_semijoin_tables": []
+          },
+          {
+            "rows_estimation": [
+              {
+                "table": "`employees` `e`",
+                "table_scan": {
+                  "rows": 276023,
+                  "cost": 229.749
+                }
+              },
+              {
+                "table": "`dept_manager` `a`",
+                "range_analysis": {
+                  "table_scan": {
+                    "rows": 24,
+                    "cost": 4.75
+                  },
+                  "potential_range_indexes": [
+                    {
+                      "index": "PRIMARY",
+                      "usable": false,
+                      "cause": "not_applicable"
+                    },
+                    {
+                      "index": "dept_no",
+                      "usable": true,
+                      "key_parts": [
+                        "dept_no",
+                        "emp_no"
+                      ]
+                    }
+                  ],
+                  "best_covering_index_scan": {
+                    "index": "dept_no",
+                    "cost": 2.67522,
+                    "chosen": true
+                  },
+                  "setup_range_conditions": [],
+                  "group_index_range": {
+                    "chosen": false,
+                    "cause": "not_single_table"
+                  },
+                  "skip_scan_range": {
+                    "chosen": false,
+                    "cause": "not_single_table"
+                  },
+                  "analyzing_range_alternatives": {
+                    "range_scan_alternatives": [
+                      {
+                        "index": "dept_no",
+                        "ranges": [
+                          "'d003' <= dept_no"
+                        ],
+                        "index_dives_for_eq_ranges": true,
+                        "rowid_ordered": false,
+                        "using_mrr": false,
+                        "index_only": true,
+                        "in_memory": 1,
+                        "rows": 20,
+                        "cost": 2.28083,
+                        "chosen": true
+                      }
+                    ],
+                    "analyzing_roworder_intersect": {
+                      "usable": false,
+                      "cause": "too_few_roworder_scans"
+                    }
+                  },
+                  "chosen_range_access_summary": {
+                    "range_access_plan": {
+                      "type": "range_scan",
+                      "index": "dept_no",
+                      "rows": 20,
+                      "ranges": [
+                        "'d003' <= dept_no"
+                      ]
+                    },
+                    "rows_for_plan": 20,
+                    "cost_for_plan": 2.28083,
+                    "chosen": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "considered_execution_plans": [
+              {
+                "plan_prefix": [],
+                "table": "`dept_manager` `a`",
+                "best_access_path": {
+                  "considered_access_paths": [
+                    {
+                      "access_type": "ref",
+                      "index": "PRIMARY",
+                      "usable": false,
+                      "chosen": false
+                    },
+                    {
+                      "rows_to_scan": 20,
+                      "filtering_effect": [],
+                      "final_filtering_effect": 1,
+                      "access_type": "range",
+                      "range_details": {
+                        "used_index": "dept_no"
+                      },
+                      "resulting_rows": 20,
+                      "cost": 4.28083,
+                      "chosen": true
+                    }
+                  ]
+                },
+                "condition_filtering_pct": 100,
+                "rows_for_plan": 20,
+                "cost_for_plan": 4.28083,
+                "semijoin_strategy_choice": [],
+                "rest_of_plan": [
+                  {
+                    "plan_prefix": [
+                      "`dept_manager` `a`"
+                    ],
+                    "table": "`employees` `e`",
+                    "best_access_path": {
+                      "considered_access_paths": [
+                        {
+                          "access_type": "eq_ref",
+                          "index": "PRIMARY",
+                          "rows": 1,
+                          "cost": 7.31212,
+                          "chosen": true,
+                          "cause": "clustered_pk_chosen_by_heuristics"
+                        },
+                        {
+                          "access_type": "scan",
+                          "cost": 27832,
+                          "rows": 276023,
+                          "chosen": false,
+                          "cause": "cost"
+                        }
+                      ]
+                    },
+                    "condition_filtering_pct": 100,
+                    "rows_for_plan": 20,
+                    "cost_for_plan": 11.593,
+                    "semijoin_strategy_choice": [
+                      {
+                        "strategy": "DuplicatesWeedout",
+                        "cost": 16.593,
+                        "rows": 20,
+                        "duplicate_tables_left": true,
+                        "chosen": true
+                      }
+                    ],
+                    "chosen": true
+                  }
+                ]
+              },
+              {
+                "plan_prefix": [],
+                "table": "`employees` `e`",
+                "best_access_path": {
+                  "considered_access_paths": [
+                    {
+                      "access_type": "ref",
+                      "index": "PRIMARY",
+                      "usable": false,
+                      "chosen": false
+                    },
+                    {
+                      "rows_to_scan": 276023,
+                      "filtering_effect": [],
+                      "final_filtering_effect": 1,
+                      "access_type": "scan",
+                      "resulting_rows": 276023,
+                      "cost": 27832,
+                      "chosen": true
+                    }
+                  ]
+                },
+                "condition_filtering_pct": 100,
+                "rows_for_plan": 276023,
+                "cost_for_plan": 27832,
+                "semijoin_strategy_choice": [],
+                "pruned_by_cost": true
+              },
+              {
+                "final_semijoin_strategy": "DuplicateWeedout"
+              }
+            ]
+          },
+          {
+            "attaching_conditions_to_tables": {
+              "original_condition": "((`e`.`emp_no` = `a`.`emp_no`) and (`a`.`dept_no` >= 'd003'))",
+              "attached_conditions_computation": [],
+              "attached_conditions_summary": [
+                {
+                  "table": "`dept_manager` `a`",
+                  "attached": "(`a`.`dept_no` >= 'd003')"
+                },
+                {
+                  "table": "`employees` `e`",
+                  "attached": "(`e`.`emp_no` = `a`.`emp_no`)"
+                }
+              ]
+            }
+          },
+          {
+            "finalizing_table_conditions": [
+              {
+                "table": "`dept_manager` `a`",
+                "original_table_condition": "(`a`.`dept_no` >= 'd003')",
+                "final_table_condition   ": "(`a`.`dept_no` >= 'd003')"
+              },
+              {
+                "table": "`employees` `e`",
+                "original_table_condition": "(`e`.`emp_no` = `a`.`emp_no`)",
+                "final_table_condition   ": null
+              }
+            ]
+          },
+          {
+            "refine_plan": [
+              {
+                "creating_tmp_table": {
+                  "tmp_table_info": {
+                    "table": "weedout-tmp",
+                    "columns": 1,
+                    "row_length": 6,
+                    "key_length": 4,
+                    "unique_constraint": false,
+                    "makes_grouped_rows": false,
+                    "cannot_insert_duplicates": false,
+                    "location": "TempTable"
+                  }
+                }
+              },
+              {
+                "table": "`dept_manager` `a`"
+              },
+              {
+                "table": "`employees` `e`"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "join_execution": {
+        "select#": 1,
+        "steps": []
+      }
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "query_block": {
     "select_id": 1,
     "cost_info": {
-      "query_cost": "25.06"
+      "query_cost": "10.39"
     },
     "nested_loop": [
       {
@@ -56,9 +56,9 @@
           "rows_produced_per_join": 1,
           "filtered": "100.00",
           "cost_info": {
-            "read_cost": "19.98",
+            "read_cost": "5.31",
             "eval_cost": "0.10",
-            "prefix_cost": "25.06",
+            "prefix_cost": "10.39",
             "data_read_per_join": "136"
           },
           "used_columns": [

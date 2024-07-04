@@ -1,0 +1,83 @@
+{
+  "query_block": {
+    "select_id": 1,
+    "cost_info": {
+      "query_cost": "16.59"
+    },
+    "nested_loop": [
+      {
+        "table": {
+          "table_name": "<subquery2>",
+          "access_type": "ALL",
+          "materialized_from_subquery": {
+            "using_temporary_table": true,
+            "query_block": {
+              "table": {
+                "table_name": "a",
+                "access_type": "range",
+                "possible_keys": [
+                  "PRIMARY",
+                  "dept_no"
+                ],
+                "key": "dept_no",
+                "used_key_parts": [
+                  "dept_no"
+                ],
+                "key_length": "16",
+                "rows_examined_per_scan": 20,
+                "rows_produced_per_join": 20,
+                "filtered": "100.00",
+                "using_index": true,
+                "cost_info": {
+                  "read_cost": "2.28",
+                  "eval_cost": "2.00",
+                  "prefix_cost": "4.28",
+                  "data_read_per_join": "640"
+                },
+                "used_columns": [
+                  "emp_no",
+                  "dept_no"
+                ],
+                "attached_condition": "(`employees`.`a`.`dept_no` >= 'd003')"
+              }
+            }
+          }
+        }
+      },
+      {
+        "table": {
+          "table_name": "e",
+          "access_type": "eq_ref",
+          "possible_keys": [
+            "PRIMARY"
+          ],
+          "key": "PRIMARY",
+          "used_key_parts": [
+            "emp_no"
+          ],
+          "key_length": "4",
+          "ref": [
+            "<subquery2>.emp_no"
+          ],
+          "rows_examined_per_scan": 1,
+          "rows_produced_per_join": 1,
+          "filtered": "100.00",
+          "cost_info": {
+            "read_cost": "0.27",
+            "eval_cost": "0.10",
+            "prefix_cost": "16.59",
+            "data_read_per_join": "136"
+          },
+          "used_columns": [
+            "emp_no",
+            "birth_date",
+            "first_name",
+            "last_name",
+            "gender",
+            "hire_date"
+          ]
+        }
+      }
+    ]
+  }
+}

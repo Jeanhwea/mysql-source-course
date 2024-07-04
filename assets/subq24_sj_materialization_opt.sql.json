@@ -15,7 +15,7 @@
             }
           },
           {
-            "expanded_query": "/* select#1 */ select `e`.`emp_no` AS `emp_no`,`e`.`birth_date` AS `birth_date`,`e`.`first_name` AS `first_name`,`e`.`last_name` AS `last_name`,`e`.`gender` AS `gender`,`e`.`hire_date` AS `hire_date` from `employees` `e` where `e`.`emp_no` in (/* select#2 */ select `a`.`emp_no` from `dept_manager` `a` where (`a`.`dept_no` >= 'd003'))"
+            "expanded_query": "/* select#1 */ select /*+ SEMIJOIN(@`select#2` MATERIALIZATION) */ `e`.`emp_no` AS `emp_no`,`e`.`birth_date` AS `birth_date`,`e`.`first_name` AS `first_name`,`e`.`last_name` AS `last_name`,`e`.`gender` AS `gender`,`e`.`hire_date` AS `hire_date` from `employees` `e` where `e`.`emp_no` in (/* select#2 */ select `a`.`emp_no` from `dept_manager` `a` where (`a`.`dept_no` >= 'd003'))"
           },
           {
             "transformation": {
@@ -42,7 +42,7 @@
               "transformations": [
                 "semijoin"
               ],
-              "expanded_query": "/* select#1 */ select `e`.`emp_no` AS `emp_no`,`e`.`birth_date` AS `birth_date`,`e`.`first_name` AS `first_name`,`e`.`last_name` AS `last_name`,`e`.`gender` AS `gender`,`e`.`hire_date` AS `hire_date` from `employees` `e` semi join (`dept_manager` `a`) where ((`a`.`dept_no` >= 'd003') and (`e`.`emp_no` = `a`.`emp_no`))"
+              "expanded_query": "/* select#1 */ select /*+ SEMIJOIN(@`select#2` MATERIALIZATION) */ `e`.`emp_no` AS `emp_no`,`e`.`birth_date` AS `birth_date`,`e`.`first_name` AS `first_name`,`e`.`last_name` AS `last_name`,`e`.`gender` AS `gender`,`e`.`hire_date` AS `hire_date` from `employees` `e` semi join (`dept_manager` `a`) where ((`a`.`dept_no` >= 'd003') and (`e`.`emp_no` = `a`.`emp_no`))"
             }
           }
         ]
@@ -116,7 +116,7 @@
                 "table": "`employees` `e`",
                 "table_scan": {
                   "rows": 276023,
-                  "cost": 864.206
+                  "cost": 229.749
                 }
               },
               {
@@ -282,13 +282,13 @@
                           "access_type": "eq_ref",
                           "index": "PRIMARY",
                           "rows": 1,
-                          "cost": 21.9816,
+                          "cost": 7.31212,
                           "chosen": true,
                           "cause": "clustered_pk_chosen_by_heuristics"
                         },
                         {
                           "access_type": "scan",
-                          "cost": 28466.5,
+                          "cost": 27832,
                           "rows": 276023,
                           "chosen": false,
                           "cause": "cost"
@@ -297,56 +297,8 @@
                     },
                     "condition_filtering_pct": 100,
                     "rows_for_plan": 20,
-                    "cost_for_plan": 26.2625,
+                    "cost_for_plan": 11.593,
                     "semijoin_strategy_choice": [
-                      {
-                        "strategy": "LooseScan",
-                        "recalculate_access_paths_and_cost": {
-                          "tables": [
-                            {
-                              "table": "`dept_manager` `a`",
-                              "best_access_path": {
-                                "considered_access_paths": [
-                                  {
-                                    "access_type": "ref",
-                                    "index": "PRIMARY",
-                                    "usable": false,
-                                    "chosen": false
-                                  },
-                                  {
-                                    "rows_to_scan": 20,
-                                    "filtering_effect": [],
-                                    "final_filtering_effect": 1,
-                                    "access_type": "range",
-                                    "range_details": {
-                                      "used_index": "dept_no"
-                                    },
-                                    "resulting_rows": 20,
-                                    "cost": 4.28083,
-                                    "chosen": true
-                                  }
-                                ]
-                              },
-                              "unknown_key_1": {
-                                "searching_loose_scan_index": {
-                                  "indexes": [
-                                    {
-                                      "index": "PRIMARY",
-                                      "covering_scan": {
-                                        "cost": 0.278049,
-                                        "chosen": true
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            }
-                          ]
-                        },
-                        "cost": 25.0597,
-                        "rows": 1,
-                        "chosen": true
-                      },
                       {
                         "strategy": "MaterializeScan",
                         "recalculate_access_paths_and_cost": {
@@ -359,13 +311,13 @@
                                     "access_type": "eq_ref",
                                     "index": "PRIMARY",
                                     "rows": 1,
-                                    "cost": 21.9816,
+                                    "cost": 7.31212,
                                     "chosen": true,
                                     "cause": "clustered_pk_chosen_by_heuristics"
                                   },
                                   {
                                     "access_type": "scan",
-                                    "cost": 28466.5,
+                                    "cost": 27832,
                                     "rows": 276023,
                                     "chosen": false,
                                     "cause": "cost"
@@ -375,14 +327,14 @@
                             }
                           ]
                         },
-                        "cost": 31.2625,
+                        "cost": 16.593,
                         "rows": 1,
-                        "duplicate_tables_left": false,
-                        "chosen": false
+                        "duplicate_tables_left": true,
+                        "chosen": true
                       },
                       {
                         "strategy": "DuplicatesWeedout",
-                        "cost": 31.2625,
+                        "cost": 16.593,
                         "rows": 20,
                         "duplicate_tables_left": false,
                         "chosen": false
@@ -409,57 +361,41 @@
                       "final_filtering_effect": 1,
                       "access_type": "scan",
                       "resulting_rows": 276023,
-                      "cost": 28466.5,
+                      "cost": 27832,
                       "chosen": true
                     }
                   ]
                 },
                 "condition_filtering_pct": 100,
                 "rows_for_plan": 276023,
-                "cost_for_plan": 28466.5,
+                "cost_for_plan": 27832,
                 "semijoin_strategy_choice": [],
                 "pruned_by_cost": true
               },
               {
-                "final_semijoin_strategy": "LooseScan",
+                "final_semijoin_strategy": "MaterializeScan",
                 "recalculate_access_paths_and_cost": {
                   "tables": [
                     {
-                      "table": "`dept_manager` `a`",
+                      "table": "`employees` `e`",
                       "best_access_path": {
                         "considered_access_paths": [
                           {
-                            "access_type": "ref",
+                            "access_type": "eq_ref",
                             "index": "PRIMARY",
-                            "usable": false,
-                            "chosen": false
+                            "rows": 1,
+                            "cost": 2.26561,
+                            "chosen": true,
+                            "cause": "clustered_pk_chosen_by_heuristics"
                           },
                           {
-                            "rows_to_scan": 20,
-                            "filtering_effect": [],
-                            "final_filtering_effect": 1,
-                            "access_type": "range",
-                            "range_details": {
-                              "used_index": "dept_no"
-                            },
-                            "resulting_rows": 20,
-                            "cost": 4.28083,
-                            "chosen": true
+                            "access_type": "scan",
+                            "cost": 27832,
+                            "rows": 276023,
+                            "chosen": false,
+                            "cause": "cost"
                           }
                         ]
-                      },
-                      "unknown_key_2": {
-                        "searching_loose_scan_index": {
-                          "indexes": [
-                            {
-                              "index": "PRIMARY",
-                              "covering_scan": {
-                                "cost": 0.278049,
-                                "chosen": true
-                              }
-                            }
-                          ]
-                        }
                       }
                     }
                   ]
@@ -468,17 +404,120 @@
             ]
           },
           {
+            "creating_tmp_table": {
+              "tmp_table_info": {
+                "table": "<subquery2>",
+                "columns": 1,
+                "row_length": 5,
+                "key_length": 4,
+                "unique_constraint": false,
+                "makes_grouped_rows": false,
+                "cannot_insert_duplicates": true,
+                "location": "TempTable"
+              }
+            }
+          },
+          {
             "attaching_conditions_to_tables": {
-              "original_condition": "((`e`.`emp_no` = `a`.`emp_no`) and (`a`.`dept_no` >= 'd003'))",
-              "attached_conditions_computation": [],
-              "attached_conditions_summary": [
+              "original_condition": "((`e`.`emp_no` = `<subquery2>`.`emp_no`) and (`a`.`dept_no` >= 'd003'))",
+              "attached_conditions_computation": [
                 {
                   "table": "`dept_manager` `a`",
-                  "attached": "(`a`.`dept_no` >= 'd003')"
+                  "rechecking_index_usage": {
+                    "recheck_reason": "not_first_table",
+                    "range_analysis": {
+                      "table_scan": {
+                        "rows": 24,
+                        "cost": 4.75
+                      },
+                      "potential_range_indexes": [
+                        {
+                          "index": "PRIMARY",
+                          "usable": true,
+                          "key_parts": [
+                            "emp_no",
+                            "dept_no"
+                          ]
+                        },
+                        {
+                          "index": "dept_no",
+                          "usable": true,
+                          "key_parts": [
+                            "dept_no",
+                            "emp_no"
+                          ]
+                        }
+                      ],
+                      "best_covering_index_scan": {
+                        "index": "dept_no",
+                        "cost": 2.67522,
+                        "chosen": true
+                      },
+                      "setup_range_conditions": [],
+                      "group_index_range": {
+                        "chosen": false,
+                        "cause": "not_single_table"
+                      },
+                      "skip_scan_range": {
+                        "chosen": false,
+                        "cause": "not_single_table"
+                      },
+                      "analyzing_range_alternatives": {
+                        "range_scan_alternatives": [
+                          {
+                            "index": "PRIMARY",
+                            "chosen": false,
+                            "cause": "no_valid_range_for_this_index"
+                          },
+                          {
+                            "index": "dept_no",
+                            "ranges": [
+                              "'d003' <= dept_no"
+                            ],
+                            "index_dives_for_eq_ranges": true,
+                            "rowid_ordered": false,
+                            "using_mrr": false,
+                            "index_only": true,
+                            "in_memory": 1,
+                            "rows": 20,
+                            "cost": 2.28083,
+                            "chosen": true
+                          }
+                        ],
+                        "analyzing_roworder_intersect": {
+                          "usable": false,
+                          "cause": "too_few_roworder_scans"
+                        }
+                      },
+                      "chosen_range_access_summary": {
+                        "range_access_plan": {
+                          "type": "range_scan",
+                          "index": "dept_no",
+                          "rows": 20,
+                          "ranges": [
+                            "'d003' <= dept_no"
+                          ]
+                        },
+                        "rows_for_plan": 20,
+                        "cost_for_plan": 2.28083,
+                        "chosen": true
+                      }
+                    }
+                  }
+                }
+              ],
+              "attached_conditions_summary": [
+                {
+                  "table": "`<subquery2>`",
+                  "attached": null
                 },
                 {
                   "table": "`employees` `e`",
-                  "attached": "(`e`.`emp_no` = `a`.`emp_no`)"
+                  "attached": "(`e`.`emp_no` = `<subquery2>`.`emp_no`)"
+                },
+                {
+                  "table": "`dept_manager` `a`",
+                  "attached": "(`a`.`dept_no` >= 'd003')"
                 }
               ]
             }
@@ -486,24 +525,27 @@
           {
             "finalizing_table_conditions": [
               {
+                "table": "`employees` `e`",
+                "original_table_condition": "(`e`.`emp_no` = `<subquery2>`.`emp_no`)",
+                "final_table_condition   ": null
+              },
+              {
                 "table": "`dept_manager` `a`",
                 "original_table_condition": "(`a`.`dept_no` >= 'd003')",
                 "final_table_condition   ": "(`a`.`dept_no` >= 'd003')"
-              },
-              {
-                "table": "`employees` `e`",
-                "original_table_condition": "(`e`.`emp_no` = `a`.`emp_no`)",
-                "final_table_condition   ": null
               }
             ]
           },
           {
             "refine_plan": [
               {
-                "table": "`dept_manager` `a`"
+                "table": "`<subquery2>`"
               },
               {
                 "table": "`employees` `e`"
+              },
+              {
+                "table": "`dept_manager` `a`"
               }
             ]
           }
@@ -513,7 +555,14 @@
     {
       "join_execution": {
         "select#": 1,
-        "steps": []
+        "steps": [
+          {
+            "materialize": {
+              "select#": 1,
+              "steps": []
+            }
+          }
+        ]
       }
     }
   ]

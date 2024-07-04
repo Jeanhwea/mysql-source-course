@@ -1,0 +1,66 @@
+{
+  "query_block": {
+    "select_id": 1,
+    "cost_info": {
+      "query_cost": "8.05"
+    },
+    "duplicates_removal": {
+      "using_temporary_table": true,
+      "nested_loop": [
+        {
+          "table": {
+            "table_name": "a",
+            "access_type": "ALL",
+            "possible_keys": [
+              "dept_no"
+            ],
+            "rows_examined_per_scan": 24,
+            "rows_produced_per_join": 7,
+            "filtered": "33.33",
+            "cost_info": {
+              "read_cost": "1.85",
+              "eval_cost": "0.80",
+              "prefix_cost": "2.65",
+              "data_read_per_join": "255"
+            },
+            "used_columns": [
+              "dept_no",
+              "from_date"
+            ],
+            "attached_condition": "(`employees`.`a`.`from_date` >= DATE'1995-01-01')"
+          }
+        },
+        {
+          "table": {
+            "table_name": "d",
+            "access_type": "eq_ref",
+            "possible_keys": [
+              "PRIMARY"
+            ],
+            "key": "PRIMARY",
+            "used_key_parts": [
+              "dept_no"
+            ],
+            "key_length": "16",
+            "ref": [
+              "employees.a.dept_no"
+            ],
+            "rows_examined_per_scan": 1,
+            "rows_produced_per_join": 7,
+            "filtered": "100.00",
+            "cost_info": {
+              "read_cost": "2.00",
+              "eval_cost": "0.80",
+              "prefix_cost": "8.05",
+              "data_read_per_join": "1K"
+            },
+            "used_columns": [
+              "dept_no",
+              "dept_name"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
