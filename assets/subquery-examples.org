@@ -133,7 +133,7 @@
   |  1 | SIMPLE       | <subquery2> | NULL       | eq_ref | <auto_distinct_key> | <auto_distinct_key> |      16 | employees.d.dept_no |    1 |   100.00 | NULL        |
   |  2 | MATERIALIZED | a           | NULL       | ALL    | dept_no             | NULL                |    NULL | NULL                |   24 |    33.33 | Using where |
 
-** subq10 - DuplicateWeedout
+** subq11 - DuplicateWeedout
 - [[file:subq11_sj_duplicate-weedout_exp.sql.json][exp_json]] | [[file:subq11_sj_duplicate-weedout_opt.sql.json][opt_trace]]
   #+BEGIN_SRC sql
     explain
@@ -159,7 +159,7 @@
   |  1 | SIMPLE      | a     | NULL       | ALL    | dept_no       | NULL    | NULL    | NULL                |   24 |    33.33 | Using where; Start temporary |
   |  1 | SIMPLE      | d     | NULL       | eq_ref | PRIMARY       | PRIMARY | 16      | employees.a.dept_no |    1 |   100.00 | End temporary                |
 
-** subq10 - FirstMatch
+** subq12 - FirstMatch
 - [[file:subq12_sj_first-match_exp.sql.json][exp_json]] | [[file:subq12_sj_first-match_opt.sql.json][opt_trace]]
   #+BEGIN_SRC sql
     explain
@@ -179,7 +179,7 @@
           a.from_date >= '1995-01-01');
   #+END_SRC
 
-** subq10 - LooseScan
+** subq13 - LooseScan
 - [[file:subq13_sj_loose-scan_exp.sql.json][exp_json]] | [[file:subq13_sj_loose-scan_opt.sql.json][opt_trace]]
   #+BEGIN_SRC sql
     explain
@@ -205,7 +205,7 @@
   |  1 | SIMPLE      | a     | NULL       | ALL    | dept_no       | NULL    | NULL    | NULL                |   24 |    33.33 | Using where; Start temporary |
   |  1 | SIMPLE      | d     | NULL       | eq_ref | PRIMARY       | PRIMARY | 16      | employees.a.dept_no |    1 |   100.00 | End temporary                |
 
-** subq10 - Materialize
+** subq14 - Materialize
 - [[file:subq14_sj_materialization_exp.sql.json][exp_json]] | [[file:subq14_sj_materialization_opt.sql.json][opt_trace]]
   #+BEGIN_SRC sql
     explain
@@ -257,7 +257,7 @@
   |  1 | SIMPLE      | a     | NULL       | index  | PRIMARY,dept_no | PRIMARY |      20 | NULL               |   24 |   100.00 | Using where; Using index; LooseScan |
   |  1 | SIMPLE      | e     | NULL       | eq_ref | PRIMARY         | PRIMARY |       4 | employees.a.emp_no |    1 |   100.00 | NULL                                |
 
-** subq20 - DuplicateWeedout
+** subq21 - DuplicateWeedout
 - [[file:subq21_sj_duplicate-weedout_exp.sql.json][exp_json]] | [[file:subq21_sj_duplicate-weedout_opt.sql.json][opt_trace]]
   #+BEGIN_SRC sql
     explain
@@ -282,7 +282,7 @@
   |  1 | SIMPLE      | a     | NULL       | range  | PRIMARY,dept_no | dept_no |      16 | NULL               |   20 |   100.00 | Using where; Using index; Start temporary |
   |  1 | SIMPLE      | e     | NULL       | eq_ref | PRIMARY         | PRIMARY |       4 | employees.a.emp_no |    1 |   100.00 | End temporary                             |
 
-** subq20 - FirstMatch
+** subq22 - FirstMatch
 - [[file:subq22_sj_first-match_exp.sql.json][exp_json]]
   #+BEGIN_SRC sql
     explain
@@ -307,7 +307,7 @@
   |  1 | SIMPLE      | e     | NULL       | ALL  | PRIMARY         | NULL    | NULL    | NULL               | 276023 |   100.00 | NULL                                    |
   |  1 | SIMPLE      | a     | NULL       | ref  | PRIMARY,dept_no | PRIMARY | 4       | employees.e.emp_no |      1 |    83.33 | Using where; Using index; FirstMatch(e) |
 
-** subq20 - LooseScan
+** subq23 - LooseScan
 - [[file:subq23_sj_loose-scan_exp.sql.json][exp_json]] | [[file:subq23_sj_loose-scan_opt.sql.json][opt_trace]]
   #+BEGIN_SRC sql
     explain
@@ -332,7 +332,7 @@
   |  1 | SIMPLE      | a     | NULL       | index  | PRIMARY,dept_no | PRIMARY |      20 | NULL               |   24 |   100.00 | Using where; Using index; LooseScan |
   |  1 | SIMPLE      | e     | NULL       | eq_ref | PRIMARY         | PRIMARY |       4 | employees.a.emp_no |    1 |   100.00 | NULL                                |
 
-** subq20 - Materialize
+** subq24 - Materialize
 - [[file:subq24_sj_materialization_exp.sql.json][exp_json]] | [[file:subq24_sj_materialization_opt.sql.json][opt_trace]]
   #+BEGIN_SRC sql
     explain
