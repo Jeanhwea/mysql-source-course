@@ -1,0 +1,324 @@
+{
+  "steps": [
+    {
+      "join_preparation": {
+        "select#": 1,
+        "steps": [
+          {
+            "join_preparation": {
+              "select#": 2,
+              "steps": [
+                {
+                  "expanded_query": "/* select#2 */ select `a`.`dept_no` from `dept_manager` `a` where (`a`.`from_date` > '1995-01-01')"
+                }
+              ]
+            }
+          },
+          {
+            "expanded_query": "/* select#1 */ select `d`.`dept_no` AS `dept_no`,`d`.`dept_name` AS `dept_name` from `departments` `d` where `d`.`dept_no` in (/* select#2 */ select `a`.`dept_no` from `dept_manager` `a` where (`a`.`from_date` > '1995-01-01')) is false"
+          },
+          {
+            "transformation": {
+              "select#": 2,
+              "from": "IN (SELECT)",
+              "to": "antijoin",
+              "chosen": true,
+              "transformation_to_semi_join": {
+                "subquery_predicate": "`d`.`dept_no` in (/* select#2 */ select `a`.`dept_no` from `dept_manager` `a` where (`a`.`from_date` > '1995-01-01')) is false",
+                "embedded in": "WHERE",
+                "evaluating_constant_semijoin_conditions": [],
+                "semi-join condition": "((`a`.`from_date` > '1995-01-01') and (`d`.`dept_no` = `a`.`dept_no`))",
+                "decorrelated_predicates": [
+                  {
+                    "outer": "`d`.`dept_no`",
+                    "inner": "`a`.`dept_no`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "transformations_to_nested_joins": {
+              "transformations": [
+                "parenthesis_removal"
+              ],
+              "expanded_query": "/* select#1 */ select `d`.`dept_no` AS `dept_no`,`d`.`dept_name` AS `dept_name` from `departments` `d` anti join (`dept_manager` `a`) on(((`a`.`from_date` > '1995-01-01') and (`d`.`dept_no` = `a`.`dept_no`))) where true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "join_optimization": {
+        "select#": 1,
+        "steps": [
+          {
+            "condition_processing": {
+              "condition": "WHERE",
+              "original_condition": "true",
+              "steps": [
+                {
+                  "transformation": "equality_propagation",
+                  "resulting_condition": "true"
+                },
+                {
+                  "transformation": "constant_propagation",
+                  "resulting_condition": "true"
+                },
+                {
+                  "transformation": "trivial_condition_removal",
+                  "resulting_condition": null
+                }
+              ]
+            }
+          },
+          {
+            "table_dependencies": [
+              {
+                "table": "`departments` `d`",
+                "row_may_be_null": false,
+                "map_bit": 0,
+                "depends_on_map_bits": []
+              },
+              {
+                "table": "`dept_manager` `a`",
+                "row_may_be_null": true,
+                "map_bit": 1,
+                "depends_on_map_bits": [
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "ref_optimizer_key_uses": [
+              {
+                "table": "`dept_manager` `a`",
+                "field": "dept_no",
+                "equals": "`d`.`dept_no`",
+                "null_rejecting": true
+              }
+            ]
+          },
+          {
+            "pulled_out_semijoin_tables": []
+          },
+          {
+            "rows_estimation": [
+              {
+                "table": "`departments` `d`",
+                "table_scan": {
+                  "rows": 9,
+                  "cost": 0.25
+                }
+              },
+              {
+                "table": "`dept_manager` `a`",
+                "table_scan": {
+                  "rows": 24,
+                  "cost": 0.25
+                }
+              }
+            ]
+          },
+          {
+            "execution_plan_for_potential_materialization": {
+              "steps": [
+                {
+                  "considered_execution_plans": [
+                    {
+                      "plan_prefix": [],
+                      "table": "`dept_manager` `a`",
+                      "best_access_path": {
+                        "considered_access_paths": [
+                          {
+                            "access_type": "ref",
+                            "index": "dept_no",
+                            "usable": false,
+                            "chosen": false
+                          },
+                          {
+                            "rows_to_scan": 24,
+                            "access_type": "scan",
+                            "resulting_rows": 24,
+                            "cost": 2.65,
+                            "chosen": true
+                          }
+                        ]
+                      },
+                      "condition_filtering_pct": 100,
+                      "rows_for_plan": 24,
+                      "cost_for_plan": 2.65,
+                      "chosen": true
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "considered_execution_plans": [
+              {
+                "plan_prefix": [],
+                "table": "`departments` `d`",
+                "best_access_path": {
+                  "considered_access_paths": [
+                    {
+                      "rows_to_scan": 9,
+                      "access_type": "scan",
+                      "resulting_rows": 9,
+                      "cost": 1.15,
+                      "chosen": true
+                    }
+                  ]
+                },
+                "condition_filtering_pct": 100,
+                "rows_for_plan": 9,
+                "cost_for_plan": 1.15,
+                "semijoin_strategy_choice": [],
+                "rest_of_plan": [
+                  {
+                    "plan_prefix": [
+                      "`departments` `d`"
+                    ],
+                    "table": "`dept_manager` `a`",
+                    "best_access_path": {
+                      "considered_access_paths": [
+                        {
+                          "access_type": "ref",
+                          "index": "dept_no",
+                          "rows": 2.66667,
+                          "cost": 7.8,
+                          "chosen": true
+                        },
+                        {
+                          "rows_to_scan": 24,
+                          "access_type": "scan",
+                          "using_join_cache": true,
+                          "buffers_needed": 1,
+                          "resulting_rows": 24,
+                          "cost": 21.8515,
+                          "chosen": false
+                        }
+                      ]
+                    },
+                    "condition_filtering_pct": 100,
+                    "rows_for_plan": 24,
+                    "cost_for_plan": 8.95,
+                    "semijoin_strategy_choice": [
+                      {
+                        "strategy": "FirstMatch",
+                        "recalculate_access_paths_and_cost": {
+                          "tables": []
+                        },
+                        "cost": 8.95,
+                        "rows": 9,
+                        "chosen": true
+                      },
+                      {
+                        "strategy": "MaterializeLookup",
+                        "cost": 8.1,
+                        "rows": 9,
+                        "duplicate_tables_left": false,
+                        "chosen": true
+                      },
+                      {
+                        "strategy": "DuplicatesWeedout",
+                        "cost": 13.25,
+                        "rows": 9,
+                        "duplicate_tables_left": false,
+                        "chosen": false
+                      }
+                    ],
+                    "chosen": true
+                  }
+                ]
+              },
+              {
+                "final_semijoin_strategy": "MaterializeLookup"
+              }
+            ]
+          },
+          {
+            "creating_tmp_table": {
+              "tmp_table_info": {
+                "table": "<subquery2>",
+                "columns": 1,
+                "row_length": 17,
+                "key_length": 17,
+                "unique_constraint": false,
+                "makes_grouped_rows": false,
+                "cannot_insert_duplicates": true,
+                "location": "TempTable"
+              }
+            }
+          },
+          {
+            "condition_on_constant_tables": "true",
+            "condition_value": true
+          },
+          {
+            "attaching_conditions_to_tables": {
+              "original_condition": "true",
+              "attached_conditions_computation": [],
+              "attached_conditions_summary": [
+                {
+                  "table": "`departments` `d`",
+                  "attached": null
+                },
+                {
+                  "table": "`<subquery2>`",
+                  "attached": "(<if>(is_not_null_compl(<subquery2>), (`<subquery2>`.`dept_no` = `d`.`dept_no`), true) and <if>(is_not_null_compl(<subquery2>), <if>(found_match(<subquery2>), false, true), true))"
+                },
+                {
+                  "table": "`dept_manager` `a`",
+                  "attached": "(`a`.`from_date` > '1995-01-01')"
+                }
+              ]
+            }
+          },
+          {
+            "finalizing_table_conditions": [
+              {
+                "table": "`<subquery2>`",
+                "original_table_condition": "(<if>(is_not_null_compl(<subquery2>), (`<subquery2>`.`dept_no` = `d`.`dept_no`), true) and <if>(is_not_null_compl(<subquery2>), <if>(found_match(<subquery2>), false, true), true))",
+                "final_table_condition   ": "<if>(is_not_null_compl(<subquery2>), <if>(found_match(<subquery2>), false, true), true)"
+              },
+              {
+                "table": "`dept_manager` `a`",
+                "original_table_condition": "(`a`.`from_date` > '1995-01-01')",
+                "final_table_condition   ": "(`a`.`from_date` > '1995-01-01')"
+              }
+            ]
+          },
+          {
+            "refine_plan": [
+              {
+                "table": "`departments` `d`"
+              },
+              {
+                "table": "`<subquery2>`"
+              },
+              {
+                "table": "`dept_manager` `a`"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "join_execution": {
+        "select#": 1,
+        "steps": [
+          {
+            "materialize": {
+              "select#": 1,
+              "steps": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

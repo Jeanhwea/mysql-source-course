@@ -1,0 +1,75 @@
+{
+  "query_block": {
+    "select_id": 1,
+    "cost_info": {
+      "query_cost": "8.10"
+    },
+    "nested_loop": [
+      {
+        "table": {
+          "table_name": "d",
+          "access_type": "index",
+          "key": "dept_name",
+          "used_key_parts": [
+            "dept_name"
+          ],
+          "key_length": "162",
+          "rows_examined_per_scan": 9,
+          "rows_produced_per_join": 9,
+          "filtered": "100.00",
+          "using_index": true,
+          "cost_info": {
+            "read_cost": "0.25",
+            "eval_cost": "0.90",
+            "prefix_cost": "1.15",
+            "data_read_per_join": "1K"
+          },
+          "used_columns": [
+            "dept_no",
+            "dept_name"
+          ]
+        }
+      },
+      {
+        "table": {
+          "table_name": "<subquery2>",
+          "access_type": "eq_ref",
+          "key": "<auto_distinct_key>",
+          "key_length": "17",
+          "ref": [
+            "employees.d.dept_no"
+          ],
+          "rows_examined_per_scan": 1,
+          "not_exists": true,
+          "attached_condition": "<if>(is_not_null_compl(<subquery2>), <if>(found_match(<subquery2>), false, true), true)",
+          "materialized_from_subquery": {
+            "using_temporary_table": true,
+            "query_block": {
+              "table": {
+                "table_name": "a",
+                "access_type": "ALL",
+                "possible_keys": [
+                  "dept_no"
+                ],
+                "rows_examined_per_scan": 24,
+                "rows_produced_per_join": 24,
+                "filtered": "100.00",
+                "cost_info": {
+                  "read_cost": "0.25",
+                  "eval_cost": "2.40",
+                  "prefix_cost": "2.65",
+                  "data_read_per_join": "768"
+                },
+                "used_columns": [
+                  "dept_no",
+                  "from_date"
+                ],
+                "attached_condition": "(`employees`.`a`.`from_date` > '1995-01-01')"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

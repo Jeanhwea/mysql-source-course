@@ -1,0 +1,403 @@
+{
+  "steps": [
+    {
+      "join_preparation": {
+        "select#": 1,
+        "steps": [
+          {
+            "join_preparation": {
+              "select#": 2,
+              "steps": [
+                {
+                  "expanded_query": "/* select#2 */ select `employees`.`emp_no` AS `emp_no`,`employees`.`birth_date` AS `birth_date`,`employees`.`first_name` AS `first_name`,`employees`.`last_name` AS `last_name`,`employees`.`gender` AS `gender`,`employees`.`hire_date` AS `hire_date` from `employees` where (`employees`.`emp_no` <= 10100)"
+                }
+              ]
+            }
+          },
+          {
+            "derived": {
+              "table": "`` `emp_100`",
+              "select#": 2,
+              "merged": true
+            }
+          },
+          {
+            "expanded_query": "/* select#1 */ select `t`.`emp_no` AS `emp_no`,`t`.`title` AS `title`,`t`.`from_date` AS `from_date`,`t`.`to_date` AS `to_date`,`employees`.`emp_no` AS `emp_no`,`employees`.`birth_date` AS `birth_date`,`employees`.`first_name` AS `first_name`,`employees`.`last_name` AS `last_name`,`employees`.`gender` AS `gender`,`employees`.`hire_date` AS `hire_date` from `titles` `t` join (`employees`) on((`employees`.`emp_no` <= 10100)) where ((`t`.`emp_no` = `employees`.`emp_no`) and (`t`.`from_date` > '2000-01-01'))"
+          },
+          {
+            "transformations_to_nested_joins": {
+              "transformations": [
+                "JOIN_condition_to_WHERE",
+                "parenthesis_removal"
+              ],
+              "expanded_query": "/* select#1 */ select `t`.`emp_no` AS `emp_no`,`t`.`title` AS `title`,`t`.`from_date` AS `from_date`,`t`.`to_date` AS `to_date`,`employees`.`emp_no` AS `emp_no`,`employees`.`birth_date` AS `birth_date`,`employees`.`first_name` AS `first_name`,`employees`.`last_name` AS `last_name`,`employees`.`gender` AS `gender`,`employees`.`hire_date` AS `hire_date` from `titles` `t` join `employees` where ((`t`.`emp_no` = `employees`.`emp_no`) and (`t`.`from_date` > '2000-01-01') and (`employees`.`emp_no` <= 10100))"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "join_optimization": {
+        "select#": 1,
+        "steps": [
+          {
+            "condition_processing": {
+              "condition": "WHERE",
+              "original_condition": "((`t`.`emp_no` = `employees`.`emp_no`) and (`t`.`from_date` > '2000-01-01') and (`employees`.`emp_no` <= 10100))",
+              "steps": [
+                {
+                  "transformation": "equality_propagation",
+                  "resulting_condition": "((`t`.`from_date` > '2000-01-01') and (`employees`.`emp_no` <= 10100) and multiple equal(`t`.`emp_no`, `employees`.`emp_no`))"
+                },
+                {
+                  "transformation": "constant_propagation",
+                  "resulting_condition": "((`t`.`from_date` > '2000-01-01') and (`employees`.`emp_no` <= 10100) and multiple equal(`t`.`emp_no`, `employees`.`emp_no`))"
+                },
+                {
+                  "transformation": "trivial_condition_removal",
+                  "resulting_condition": "((`t`.`from_date` > DATE'2000-01-01') and (`employees`.`emp_no` <= 10100) and multiple equal(`t`.`emp_no`, `employees`.`emp_no`))"
+                }
+              ]
+            }
+          },
+          {
+            "substitute_generated_columns": {}
+          },
+          {
+            "table_dependencies": [
+              {
+                "table": "`titles` `t`",
+                "row_may_be_null": false,
+                "map_bit": 0,
+                "depends_on_map_bits": []
+              },
+              {
+                "table": "`employees`",
+                "row_may_be_null": false,
+                "map_bit": 1,
+                "depends_on_map_bits": []
+              }
+            ]
+          },
+          {
+            "ref_optimizer_key_uses": [
+              {
+                "table": "`titles` `t`",
+                "field": "emp_no",
+                "equals": "`employees`.`emp_no`",
+                "null_rejecting": true
+              },
+              {
+                "table": "`employees`",
+                "field": "emp_no",
+                "equals": "`t`.`emp_no`",
+                "null_rejecting": true
+              }
+            ]
+          },
+          {
+            "rows_estimation": [
+              {
+                "table": "`titles` `t`",
+                "range_analysis": {
+                  "table_scan": {
+                    "rows": 436865,
+                    "cost": 44119.8
+                  },
+                  "potential_range_indexes": [
+                    {
+                      "index": "PRIMARY",
+                      "usable": true,
+                      "key_parts": [
+                        "emp_no",
+                        "title",
+                        "from_date"
+                      ]
+                    }
+                  ],
+                  "setup_range_conditions": [],
+                  "group_index_range": {
+                    "chosen": false,
+                    "cause": "not_single_table"
+                  },
+                  "skip_scan_range": {
+                    "chosen": false,
+                    "cause": "not_single_table"
+                  },
+                  "analyzing_range_alternatives": {
+                    "range_scan_alternatives": [
+                      {
+                        "index": "PRIMARY",
+                        "ranges": [
+                          "emp_no <= 10100"
+                        ],
+                        "index_dives_for_eq_ranges": true,
+                        "rowid_ordered": true,
+                        "using_mrr": false,
+                        "index_only": false,
+                        "in_memory": 0.849362,
+                        "rows": 151,
+                        "cost": 15.5254,
+                        "chosen": true
+                      }
+                    ],
+                    "analyzing_roworder_intersect": {
+                      "usable": false,
+                      "cause": "too_few_roworder_scans"
+                    }
+                  },
+                  "chosen_range_access_summary": {
+                    "range_access_plan": {
+                      "type": "range_scan",
+                      "index": "PRIMARY",
+                      "rows": 151,
+                      "ranges": [
+                        "emp_no <= 10100"
+                      ]
+                    },
+                    "rows_for_plan": 151,
+                    "cost_for_plan": 15.5254,
+                    "chosen": true
+                  }
+                }
+              },
+              {
+                "table": "`employees`",
+                "range_analysis": {
+                  "table_scan": {
+                    "rows": 276023,
+                    "cost": 27820.7
+                  },
+                  "potential_range_indexes": [
+                    {
+                      "index": "PRIMARY",
+                      "usable": true,
+                      "key_parts": [
+                        "emp_no"
+                      ]
+                    }
+                  ],
+                  "setup_range_conditions": [],
+                  "group_index_range": {
+                    "chosen": false,
+                    "cause": "not_single_table"
+                  },
+                  "skip_scan_range": {
+                    "chosen": false,
+                    "cause": "not_single_table"
+                  },
+                  "analyzing_range_alternatives": {
+                    "range_scan_alternatives": [
+                      {
+                        "index": "PRIMARY",
+                        "ranges": [
+                          "emp_no <= 10100"
+                        ],
+                        "index_dives_for_eq_ranges": true,
+                        "rowid_ordered": true,
+                        "using_mrr": false,
+                        "index_only": false,
+                        "in_memory": 1,
+                        "rows": 100,
+                        "cost": 10.285,
+                        "chosen": true
+                      }
+                    ],
+                    "analyzing_roworder_intersect": {
+                      "usable": false,
+                      "cause": "too_few_roworder_scans"
+                    }
+                  },
+                  "chosen_range_access_summary": {
+                    "range_access_plan": {
+                      "type": "range_scan",
+                      "index": "PRIMARY",
+                      "rows": 100,
+                      "ranges": [
+                        "emp_no <= 10100"
+                      ]
+                    },
+                    "rows_for_plan": 100,
+                    "cost_for_plan": 10.285,
+                    "chosen": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "considered_execution_plans": [
+              {
+                "plan_prefix": [],
+                "table": "`employees`",
+                "best_access_path": {
+                  "considered_access_paths": [
+                    {
+                      "access_type": "ref",
+                      "index": "PRIMARY",
+                      "usable": false,
+                      "chosen": false
+                    },
+                    {
+                      "rows_to_scan": 100,
+                      "filtering_effect": [],
+                      "final_filtering_effect": 1,
+                      "access_type": "range",
+                      "range_details": {
+                        "used_index": "PRIMARY"
+                      },
+                      "resulting_rows": 100,
+                      "cost": 20.285,
+                      "chosen": true
+                    }
+                  ]
+                },
+                "condition_filtering_pct": 100,
+                "rows_for_plan": 100,
+                "cost_for_plan": 20.285,
+                "rest_of_plan": [
+                  {
+                    "plan_prefix": [
+                      "`employees`"
+                    ],
+                    "table": "`titles` `t`",
+                    "best_access_path": {
+                      "considered_access_paths": [
+                        {
+                          "access_type": "ref",
+                          "index": "PRIMARY",
+                          "rows": 1.47277,
+                          "cost": 51.0256,
+                          "chosen": true
+                        },
+                        {
+                          "access_type": "range",
+                          "range_details": {
+                            "used_index": "PRIMARY"
+                          },
+                          "chosen": false,
+                          "cause": "heuristic_index_cheaper"
+                        }
+                      ]
+                    },
+                    "condition_filtering_pct": 100,
+                    "rows_for_plan": 147.277,
+                    "cost_for_plan": 71.3106,
+                    "chosen": true
+                  }
+                ]
+              },
+              {
+                "plan_prefix": [],
+                "table": "`titles` `t`",
+                "best_access_path": {
+                  "considered_access_paths": [
+                    {
+                      "access_type": "ref",
+                      "index": "PRIMARY",
+                      "usable": false,
+                      "chosen": false
+                    },
+                    {
+                      "rows_to_scan": 151,
+                      "filtering_effect": [],
+                      "final_filtering_effect": 0.3333,
+                      "access_type": "range",
+                      "range_details": {
+                        "used_index": "PRIMARY"
+                      },
+                      "resulting_rows": 50.3283,
+                      "cost": 30.6254,
+                      "chosen": true
+                    }
+                  ]
+                },
+                "condition_filtering_pct": 100,
+                "rows_for_plan": 50.3283,
+                "cost_for_plan": 30.6254,
+                "rest_of_plan": [
+                  {
+                    "plan_prefix": [
+                      "`titles` `t`"
+                    ],
+                    "table": "`employees`",
+                    "best_access_path": {
+                      "considered_access_paths": [
+                        {
+                          "access_type": "eq_ref",
+                          "index": "PRIMARY",
+                          "rows": 1,
+                          "cost": 17.6149,
+                          "chosen": true,
+                          "cause": "clustered_pk_chosen_by_heuristics"
+                        },
+                        {
+                          "access_type": "range",
+                          "range_details": {
+                            "used_index": "PRIMARY"
+                          },
+                          "chosen": false,
+                          "cause": "heuristic_index_cheaper"
+                        }
+                      ]
+                    },
+                    "condition_filtering_pct": 100,
+                    "rows_for_plan": 50.3283,
+                    "cost_for_plan": 48.2403,
+                    "chosen": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "attaching_conditions_to_tables": {
+              "original_condition": "((`employees`.`emp_no` = `t`.`emp_no`) and (`t`.`from_date` > DATE'2000-01-01') and (`t`.`emp_no` <= 10100))",
+              "attached_conditions_computation": [],
+              "attached_conditions_summary": [
+                {
+                  "table": "`titles` `t`",
+                  "attached": "((`t`.`from_date` > DATE'2000-01-01') and (`t`.`emp_no` <= 10100))"
+                },
+                {
+                  "table": "`employees`",
+                  "attached": "(`employees`.`emp_no` = `t`.`emp_no`)"
+                }
+              ]
+            }
+          },
+          {
+            "finalizing_table_conditions": [
+              {
+                "table": "`titles` `t`",
+                "original_table_condition": "((`t`.`from_date` > DATE'2000-01-01') and (`t`.`emp_no` <= 10100))",
+                "final_table_condition   ": "((`t`.`from_date` > DATE'2000-01-01') and (`t`.`emp_no` <= 10100))"
+              },
+              {
+                "table": "`employees`",
+                "original_table_condition": "(`employees`.`emp_no` = `t`.`emp_no`)",
+                "final_table_condition   ": null
+              }
+            ]
+          },
+          {
+            "refine_plan": [
+              {
+                "table": "`titles` `t`"
+              },
+              {
+                "table": "`employees`"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "join_execution": {
+        "select#": 1,
+        "steps": []
+      }
+    }
+  ]
+}

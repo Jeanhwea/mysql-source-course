@@ -107,6 +107,57 @@
   |  1 | SIMPLE      | a     | NULL       | ref    | PRIMARY,dept_no | dept_no |      16 | const              |    2 |   100.00 | Using where; Using index |
   |  1 | SIMPLE      | e     | NULL       | eq_ref | PRIMARY         | PRIMARY |       4 | employees.a.emp_no |    1 |   100.00 | NULL                     |
 
+* subq05
+- NOT IN 子查询 | [[file:subq05_not-in_exp.sql.json][exp_json]] | [[file:subq05_not-in_opt.sql.json][opt_trace]]
+  #+BEGIN_SRC sql
+    explain
+    select
+      ,*
+    from
+      departments d
+    where
+      d.dept_no not in (
+        select
+          a.dept_no
+        from
+          dept_manager a
+        where
+          a.from_date > '1995-01-01');
+  #+END_SRC
+
+  #+RESULTS:
+  | id | select_type  | table       | partitions | type   | possible_keys       | key                 | key_len | ref                 | rows | filtered | Extra                   |
+  |----+--------------+-------------+------------+--------+---------------------+---------------------+---------+---------------------+------+----------+-------------------------|
+  |  1 | SIMPLE       | d           | NULL       | index  | NULL                | dept_name           |     162 | NULL                |    9 |   100.00 | Using index             |
+  |  1 | SIMPLE       | <subquery2> | NULL       | eq_ref | <auto_distinct_key> | <auto_distinct_key> |      17 | employees.d.dept_no |    1 |   100.00 | Using where; Not exists |
+  |  2 | MATERIALIZED | a           | NULL       | ALL    | dept_no             | NULL                |    NULL | NULL                |   24 |   100.00 | Using where             |
+
+* subq06
+- 派生表 | [[file:subq06_derived-table_exp.sql.json][exp_json]] | [[file:subq06_derived-table_opt.sql.json][opt_trace]]
+  #+begin_src sql
+    explain
+    select
+      ,*
+    from
+      titles t,
+      (
+        select
+          ,*
+        from
+          employees
+        where
+          emp_no <= 10100) emp_100
+    where
+      t.emp_no = emp_100.emp_no
+      and t.from_date > '2000-01-01';
+  #+END_SRC
+
+  #+RESULTS:
+  | id | select_type | table     | partitions | type   | possible_keys | key     | key_len | ref                | rows | filtered | Extra       |
+  |----+-------------+-----------+------------+--------+---------------+---------+---------+--------------------+------+----------+-------------|
+  |  1 | SIMPLE      | t         | NULL       | range  | PRIMARY       | PRIMARY |       4 | NULL               |  151 |    33.33 | Using where |
+  |  1 | SIMPLE      | employees | NULL       | eq_ref | PRIMARY       | PRIMARY |       4 | employees.t.emp_no |    1 |   100.00 | NULL        |
+
 * subq10
 ** subq10 - Default
 - 默认 [[file:subq10_sj_default_exp.sql.json][exp_json]] | [[file:subq10_sj_default_opt.sql.json][opt_trace]]

@@ -1,0 +1,74 @@
+{
+  "query_block": {
+    "select_id": 1,
+    "cost_info": {
+      "query_cost": "48.24"
+    },
+    "nested_loop": [
+      {
+        "table": {
+          "table_name": "t",
+          "access_type": "range",
+          "possible_keys": [
+            "PRIMARY"
+          ],
+          "key": "PRIMARY",
+          "used_key_parts": [
+            "emp_no"
+          ],
+          "key_length": "4",
+          "rows_examined_per_scan": 151,
+          "rows_produced_per_join": 50,
+          "filtered": "33.33",
+          "cost_info": {
+            "read_cost": "25.59",
+            "eval_cost": "5.03",
+            "prefix_cost": "30.63",
+            "data_read_per_join": "10K"
+          },
+          "used_columns": [
+            "emp_no",
+            "title",
+            "from_date",
+            "to_date"
+          ],
+          "attached_condition": "((`employees`.`t`.`from_date` > DATE'2000-01-01') and (`employees`.`t`.`emp_no` <= 10100))"
+        }
+      },
+      {
+        "table": {
+          "table_name": "employees",
+          "access_type": "eq_ref",
+          "possible_keys": [
+            "PRIMARY"
+          ],
+          "key": "PRIMARY",
+          "used_key_parts": [
+            "emp_no"
+          ],
+          "key_length": "4",
+          "ref": [
+            "employees.t.emp_no"
+          ],
+          "rows_examined_per_scan": 1,
+          "rows_produced_per_join": 50,
+          "filtered": "100.00",
+          "cost_info": {
+            "read_cost": "12.58",
+            "eval_cost": "5.03",
+            "prefix_cost": "48.24",
+            "data_read_per_join": "6K"
+          },
+          "used_columns": [
+            "emp_no",
+            "birth_date",
+            "first_name",
+            "last_name",
+            "gender",
+            "hire_date"
+          ]
+        }
+      }
+    ]
+  }
+}
