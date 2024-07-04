@@ -20,6 +20,7 @@ from
 where
   e.emp_no in (
     select
+      /*+ SEMIJOIN(FIRSTMATCH) */
       a.emp_no
     from
       dept_manager a
