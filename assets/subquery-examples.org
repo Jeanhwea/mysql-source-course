@@ -108,6 +108,7 @@
   |  1 | SIMPLE      | e     | NULL       | eq_ref | PRIMARY         | PRIMARY |       4 | employees.a.emp_no |    1 |   100.00 | NULL                     |
 
 * subq10
+** subq10 - Default
 1. [[https://dev.mysql.com/doc/refman/8.0/en/optimizer-hints.html][hits]]
 - 默认
   #+BEGIN_SRC sql
@@ -133,7 +134,7 @@
   |  1 | SIMPLE       | <subquery2> | NULL       | eq_ref | <auto_distinct_key> | <auto_distinct_key> |      16 | employees.d.dept_no |    1 |   100.00 | NULL        |
   |  2 | MATERIALIZED | a           | NULL       | ALL    | dept_no             | NULL                |    NULL | NULL                |   24 |    33.33 | Using where |
 
-** DuplicateWeedout
+** subq10 - DuplicateWeedout
   #+BEGIN_SRC sql
     explain
 
@@ -158,7 +159,7 @@
   |  1 | SIMPLE      | a     | NULL       | ALL    | dept_no       | NULL    | NULL    | NULL                |   24 |    33.33 | Using where; Start temporary |
   |  1 | SIMPLE      | d     | NULL       | eq_ref | PRIMARY       | PRIMARY | 16      | employees.a.dept_no |    1 |   100.00 | End temporary                |
 
-** FirstMatch
+** subq10 - FirstMatch
 - xx
   #+BEGIN_SRC sql
     explain
@@ -178,8 +179,7 @@
           a.from_date >= '1995-01-01');
   #+END_SRC
 
-
-** LooseScan
+** subq10 - LooseScan
 - xx
   #+BEGIN_SRC sql
     explain
@@ -205,7 +205,7 @@
   |  1 | SIMPLE      | a     | NULL       | ALL    | dept_no       | NULL    | NULL    | NULL                |   24 |    33.33 | Using where; Start temporary |
   |  1 | SIMPLE      | d     | NULL       | eq_ref | PRIMARY       | PRIMARY | 16      | employees.a.dept_no |    1 |   100.00 | End temporary                |
 
-** Materialize
+** subq10 - Materialize
 - xx
   #+BEGIN_SRC sql
     explain
