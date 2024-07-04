@@ -107,6 +107,9 @@
   |  1 | SIMPLE      | a     | NULL       | ref    | PRIMARY,dept_no | dept_no |      16 | const              |    2 |   100.00 | Using where; Using index |
   |  1 | SIMPLE      | e     | NULL       | eq_ref | PRIMARY         | PRIMARY |       4 | employees.a.emp_no |    1 |   100.00 | NULL                     |
 
+* subq10
+1. [[https://dev.mysql.com/doc/refman/8.0/en/optimizer-hints.html][hits]]
+
 * subq11
 - DuplicateWeedout 策略
   #+BEGIN_SRC sql
