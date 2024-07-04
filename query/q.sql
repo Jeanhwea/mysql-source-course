@@ -1,14 +1,27 @@
+explain
 select
-  e.first_name,
-  e.last_name
+  *
 from
   employees e
 where
-  exists (
+  e.emp_no in (
     select
-      *
+      a.emp_no
     from
       dept_manager a
     where
-      a.dept_no = 'd001'
-      and a.emp_no = e.emp_no);
+      a.dept_no >= 'd003');
+
+-- explain
+-- select
+--   *
+-- from
+--   employees e
+-- where
+--   e.emp_no in (
+--     select
+--       a.emp_no
+--     from
+--       dept_manager a
+--     where
+--       a.from_date >= '1995-01-01');
