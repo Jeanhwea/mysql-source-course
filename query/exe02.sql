@@ -4,6 +4,8 @@ select
   e.last_name
 from
   dept_manager x
-  left join employees e using (emp_no)
+  left join
+    employees e
+      using (emp_no)
 where
   x.dept_no < 'd004';
