@@ -6,4 +6,4 @@ from
   dept_manager x
   left join employees e using (emp_no)
 where
-  dept_no < 'd004';
+  x.dept_no < 'd004';
