@@ -34,7 +34,7 @@
 | <2024-06-27 Thu> | 代价模型和优化模块的设计与实现         | [[file:slides/p15-optimizer-and-cost-model.pdf][p15]]   | [[https://www.bilibili.com/cheese/play/ep834530][v15]]   |
 | <2024-06-29 Sat> | 联表查询 Join 优化器的设计与实现       | [[file:slides/p16-join-order-optimizer.pdf][p16]]   | [[https://www.bilibili.com/cheese/play/ep838693][v16]]   |
 | <2024-07-04 Thu> | 子查询优化器的设计与实现               | [[file:slides/p17-subquery-optimizer.pdf][p17]]   | [[https://www.bilibili.com/cheese/play/ep853672][v17]]   |
-| <2024-07-09 Tue> | MySQL 执行器的设计与实现               | [[file:slides/p18-enter-executor.pdf][p18]]   |       |
+| <2024-07-09 Tue> | MySQL 执行器的设计与实现               | [[file:slides/p18-enter-executor.pdf][p18]]   | [[https://www.bilibili.com/cheese/play/ep869070][v18]]   |
 
 ** 阅读材料
 1. 系统线程名称和性能视图表名称对应 | [[file:assets/thd-name-ref.org][link]]
