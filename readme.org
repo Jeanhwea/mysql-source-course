@@ -54,7 +54,7 @@
 | MySQL 源代码     | mysql-8.0.37.tar.gz        | 官网下载                |
 | MySQL 开发文档   | mysql-devdoc-8.0.37.tar.gz | 源码编译输出            |
 | MySQL 用户手册   | refman-8.0-en.a4.pdf       | 官网下载                |
-| Employee 测试库  | test_db.tar.gz             | GitHub 下载             |
+| Employee 测试库  | test_db.tar.gz             | GitHub 下载 / [[https://github.com/datacharmer/test_db][link]]      |
 | world 测试库     | world-db.tar.gz            | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]] / [[https://dev.mysql.com/doc/world-setup/en/][intro]] |
 | sakila 测试库    | sakila-db.tar.gz           | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]] / [[https://dev.mysql.com/doc/sakila/en/][intro]] |
 | airport 测试库   | airport-db.tar.gz          | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]] / [[https://dev.mysql.com/doc/airportdb/en/][intro]] |
