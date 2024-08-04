@@ -34,6 +34,9 @@
 | <2024-06-27 Thu> | 代价模型和优化模块的设计与实现         | [[file:slides/p15-optimizer-and-cost-model.pdf][p15]]   | [[https://www.bilibili.com/cheese/play/ep834530][v15]]   |
 | <2024-06-29 Sat> | 联表查询 Join 优化器的设计与实现       | [[file:slides/p16-join-order-optimizer.pdf][p16]]   | [[https://www.bilibili.com/cheese/play/ep838693][v16]]   |
 | <2024-07-04 Thu> | 子查询优化器的设计与实现               | [[file:slides/p17-subquery-optimizer.pdf][p17]]   | [[https://www.bilibili.com/cheese/play/ep853672][v17]]   |
+| <2024-07-09 Tue> | MySQL 执行器的设计与实现               | [[file:slides/p18-enter-executor.pdf][p18]]   | [[https://www.bilibili.com/cheese/play/ep869070][v18]]   |
+| <2024-07-22 Mon> | 性能分析及 handlerton 存储引擎接口设计 | [[file:slides/p19-profile-handlerton.pdf][p19]]   | [[https://www.bilibili.com/cheese/play/ep913384][v19]]   |
+| <2024-08-01 Thu> | InnoDB 存储引擎数据文件和分页机制      | [[file:slides/p20-innodb-datafile.pdf][p20]]   | [[https://www.bilibili.com/cheese/play/ep950258][v20]]   |
 
 ** 阅读材料
 1. 系统线程名称和性能视图表名称对应 | [[file:assets/thd-name-ref.org][link]]
@@ -53,7 +56,7 @@
 | MySQL 源代码     | mysql-8.0.37.tar.gz        | 官网下载                |
 | MySQL 开发文档   | mysql-devdoc-8.0.37.tar.gz | 源码编译输出            |
 | MySQL 用户手册   | refman-8.0-en.a4.pdf       | 官网下载                |
-| Employee 测试库  | test_db.tar.gz             | GitHub 下载             |
+| Employee 测试库  | test_db.tar.gz             | GitHub 下载 / [[https://github.com/datacharmer/test_db][link]]      |
 | world 测试库     | world-db.tar.gz            | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]] / [[https://dev.mysql.com/doc/world-setup/en/][intro]] |
 | sakila 测试库    | sakila-db.tar.gz           | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]] / [[https://dev.mysql.com/doc/sakila/en/][intro]] |
 | airport 测试库   | airport-db.tar.gz          | 官网下载 / [[https://dev.mysql.com/doc/index-other.html][link]] / [[https://dev.mysql.com/doc/airportdb/en/][intro]] |
