@@ -11,7 +11,7 @@
 1. 课程主页 | [[https://github.com/Jeanhwea/mysql-source-course][github]] | [[https://gitee.com/jeanhwea/mysql-source-course][gitee]]
 2. 源码仓库 | [[https://github.com/Jeanhwea/mysql-server][github]] | [[https://gitee.com/jeanhwea/mysql-server][gitee]]
 3. 视频讲解 | [[https://www.bilibili.com/cheese/play/ss19642][bilibili]]
-4. ibr 工具 | [[https://github.com/Jeanhwea/innobase_reader][src]] | [[https://github.com/Jeanhwea/innobase_reader/releases][release]]
+4. ibr 工具 | [[https://github.com/Jeanhwea/innobase_reader][source]] | [[https://github.com/Jeanhwea/innobase_reader/releases][release]]
 
 * 课程安排
 ** 课程大纲
