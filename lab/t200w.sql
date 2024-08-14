@@ -4,8 +4,8 @@ drop table if exists t200w;
 
 create table t200w (
   k1 int,
-  c1 varchar(8),
-  c2 varchar(8),
+  c1 varchar(64),
+  c2 varchar(64),
   primary key (k1)
 );
 
