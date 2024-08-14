@@ -5,28 +5,28 @@ services:
     container_name: mysql-8.0.27
     image: 'mysql:8.0.27'
     restart: always
-    privileged: true
+    # privileged: true
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
-      MYSQL_DATABASE: rtc
+      MYSQL_DATABASE: rtc80027
       MYSQL_USER: rtc
       MYSQL_PASSWORD: rtc123456
     ports:
       - '3327:3306'
     volumes:
-      - '/opt/docker/mysql:/var/lib/mysql'
+      - '/opt/docker/mysql80027:/var/lib/mysql'
 
   mysql57040:
     container_name: mysql-5.7.40
     image: 'mysql:5.7.40'
     restart: always
-    privileged: true
+    # privileged: true
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
-      MYSQL_DATABASE: rtc
+      MYSQL_DATABASE: rtc50040
       MYSQL_USER: rtc
       MYSQL_PASSWORD: rtc123456
     ports:
       - '3340:3306'
     volumes:
-      - '/opt/docker/mysql:/var/lib/mysql'
+      - '/opt/docker/mysql50040:/var/lib/mysql'
