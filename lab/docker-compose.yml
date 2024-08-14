@@ -16,9 +16,9 @@ services:
     volumes:
       - '/opt/docker/mysql:/var/lib/mysql'
 
-  mysql57045:
-    container_name: mysql-5.7.45
-    image: 'mysql:5.7.45'
+  mysql57040:
+    container_name: mysql-5.7.40
+    image: 'mysql:5.7.40'
     restart: always
     privileged: true
     environment:
@@ -27,6 +27,6 @@ services:
       MYSQL_USER: rtc
       MYSQL_PASSWORD: rtc123456
     ports:
-      - '3345:3306'
+      - '3340:3306'
     volumes:
       - '/opt/docker/mysql:/var/lib/mysql'
