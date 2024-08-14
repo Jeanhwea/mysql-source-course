@@ -1,7 +1,7 @@
 version: '3.6'
 
 services:
-  mysql:
+  mysql80027:
     container_name: mysql-8.0.27
     image: 'mysql:8.0.27'
     restart: always
@@ -16,7 +16,7 @@ services:
     volumes:
       - '/opt/docker/mysql:/var/lib/mysql'
 
-  mysql:
+  mysql57045:
     container_name: mysql-5.7.45
     image: 'mysql:5.7.45'
     restart: always
