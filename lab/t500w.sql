@@ -11,7 +11,7 @@ create table t500w (
 
 delimiter //
 
-drop procedure mock500w;
+drop procedure if exists mock500w;
 create procedure mock500w ()
 begin
 declare
