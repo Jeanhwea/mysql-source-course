@@ -41,6 +41,7 @@
 | <2024-08-06 Tue> | InnoDB 存储引擎的行记录格式            | [[file:slides/p21-innodb-row-format.pdf][p21]]          | [[https://www.bilibili.com/cheese/play/ep965657][v21]]   |
 | <2024-08-12 Mon> | INDEX 数据页案例研究和 ibr 工具介绍    | [[file:slides/p22-innobase-reader-cli.pdf][p22]] / [[file:notes/n22.pdf][n22]]    | [[https://www.bilibili.com/cheese/play/ep982336][v22]]   |
 | <2024-08-14 Wed> | InnoDB 行记录格式的演进过程            | [[file:slides/p23-parse-record.pdf][p23]] / [[file:notes/n23.pdf][n23]]    | [[https://www.bilibili.com/cheese/play/ep988104][v23]]   |
+|                  | 更新中                                 |              |       |
 
 ** 阅读材料
 1. 系统线程名称和性能视图表名称对应 | [[file:assets/thd-name-ref.org][link]]
