@@ -44,7 +44,7 @@
 | <2024-08-19 Mon> | MySQL 的 Online DDL 的演进过程           | [[file:slides/p24-online-ddl-development.pdf][p24]] / [[file:notes/n24.pdf][n24]]    | [[https://www.bilibili.com/cheese/play/ep1000682][v24]]   |
 | <2024-08-22 Thu> | MySQL 的数据文件层级：表空间、段、区、页 | [[file:slides/p25-datafile-physical-struct.pdf][p25]] / [[file:notes/n25.pdf][n25]]    | [[https://www.bilibili.com/cheese/play/ep1007243][v25]]   |
 | <2024-09-02 Mon> | MySQL 的索引组织结构和 B+树结构          | [[file:slides/p26-index-btree.pdf][p26]] / [[file:notes/n26.pdf][n26]]    | [[https://www.bilibili.com/cheese/play/ep1042363][v26]]   |
-| <2024-10-09 Wed> | InnoDB 的 UndoLog 数据结构设计           | [[file:slides/p27-undo-log.pdf][p27]] / [[file:notes/n27.pdf][n27]]    |       |
+| <2024-10-09 Wed> | InnoDB 的 UndoLog 数据结构设计           | [[file:slides/p27-undo-log.pdf][p27]] / [[file:notes/n27.pdf][n27]]    | [[https://www.bilibili.com/cheese/play/ep1138975][v27]]   |
 |                  | 更新中                                   |              |       |
 
 ** 阅读材料
