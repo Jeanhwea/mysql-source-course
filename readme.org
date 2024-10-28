@@ -46,6 +46,7 @@
 | <2024-09-02 Mon> | MySQL 的索引组织结构和 B+树结构          | [[file:slides/p26-index-btree.pdf][p26]] / [[file:notes/n26.pdf][n26]]    | [[https://www.bilibili.com/cheese/play/ep1042363][v26]]   |
 | <2024-10-09 Wed> | InnoDB 的 UndoLog 数据结构设计           | [[file:slides/p27-undo-log.pdf][p27]] / [[file:notes/n27.pdf][n27]]    | [[https://www.bilibili.com/cheese/play/ep1138975][v27]]   |
 | <2024-10-15 Tue> | InnoDB 的 RedoLog 数据结构设计           | [[file:slides/p28-redo-log.pdf][p28]] / [[file:notes/n28.pdf][n28]]    | [[https://www.bilibili.com/cheese/play/ep1158950][v28]]   |
+| <2024-10-28 Mon> | MVCC 和事务隔离级别的设计与实现          | [[file:slides/p29-mvcc-trx-iso.pdf][p29]] / [[file:notes/n29.pdf][n29]]    |       |
 |                  | 更新中                                   |              |       |
 
 ** 阅读材料
