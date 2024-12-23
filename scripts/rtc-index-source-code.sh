@@ -53,8 +53,8 @@ echo "GEN: create cscope database"
 cscope -b -q -k
 
 echo "GEN: create TAGS file"
-grep '.ic$' cscope.files    | etags --language=c++ -
-# grep '.ic$' cscope.files    | etags --language-force=c++ -
-grep -v '.ic$' cscope.files | etags --append -
+grep '.ic$' cscope.files    | etags --language=c++ -L -
+# grep '.ic$' cscope.files    | etags --language-force=c++ -L -
+grep -v '.ic$' cscope.files | etags --append -L -
 # ctags --langmap=c:+.ic -e -L cscope.files
 # ctags --langmap=c:+.ic -f tags -L cscope.files
