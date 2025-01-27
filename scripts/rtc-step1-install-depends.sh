@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # https://dev.mysql.com/doc/refman/8.0/en/source-installation-prerequisites.html
-sudo apt install -y build-essential git ncurses-dev bison cmake libaio1
+sudo apt install -y build-essential git ncurses-dev bison cmake libaio1 libssl-dev
 
 # GCC 10
 gcc --version
