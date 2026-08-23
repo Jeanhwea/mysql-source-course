@@ -48,7 +48,7 @@
 | <2024-10-15 Tue> | InnoDB 的 RedoLog 数据结构设计         | [[file:slides/p28-redo-log.pdf][p28]] / [[file:notes/n28.pdf][n28]]    | [[https://www.bilibili.com/cheese/play/ep1158950][v28]]   |
 | <2024-10-28 Mon> | MVCC 和事务隔离级别的设计与实现         | [[file:slides/p29-mvcc-trx-iso.pdf][p29]] / [[file:notes/n29.pdf][n29]]    | [[https://www.bilibili.com/cheese/play/ep1196325][v29]]   |
 | <2025-02-16 Sun> | InnoDB Buffer Pool 的设计与实现       | [[file:slides/p30-buffer-pool.pdf][p30]]          | [[https://www.bilibili.com/cheese/play/ep1485059][v30]]   |
-| <2026-08-17 Mon> | Buffer Pool 的 LRU 页面置换算法        | [[file:slides/p31-buffer-pool-LRU.pdf][p31]]          |       |
+| <2026-08-17 Mon> | Buffer Pool 的 LRU 页面置换算法        | [[file:slides/p31-buffer-pool-LRU.pdf][p31]]          | [[https://www.bilibili.com/cheese/play/ep2842513][v31]]   |
 |                  | 更新中                               |              |       |
 
 ** 阅读材料
